@@ -1,0 +1,13 @@
+# lecture 6 exercise
+#
+import acis "knuckle.sat" separate_bodies 
+healer autoheal body all
+remove surf 3 7 13 15 17 
+webcut volume 1  with plane vertex 20  vertex 19  vertex 25  preview
+webcut volume 1  with plane vertex 20  vertex 19  vertex 25  
+webcut volume 1  with plane zplane offset -23.750000 noimprint nomerge 
+webcut volume 1  with plane zplane offset -3 noimprint nomerge 
+imprint all
+merge all
+vol all size 1.5
+mesh vol all

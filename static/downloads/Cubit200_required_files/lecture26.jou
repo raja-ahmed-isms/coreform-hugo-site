@@ -1,0 +1,193 @@
+#Fast-start Tutorial 26
+#Tet Meshing Best Practices
+
+#import the model
+reset
+import acis "a901-2.sat"
+
+#create blocks and name them
+block 1 volume 3       
+block 1 name 'casting'
+block 2 volume 1 2
+block 2 name 'bolts'
+draw casting
+draw bolts
+display
+
+# set the element type to tet10
+bolts element type tetra10
+casting element type tetra10
+
+# Ensure mid-side nodes will be projected to geometry when needed
+set node constraint smart
+
+#mesh and check the number of elements
+vol all scheme tetmesh
+vol all size 0.2
+mesh vol all
+list tot
+
+#create a material and assign to a block
+create material name 'steel' elastic_modulus 2.068e5 poisson_ratio 0.29 density 7e-6
+casting material 'steel'
+bolts material 'steel'
+
+
+#check the time step metric
+quality volume all time step global draw mesh
+quality volume all time step global high 1.0e-7 low 0 draw mesh
+
+#delete the mesh
+delete mesh
+
+#heal and regularize
+healer autoheal volume all
+validate volume all
+regularize vol all
+
+#remove the cone surfaces
+tweak surface 50  cone 
+tweak surface 26  cone 
+
+#remove skinny fillets
+tweak surface 21  remove extend 
+tweak surface 24  remove extend 
+
+#remove indentation
+tweak surface 22  replace with surface 28  
+regularize vol all
+
+#remove fillet with webcuts
+webcut body 3  with sheet extended from surface 49  
+webcut body 6  with sheet extended from surface 37  
+delete Body 7
+unite volume 3 6  
+
+#remove small curves
+composite create surface 44 38 43  keep angle 15 
+composite create surface 42 45 39  keep angle 15 
+
+#blunt tangencies
+blunt tangency vertex 41 angle 30 depth 1 
+blunt tangency vertex 42 angle 30 depth 1 
+blunt tangency vertex 44 angle 30 depth 1 
+blunt tangency vertex 45 angle 30 depth 1 
+
+#check for volume overlaps
+measure volume all overlap
+
+#modify geometry to remove overlaps
+tweak surface 27 replace with surface 8  
+tweak surface 51 replace with surface 4  
+
+#imprint merge and identify contact
+imprint all
+merge all
+draw surf with is_merged
+draw curve all add
+unmerge volume 1
+draw surf with is_merged
+draw curve all add
+
+#mesh again
+vol all scheme tetmesh
+vol all size 0.2
+mesh vol all
+display
+list tot
+
+# check the time step metric
+quality volume all time step global draw mesh
+quality volume all time step global high 1.0e-7 low 0 draw mesh
+
+# check for mesh overlap
+find mesh intersection surface all draw
+draw curve all add
+
+# correct overlap using QTri method
+delete mesh
+imprint vol 1 3
+merge vol 1 3
+
+surf 51 scheme map
+mesh surf 51
+qtri surf 51
+
+vol all scheme tetmesh
+mesh vol all
+unmerge vol 1
+find mesh intersection surface all draw
+
+# correct overlap using the Move node method
+delete mesh
+surf all scheme trimesh
+mesh vol all
+find mesh intersection surface all draw
+node in surface 51 move normal to surface 51 distance 0.02
+find mesh intersection surface all draw
+
+#Massive composites
+reset
+import acis 'a901-2.sat' 
+composite create surface in vol 3
+vol all scheme tetmesh
+vol all size 0.2
+set trimesher ridge angle 40
+set trimesher geometry sizing off
+mesh vol 3
+
+#after reset need to create the material again
+block 1 volume 3       
+block 1 name 'casting'
+create material name 'steel' elastic_modulus 2.068e5 poisson_ratio 0.29 density 7e-6
+casting material 'steel'
+
+#check the time step metric
+quality volume all time step global draw mesh
+quality volume all time step global high 1.0e-7 low 0 draw mesh
+
+#tiny edge length option
+delete mesh
+set dev on
+set trimesher remove tiny edge length 0.1
+mesh vol 3
+
+#check timestep
+quality volume all time step global draw mesh
+quality volume all time step global high 1.0e-7 low 0 draw mesh
+
+#limited compositing
+delete mesh
+composite delete surf in vol 3
+sideset 1 surf 9 51
+surf 9 51 scheme map
+mesh surf 9 51
+qtri surf 9 51
+mesh surf 9 51
+composite create surf in vol 3 except surf 9 51
+vol 3 scheme tetmesh
+mesh vol 3
+draw sideset 1
+
+#geometry sizing
+reset
+import acis "gear.sat"
+vol 1 size 6.0
+vol 1 scheme tetmesh
+mesh vol all
+
+delete mesh
+trimesher geometry sizing off
+mesh vol all
+
+#grouping with extended parsing
+delete mesh
+list surface 515 geometry
+group "teeth" add surface with area > 258 and area < 259
+draw teeth
+surf in teeth size 1.0
+vol 1 size 6.0
+mesh vol 1
+
+
+

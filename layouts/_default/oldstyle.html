@@ -1,0 +1,18 @@
+{{ define "main" }}
+
+{{ partial "featured_image_header" . }}
+
+<div class="old-style-container content container pb-6">
+	{{.Content}}
+
+	{{ with .Params.include_trial }}
+		{{ partial "trial_trelis" . }}
+
+	{{ end }}
+	{{ with .Params.include_contact }}
+		{{ partial "start_conversation" . }}
+
+	{{ end }}
+
+</div>
+{{ end }}

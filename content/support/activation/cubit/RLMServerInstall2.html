@@ -1,0 +1,250 @@
++++
+title = "RLM Server installation instructions"
+aliases = ["/support/activation/rlmserverinstall"]
++++
+<div class="parallax-window" data-parallax="scroll" data-position="top" data-bleed="10" data-speed="0.2"
+    data-image-src="/images/par/parTech2.jpg" data-natural-width="1200">
+    <div class="parallax-overlay"><img src="/images/svg/logo-white.svg" style="opacity:1" width="75" alt="Coreform" />
+    </div>
+</div>
+<section>
+    <div class="section wow fadeIn" data-wow-duration="0.4s">
+        <div style="max-width:1000px; margin: 0 auto;">
+            <h1 class="section-heading">RLM-Server installation for floating licenses</h1>
+        </div>
+    
+        <div style="max-width:1000px; margin: 0 auto;">
+
+            <p><br />This guide provides instructions for setting up and
+                activating floating licenses of Coreform Cubit on a network. There are three
+                parts to setting up a floating license:</p>
+            <div class="inner">
+                <ol>
+                    <li>Install the <i>RLM-Server</i> software on the machine that will
+                        be the license server.</li>
+                    <li>Activate the floating license on the license server.</li>
+                    <li>Install Coreform Cubit on individual client machines and specify
+                        the location of the license server.</li>
+                </ol>
+            </div>
+            <p>NOTE: These instructions assume that you use default paths and port
+                numbers. Please modify the instructions according with actual installation
+                locations and port numbers used.</p>
+        </div>
+    </div>
+</section>
+<section class="section-shade">
+    <div class="section wow fadeIn" data-wow-duration="0.4s">
+        <div style="max-width:1000px; margin: 0 auto;">
+            <h3 class="section-subhead">RLM-Server installations.</h3>
+            <h4>Pre-installation Setup</h4>
+            <p>Before installing RLM-Server, choose a computer to use as a license server.</p>
+            <div class="inner">
+                <ul>
+                    <li>This computer must be reachable by clients on the internal network.</li>
+                    <li>This computer does not need to be a dedicated license server.</li>
+                    <li>It needs to always be on while clients are using licenses.</li>
+                    <li>You will need your product key for your license found in <a
+                            href="http://coreform.com/account/licenses" target="_blank">My Licenses</a>.</li>
+                </ul>
+            </div>
+            <h4>Install RLM-Server Software</h4>
+            <p>Run the appropriate RLM-Server installation file. RLM-Server can be downloaded from <a
+                    href="https://coreform.com/products/downloads/" target="_blank">the downloads page</a></p>
+            <div class="inner">
+                <table style="width: 600px">
+                    <colgroup>
+                        <col width="20%" />
+                        <col width="40%" />
+                        <col width="40%" />
+                    </colgroup>
+                    <tr>
+                        <td class="title-cell2">Platform</td>
+                        <td class="title-cell2">Filename</td>
+                        <td class="title-cell2">Default Installation Folder</td>
+                    </tr>
+                    <tr>
+                        <td>Windows</td>
+                        <td>RLM-Server-202x.x-Win64.exe</td>
+                        <td>C:\Program Files\RLM-Server</td>
+                    </tr>
+                    <tr>
+                        <td>Linux</td>
+                        <td>RLM-Server-202x.x-Lin64.sh<br>RLM-Server-202x.x-Lin64.deb<br>RLM-Server-202x.x-Lin64.rpm</td>
+                        <td>/opt/RLM-Server</td>
+                    </tr>
+                    <tr>
+                        <td>Mac</td>
+                        <td>RLM-Server-202x.x-Mac64.sh</td>
+                        <td>/usr/local/RLM-Server</td>
+                    </tr>
+                </table>
+            </div>
+            <h5>Linux Installation</h5>
+            <p>To install RLM-Server on a Linux machine, use either the "su -" or "sudo"
+                command to elevate to root. For example:</p>
+            <p style="margin-left: 50px">$ sudo sh &#60;installation name&#62;</br>and enter
+                the <strong>current user's</strong> password</br></br>or</br></br>$ su -</br>and
+                enter the <strong>root</strong> password, then</br>sh &#60;installation name&#62;</p>
+        </div>
+    </div>
+</section>
+<section>
+    <div class="section wow fadeIn" data-wow-duration="0.4s">
+        <div style="max-width:1000px; margin: 0 auto;">
+
+            <h3 class="section-subhead">Activate the Coreform Cubit license.</h3>
+            <p>A valid Coreform Cubit license file must be placed in the RLM-Server installation
+                folder. The license file can be obtained using an activation utility that
+                communicates with the Coreform server over the Internet, or the license
+                file can be downloaded from your <a href="http://coreform.com/account/licenses" target="_blank">My
+                    Licenses</a> page of your account.</p>
+            <h5>Connected to Internet</h5>
+            <p>If your license server is connected to the Internet:</p>
+            <ol class="inner">
+                <li>Navigate to the RLM-Server installation folder (See table above).</li>
+                <li>Activate by using either the GUI or the command line option:
+                    <ul>
+                        <li><strong>RLM Activation GUI</strong>. Run <i>rlm_activate</i> to launch
+                            the RLM Activate window. Enter the Product Key and Hostname (for
+                            identifying your license server on your <a href="http://coreform.com/account/licenses"
+                                target="_blank">My Licenses</a> page). Click <i>Activate</i>.
+                            <br /><br />
+                            <img class="dropshadow" src="/images/activate_server.jpg" alt="Activate Server"
+                                title="Activate Server" />
+                            <br /><br />
+                        </li>
+                        <li><strong>Command line activation</strong>. Run as Administrator
+                            (Root): <i>rlm_activate --activate &#60;product_key&#62; &#60;hostname&#62;</i>
+                            where &#60;product_key&#62; is the product key for the license and &#60;hostname&#62;
+                            is the name of the server. The hostname is optional, but will identify the server
+                            in your list of licenses in your <a href="http://coreform.com/account/licenses"
+                                target="_blank">My Licenses</a> page.
+                            <br /><br />
+                            <img class="dropshadow" src="/images/activate_cmd.jpg" alt="Activate Server"
+                                title="Activate Server" />
+                        </li>
+                    </ul>
+                </li>
+            </ol>
+            <h5>Not Connected to Internet</h5>
+            <p>If your license server is NOT connected to the Internet:</p>
+            <ol class="inner">
+                <li>Open a Command Prompt or terminal window and navigate to the RLM-Server installation folder.</li>
+                <li>Run: <i>rlmutil rlmhostid ether</i> to get your server's hostid.</li>
+                <li>On a computer with an Internet connect, go to the Coreform Cubit license on
+                    your <a href="http://coreform.com/account/licenses" target="_blank">My
+                        Licenses</a> page and click on <i>Add Activation</i> at the bottom of the page. </li>
+                <li>Enter your Host Name and Host ID, then click Add Activation.</li>
+                <li>The activation will show in your Activations list. Click the icon next
+                    to the activation to download the license file.</li>
+                <li>Save the license file to your RLM-Server installation folder.</li>
+            </ol>
+            <p>NOTE: restart the server to pick up the new license file. This
+                does not require a reboot of the machine. Check to see that the Coreform
+                server is running. In a web browser on the server, type <a href="http://localhost:5054/"
+                    target="_blank">http://localhost:5054/</a>.
+                This should open the Reprise License Server Administration page. In the
+                left column, click <i>Status</i>. You should see three tables. In the
+                ISV Servers table you should see Coreform port 5055 running. If not,
+                click on <i>Reread/Restart Servers</i> in the left column. Check again
+                by clicking <i>Status</i>.</p>
+
+        </div>
+    
+        <div style="max-width:1000px; margin: 0 auto;">
+            <h3 class="section-subhead">Configure your firewall.</h3>
+            <p>By default, RLM-Server uses tcp:5053 with a web admin interface running
+                on tcp:5054 and an additional port specifically for the Coreform ISV
+                server (tcp:5055). You can edit the port numbers in the license file to
+                fit your needs. For example, if you already have an existing RLM installation
+                for another program that uses port 5055, you can reassign the Coreform port. </p>
+            <p>If you change port 5053 in the license file on the server, the port listed
+                in the client license file must match the port in the server license file.</p>
+            <p>With port numbers decided, you can proceed to adjust your firewall for all
+                ports to allow license server traffic. </p>
+
+        </div>
+    
+        <div style="max-width:1000px; margin: 0 auto;">
+            <h3 class="section-subhead">Coreform Cubit client installation.</h3>
+
+            <p>Regardless of the server's operating system, clients running different
+                operating systems can share the same floating license.</p>
+            <p>Install the appropriate Coreform Cubit installation on each client that will
+                run Coreform Cubit. The download is available on the <a href="https://coreform.com/products/downloads/"
+                    target="_blank">downloads page</a> on coreform.com </p>
+            <div class="inner">
+                <table style="width: 800px">
+                    <colgroup>
+                        <col width="20%" />
+                        <col width="40%" />
+                        <col width="40%" />
+                    </colgroup>
+                    <tr>
+                        <td class="title-cell2">Platform</td>
+                        <td class="title-cell2">Filename</td>
+                        <td class="title-cell2">Default Installation Folder</td>
+                    </tr>
+                    <tr>
+                        <td>Windows</td>
+                        <td>Coreform-Cubit-202x.x-Win64.exe</td>
+                        <td>C:\Program Files\Coreform Cubit 202x.x</td>
+                    </tr>
+                    <tr>
+                        <td>Linux Debian</td>
+                        <td>Coreform-Cubit-202x.x-Lin64.deb</td>
+                        <td>/opt/Coreform Cubit 202x.x</td>
+                    </tr>
+                    <tr>
+                        <td>Linux Red Hat</td>
+                        <td>Coreform-Cubit-202x.x-Lin64.rpm</td>
+                        <td>/opt/Coreform Cubit 202x.x</td>
+                    </tr>
+                    <tr>
+                        <td>Mac</td> 
+                        <td>Coreform-Cubit-202x.x-Mac64.dmg or <br>Coreform-Cubit-202x.x-Mac64.pkg </td>
+                        <td>/usr/local/Coreform Cubit 202x.x</td>
+                    </tr>
+                </table>
+            </div>
+            <h3>Configure clients to use RLM-Server.</h3>
+            <p>On some networks Coreform Cubit will locate the network license server automatically.
+                If not, you will need to help Coreform Cubit connect to the license server.</p>
+            <ol class="inner">
+                <li>Launch Coreform Cubit. If Coreform Cubit can locate the license server, it will
+                    open. If not connected to the server, the Product Activation window will appear.</li>
+                <li>Click <i>Floating: Connect to a license server</i>.</li>
+                <li>Enter the Hostname or IP address of the license server (where RLM-Server
+                    is installed) and the port number (default 5053).</li>
+                <li>Click <i>Connect</i>.</li>
+            </ol>
+            <p class="center"><img class="dropshadow" src="/images/activate_connect.jpg"
+                    alt="Floating: Connect to a license server" title="Floating: Connect to a license server" /></p>
+        </div>
+    </div>
+</section>
+<section class="section-shade">
+    <div class="section wow fadeIn" data-wow-duration="0.4s">
+        <div style="max-width:1000px; margin: 0 auto;">
+            <h3 class="section-subhead">Using Coreform Cubit on the same machine as RLM-Server.</h3>
+            <p>If you will be running Coreform Cubit on the same machine that you are using for
+                the license server, you will need to install the server according to
+                the above instructions, and then install Coreform Cubit. Coreform Cubit should recognize
+                the license server and open. If the Product Activation window appears,
+                choose <i>Floating: Connect to a license server</i> and leave the server
+                as <i>localhost</i>.</p>
+
+        </div>
+    </div>
+</section>
+<section>
+    <div class="section wow fadeIn" data-wow-duration="0.4s">
+        <div style="max-width:1000px; margin: 0 auto;">
+            <h3 class="section-subhead">Need help?</h3>
+            <p>If you have question concerning setting up Coreform Cubit on a network, please
+                contact <a href="mailto:support@coreform.com?subject=Support Inquiry">support@coreform.com</a> or call
+                (801) 717-2296.</p>
+        </div>
+    </div>
+</section>

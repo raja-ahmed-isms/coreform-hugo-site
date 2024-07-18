@@ -1,0 +1,5 @@
+outs:
+- md5: a8f24c23ae80e53d780fadc8bced543f
+  size: 13241
+  isexec: true
+  path: pwr_geometry_model_tree_shared_surfaces.png

@@ -1,0 +1,93 @@
+reset
+
+# define variables
+#{hex_mesh = 0}
+#{mesh_size = 300}
+
+#{yoke_x = 3000}
+#{yoke_y = 2000}
+#{yoke_z = 1500}
+
+# set up the default view
+view from 18000 18000 18000
+view at 0 0 5000
+view Up -0.297239  -0.320179  0.899519
+undo off
+set info off
+
+brick x 9000 y 1000 z 10000             #return pole
+move volume 1 x 0 y -2500 z 5125
+brick x {yoke_x} y {yoke_y} z {yoke_z}  #connect yoke
+move curve 16 location curve 2
+brick x 6000 y 1000 z 7000              #main pole
+move curve 28 location curve 14
+brick x 6000 y 300 z 1500
+move curve 42 location curve 32
+brick x 9000 y {yoke_y} z 250           #base
+move curve 54 location curve 8
+
+brick x 9000 y 6000 z 125               #Soft underlayer
+
+brick x 2000 y 2000 z 250               #Wrap around shell
+move curve 76 location curve 50
+
+#yoke taper
+create surface rectangle width 300 zplane
+move surface 43 location surface 20
+move surface 43 x 0 y 0 z -2700
+create volume loft surface 20 43
+delete body 8
+sweep surface 49 perpendicular distance 50
+
+# create head
+create vertex 30 1230 125
+create vertex -30 1230 125
+create vertex -15 1151.42 125
+create vertex 15 1151.42 125
+create surface vertex 73 74 75 76
+move curve 109 midpoint location curve 108
+move curve 109 midpoint x 0 y -70 z -250
+create volume loft surface 49 54
+delete body 10
+
+# finish the WAS
+create vertex location between location surface 49 location surface 60
+volume 11 copy scale 1.5 about vertex 85
+subtract volume 12 from volume 7
+
+# clean up
+regularize volume all
+
+compress
+
+# make the model conformal
+imprint all
+merge all
+
+color block 1 cadetblue
+color block 2 lightcoral
+
+
+# set up blocks
+block 1 volume 1 2 3 5
+block 2 volume 4 8 9
+block 7 volume 7
+block 15 volume 6
+
+
+# set up the meshing
+ volume all size {mesh_size}
+# {ifdef(hex_mesh) }
+  surface 43 45 53 scheme pave
+  #volume 9 size 30
+  volume 7 scheme sweep source surface 59 target surface 60
+  surface in volume 7 scheme submap
+  mesh volume 9
+#{else}
+     volume all scheme tetmesh
+# {endif}
+
+mesh volume all
+
+info on
+undo on

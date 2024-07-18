@@ -1,0 +1,5 @@
+outs:
+- md5: 5b14b081dbbf22dc913fcdd195cc4f42
+  size: 255883
+  isexec: true
+  path: driver.sat

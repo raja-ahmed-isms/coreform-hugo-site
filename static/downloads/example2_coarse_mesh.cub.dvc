@@ -1,0 +1,4 @@
+outs:
+- md5: 8d6ee21d43e6c9d3e00e43c9af3da610
+  size: 155033
+  path: example2_coarse_mesh.cub

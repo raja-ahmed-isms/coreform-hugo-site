@@ -1,0 +1,25 @@
+{{ define "main" }}
+
+	{{ if and (eq .Page.File.Ext "md") (not .Params.special_page)  }}
+	<div class="container content p-6">
+		<section>
+		{{.Content}}
+		</section>
+	</div>
+	{{ else }}
+		{{.Content}}
+	{{ end }}
+
+	{{ with .Params.include_trial }}
+		{{ partial "trial_trelis" . }}
+
+	{{ end }}
+	{{ with .Params.include_contact }}
+		{{ partial "start_conversation" . }}
+
+	{{ end }}
+	{{ with .Params.include_forum }}
+		{{ partial "visit_forum" . }}
+
+	{{ end }}
+{{ end }}

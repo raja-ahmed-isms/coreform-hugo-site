@@ -1,0 +1,57 @@
+#TEST_KEY FAST_START_TUTORIAL NIGHTLY PAVE_ALL SWEEP_ALL SWEEP_SMOOTH_ALL
+
+reset
+play 'lecture12.jou'
+list error
+
+reset
+play 'lecture13.jou'
+list error
+
+reset
+play 'lecture14.jou'
+list error
+
+reset
+play 'lecture15.jou'
+list error
+
+reset
+play 'lecture16.jou'
+list error
+
+reset
+play 'lecture17.jou'
+list error
+
+reset
+play 'lecture18.jou'
+list error
+
+reset
+play 'lecture19.jou'
+list error
+
+reset
+play 'lecture20.jou'
+list error
+
+reset
+play 'lecture21.jou'
+list error
+
+reset
+play 'lecture23.jou'
+list error
+
+reset
+play 'lecture24.jou'
+list error
+
+reset
+play 'lecture26.jou'
+list error
+
+
+
+

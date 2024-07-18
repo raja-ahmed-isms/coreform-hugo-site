@@ -1,0 +1,38 @@
+open "ImproveQuality.cub"
+##### Determine which volume has the worst quality
+qual vol all scaled
+list hex 18816
+##### The worst quality element is 18816, which is in vol 6.  Unite vol 6 with
+##### some of its neighbors to give the smoother freedom.
+unite volume 6 1 4  include_mesh 
+
+##### Now smooth the surface meshes so we can see what is going on in that tangled mess
+smooth surface 6
+smooth surface 26
+
+##### Do some Mesh Surgery then smooth
+column collapse node 22314 22315 
+column collapse node 22191 22189 
+smooth surface 6
+smooth surface 6
+smooth surface 6
+smooth surface 26
+smooth surface 26
+smooth surface 26
+vol 6 smooth scheme cond cpu 0.5
+smooth vol 6
+
+##### Now see where the worst quality is
+qual vol all scal
+list hex 2733
+draw vol 12
+
+##### Worst quality is now hex 2733, which is in volume 12.  The problem is the skew
+##### on a skinny boundary surface of vol 12.  If we unite vol 12 with vol 6, then that
+##### surface goes away giving the smoother freedom to smooth
+disp
+unite volume 6 12  include_mesh 
+vol 6 smooth schem mean
+smooth vol 6
+qual vol all scale draw mesh
+##### min scaled Jacobian is now 0.242, good enough, so we stop.

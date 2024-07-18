@@ -1,0 +1,106 @@
++++
+title = "RLM Server activation instructions"
++++
+<section>
+    <div class="section wow fadeIn" data-wow-duration="0.4s">
+        <div style="max-width:1000px; margin: 0 auto;">
+            <h1 class="section-heading">RLM Server activation</h1>
+        </div>
+    </div>
+</section>
+<div class="parallax-window" data-parallax="scroll" data-position="top" data-bleed="10" data-speed="0.2" data-image-src="/images/par/parOffice2.jpg" data-natural-width="1200" >
+    <div class="parallax-overlay"><img src="/images/svg/logo-white.svg" style="opacity:1" width="75" alt="Coreform"/></div>
+</div>
+<section>
+    <div class="section wow fadeIn" data-wow-duration="0.4s">
+        <div style="max-width:1000px; margin: 0 auto;">
+            <p class="section-subhead">Possible problems.</p>
+            <p>A floating license is shared over the network with a server or network node as the license manager. 
+                See <a href="/support/activation/activatenetwork">Network Activation</a> for information about setting up a floating license on a network.</p>
+            <p>If you are having problems problems using Coreform Cubit with a floating license, the problem might be that the 
+              RLM-Server is not running properly or the computer with Coreform Cubit installed cannot connect to the RLM-Server</p>
+            <div class="inner">
+            <ul>
+                <li>Troubleshoot the RLM-Server</li>
+                <li>Connect Coreform Cubit to the RLM-Server</li>
+            </ul>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+<section>
+    <div class="section wow fadeIn" data-wow-duration="0.4s">
+        <div style="max-width:1000px; margin: 0 auto;">
+          <h3 class="section-subhead">Troubleshooting RLM-Server.</h3>
+            <div class="section-shade">
+                <p><strong>Is the RLM-Server running?</strong></p>
+                <p>In a web browser, type "localhost:5054" or "[server IP address]:5054" to 
+                open the RLM Admin interface. If you are not able to connect to localhost:5054, then RLM is not running.</p>
+                <p><strong>Solution. </strong> Restart RLM by navigating to the RLM-Server folder and running "./rlm.sh start" in Linux or 
+                "add-rlm.bat" in Windows. Try again to open the Admin interface.</p>
+            </div>
+            <div class="section-shade">
+                <p><strong>Is the Coreform ISV server running?</strong></p>
+                <p> Open the RLM Admin page. Click on the Status button in the left 
+                column. You should see the license file in the first table. There should be an ISV Server table at the bottom. In 
+                the table you should see "Coreform" ISV running on port 5055. If not, the Coreform ISV server is not running.</p>
+                <div class="center"><img class="dropshadow" src="/images/rlmstatus.jpg"/></div>
+                <p><strong>Solution. </strong> If you do not see an ISV Server table, click the Edit License Files button in the 
+                left column and check the license file to ensure that their is a line starting with HOST and one starting with 
+                ISV on separate lines. <strong>Do not change anything in the lines that begin with "LICENSE" or it will break the license.</strong></p>
+                <p>Next, click the Shutdown button in the left column, shutdown all servers, and then click 
+                the Reread/Restart Server button in the left column. Do not reboot your computer.</p>
+                <p>Click the Status button and look for the ISV Server table with Coreform running on port 5055.</p>
+            </div>
+            <div class="section-shade">
+                <p><strong>Does the license file have the correct features?</strong></p>
+                <p>Click the Status button on the left. In the ISV Server table, click
+                the "Coreform" button in the Server Status column. In the License Pool Status table, you should see the products in the license file 
+                with the version number and expiration date.</p>
+                <div class="inner">
+                    <ul>
+                        <li>cubit</li>
+                        <li>cubit_core</li>
+                        <li>cubit_fea</li>
+                        <li>cubit_cfd</li>
+                        <li>cubit_[translator name] (if purchased a translator)</li>
+                    </ul>
+                </div>
+                <div class="center"><img class="dropshadow" src="/images/rlmpool.jpg"/></div>
+                <p><strong>Solution. </strong> If you are not seeing the features in the Product column, click the Status button to 
+                ensure that the correct license file is being used.</p>
+                <p>Click the Shutdown button in the left column to shutdown the ISV server, then click the Reread/Restart Server button.
+                Click the Status button, then the "Coreform" button under the Server Status column.</p>
+            </div>
+            <div class="section-shade">
+                <p><strong>Is the license file a floating license?</strong></p>
+                <p>Network installations require a floating license of Coreform Cubit. A network product key is used to activate a license on the 
+                RLM-Server. If you activate a node-locked license on the server, only the server can access the license. Do 
+                not use the network product key to activate Coreform Cubit on the client computer.</p>
+                <p><strong>Solution. </strong> Activate a floating license on the RLM-Server and point each Coreform Cubit installation to the server.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section>
+    <div class="section wow fadeIn" data-wow-duration="0.4s">
+        <div style="max-width:1000px; margin: 0 auto;">
+          <h3 class="section-subhead">Troubleshooting the connection of Coreform Cubit to RLM-Server.</h3>
+            <p>For network installations, only the server or computer designated as the license manager is activated with a floating license. 
+            When launched, each installation of Coreform Cubit checks the license manager for an available Coreform Cubit license. </p>
+            <div class="section-shade">
+                <p><strong>Coreform Cubit is unable to check out a license from the server.</strong></p>
+                <p>If a license is available, Coreform Cubit will launch. If a license is not available, Coreform Cubit will indicate that it cannot check 
+                out a license from the server.</p>
+                <p><strong>Solution. </strong> In a web browser, type "localhost:5054" or "[server IP address]:5054" to 
+                open the RLM Admin interface. Click on the Status button in the left column. In the ISV Server table, click the "Coreform" 
+                button in the License Usage column. Click the "Get License Usage" button. If another Coreform Cubit installation is using the 
+                license, close Coreform Cubit on that computer.</p>
+                <p>If Coreform Cubit is not being used on another comNavputer</p>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,33 @@
+# lecture 4 exercies
+#
+import step "piston.stp" heal
+webcut volume all with plane xplane offset 0 noimprint nomerge 
+webcut volume all with plane zplane offset 0 noimprint nomerge 
+delete volume 3 4 2
+#
+# simplify
+#webcut volume all with cylinder radius 1.5 axis vertex 133  vertex 132  preview
+webcut volume all with cylinder radius 1.5 axis vertex 133  vertex 132 
+#webcut volume 1  with plane surface 101  preview
+webcut volume 1  with plane surface 101  
+#
+imprint volume all 
+merge volume all 
+#
+volume all scheme Auto
+mesh volume all
+#
+quality volume all shape global draw mesh
+#
+set duplicate block elements off
+block 100 volume all 
+block 100 element type hex8
+Sideset 1 surface 211 206 203  
+#
+set exodus netcdf4 off
+set large exodus file on
+export Genesis  "qtr_piston.g" block all overwrite
+#
+delete file "qtr_piston.g"
+
+

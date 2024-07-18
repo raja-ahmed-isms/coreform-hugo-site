@@ -1,0 +1,4 @@
+outs:
+- md5: 4da69281f87bfb1f01a1006fbb020471
+  size: 9080
+  path: centos_logo.svg

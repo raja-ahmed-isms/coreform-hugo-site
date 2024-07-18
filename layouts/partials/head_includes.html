@@ -1,0 +1,20 @@
+<!-- Stylesheets -->
+{{ $style := resources.Get "scss/main.scss" | resources.ExecuteAsTemplate "style.main.scss" .  | toCSS (dict "includePaths" (slice "assets/scss/bulma-0.9.1" "static/css/")) | minify | fingerprint }}
+<link rel="stylesheet" href="{{ $style.RelPermalink }}">
+
+<link rel="stylesheet" type="text/css" href="/css/animate.css" />
+<link rel="stylesheet" type="text/css" href="/css/ghost-buttons.css" />
+<!--<link rel="stylesheet" type="text/css" href="/css/bootstrap.carousel.css"/>-->
+
+<!-- Remove these soon. this is better pulled-in as part of the scss -->
+<link media="all" type="text/css" rel="stylesheet" href="//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,300,400,600,700,800,900" />
+<link rel="stylesheet" type="text/css" href="/css/simple-line-icons.css" />
+<link rel="stylesheet" type="text/css" href="/css/font-awesome.css" />
+
+<!-- Favicon -->
+<link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico" />
+
+<!-- To be cleaned up when as these components are removed/revamped -->
+<link rel="stylesheet" href="/css/slider/slider.css">
+<link rel="stylesheet" href="/css/off-canvas/pushy.css">
+<link rel="stylesheet" href="/css/responsive.css">

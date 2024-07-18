@@ -1,0 +1,27 @@
+{{ define "main" }}
+
+<section>
+<div class="content container pb-6">
+	<h1 class="has-text-left">{{ .Title }}</h1>
+	<h5><i>{{ .Description }}</i></h5>
+	<p class="is-size-5">Published: {{ .Date.Format "2 January 2006" }}</p>
+	{{ $img := (.Resources.ByType "image").GetMatch "*{featured}*"}}
+	{{ with $img }}
+	<figure class="section px-6" >
+		<img  src={{ .RelPermalink }}>
+	</figure>
+	{{ end }}
+	{{.Content}}
+
+	{{ with .Params.include_trial }}
+		{{ partial "trial_trelis" . }}
+
+	{{ end }}
+	{{ with .Params.include_contact }}
+		{{ partial "start_conversation" . }}
+
+	{{ end }}
+
+</div>
+</section>
+{{ end }}

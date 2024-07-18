@@ -1,0 +1,15 @@
++++
+title = "The Hex-Tet Hex-Dominant Meshing Algorithm as Implemented in CUBIT"
+description = "Ray J. Meyers., Timothy J. Tautges, Philip M. Tuchinsky, Proceedings, 7th International Meshing Roundtable"
+keywords = " hexahedral meshing, mixed-element mesh, hex-dominant meshing, unstructured mesh generation, plastering"
+date = "1998-10-01"
+research_doc = "/papers/hex_dom_mesh_algorithm.pdf"
++++
+
+<p>This is a report of the current status of the Hex-Tet algorithm as implemented in the CUBIT
+    toolset. The Hex-Tet algorithm begins by generating a partial hex mesh using an advancing front
+    “Plastering” algorithm. The boundary of any remaining void is optionally “cleaned-up” to improve its
+    shape and/or other properties. The quad boundary is then converted to a triangular boundary by one of
+    three available methods. Finally, the triangle-bounded void is filled with tetrahedra using the tet-generation
+    capabilities within CUBIT. 
+</p>

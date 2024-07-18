@@ -1,0 +1,25 @@
+{{ define "main" }}
+
+<div style="max-width:1000px; margin: auto">
+
+	<p class="section-heading" style="margin-bottom:30px;">Job postings</a></p>
+
+<section class="section-shade">
+    <div class="section wow fadeIn" data-wow-duration="0.4s">
+    	<h1 style="color: #1e283c; font-size:2.5em;eight:900; font-weight:400; letter-spacing:-1px;">{{ .Title }}</h1>
+    	<h5 style="line-height: 1em; margin-top: -1em"><i>{{ .Description}}</i></h5>
+    </div>
+</section>
+ 
+    {{.Content}}
+</div>	
+
+	{{ with .Params.include_trial }}
+		{{ partial "trial_trelis" . }}
+
+	{{ end }}
+	{{ with .Params.include_contact }}
+		{{ partial "start_conversation" . }}
+
+	{{ end }}
+{{ end }}

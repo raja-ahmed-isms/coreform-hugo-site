@@ -1,0 +1,4 @@
+outs:
+- md5: 4b8c5b7411641187711c0e50ecb5f947
+  size: 78301
+  path: tokamak_geometry_merged_surfaces.png

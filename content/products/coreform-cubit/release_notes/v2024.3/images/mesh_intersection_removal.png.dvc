@@ -1,0 +1,4 @@
+outs:
+- md5: 7d79a6cc24e6c44aaaaea9b241fe7022
+  size: 12099
+  path: mesh_intersection_removal.png

@@ -1,0 +1,4 @@
+outs:
+- md5: e9e641496c8d912060ded218ff9fbd2d
+  size: 171399
+  path: target_mesh_with_bc.jpg

@@ -1,0 +1,228 @@
+<script type="text/javascript" src="/js/downloads.js"></script>
+<link rel="stylesheet" type="text/css" href="/css/downloads.css" />
+
+<h3 id="products-header">Products</h3>
+<div id="product-links">
+</div>
+
+<p id="cubit-p-1" hidden=true>To run Coreform Cubit, a license is required.  You can <a href="/company/contact">contact us</a> for a full license, or obtain a <a href="/products/coreform-cubit/free-meshing-software">free educational license</a> or a <a href="/products/trial">free trial license</a>.</p>
+<p id="cubit-p-2" hidden=true>This software may not be exported in violation of any U.S. export laws or regulations. Find more information regarding Export Control on our <a href="/export/">Export Policy page</a>.</p>
+<p id="error-p" hidden=true>Our downloads backend is experiencing issues.  Please contact <a href="mailto:support@coreform.com?subject=Downloads Page Down">support@coreform.com</a> or try again later!</p>
+
+<template id="template">
+<h3>Releases</h3>
+<hr>
+<h5> 
+    <span>Filename</span>
+    <span style="float:right;width:120px">File size</span>
+    <span style="float:right;width:200px">Date uploaded</span>
+</h5>
+<p>Windows</p>
+<p>MacOS</p>
+<p>Linux</p>
+<hr>
+
+<h3>Latest Development Builds</h3>
+<hr>
+<h5> 
+    <span>Filename</span>
+    <span style="float:right;width:120px">File size</span>
+    <span style="float:right;width:200px">Date uploaded</span>
+</h5>
+<p>Windows</p>
+<p>MacOS</p>
+<p>Linux</p>
+<hr>
+</template>
+
+<script type="text/javascript">
+    var files = null;
+    var use_alt = null;
+
+    async function check_link(url) {
+        try {
+            var resp = await fetch(file.download_url, {method: 'HEAD'});
+            if(resp.ok) {
+                return false;
+            } else {
+                return true;
+            }
+        } catch(err) {
+            return true;
+        }
+    }
+
+    function create_release_notes_link(file, parent) {
+        if(file.file_name.includes("Coreform-Cubit") && !file.file_name.includes("+")) {
+            var dash_splits = file.file_name.split("-");
+            var version_nums = dash_splits[2].split(".");
+            var release_note_link = "";
+            release_note_link = "/products/coreform-cubit/release_notes/v" + version_nums[0] + "." + version_nums[1] + "/";
+            var a = document.createElement('a');
+            a.href = release_note_link;
+            a.textContent = "[Release Notes]"
+            a.style="padding-left: 20px"
+            parent.appendChild(a);
+        }
+    }
+
+    async function create_link(file, parent) {
+        var a = document.createElement('a');
+        a.title = file.file_name;
+        if(use_alt === null) {
+            use_alt = await check_link(file.download_url);
+        }
+        if(use_alt) {
+            a.href = file.alternate_url;
+        } else {
+            a.href = file.download_url;
+        }
+        a.style = "display:block";
+        var span_name = document.createElement('span');
+        span_name.class = "download-name";
+        span_name.textContent = file.file_name;
+        a.appendChild(span_name);
+        create_release_notes_link(file, a);
+        var span_size = document.createElement('span');
+        var size = (file.content_length / 1048576).toFixed(1) + " MB";
+        span_size.textContent = size;
+        span_size.class = "download-label";
+        span_size.style = "float:right;width:120px";
+        a.appendChild(span_size);
+        var span_date = document.createElement('span');
+        var date = new Date(file.upload_timestamp);
+        var hours = date.getHours();
+        var two_digit_hours = hours < 10 ? '0' + hours : hours;
+        var minutes = date.getMinutes();
+        var two_digit_minutes = minutes < 10 ? '0' + minutes : minutes;
+        var date_text = (date.getMonth() + 1) + "/" + date.getDate() + "/" + date.getFullYear() + " " + two_digit_hours + ":" + two_digit_minutes;
+        span_date.textContent = date_text;
+        span_date.class = "download-label";
+        span_date.style = "float:right;width:200px";
+        a.appendChild(span_date);
+        parent.appendChild(a);
+    }
+
+    // Cleanup download link name for releases, strips out pipeline id and commit hash
+    function rename_release(parentId, file_name) {
+        var output = null;
+        if(parentId.includes("release")) {
+            var plus_splits = file_name.split("+");
+            if(plus_splits.length == 2) {
+                dash_splits = plus_splits[1].split("-");
+                if(dash_splits.length == 2) {
+                    output = plus_splits[0] + "-" + dash_splits[1];
+                }
+            }
+        }
+        return output;
+    }
+
+    async function create_platform(list, parentId) {
+        var parent = document.getElementById(parentId);
+        while(parent.lastElementChild) {
+            parent.removeChild(parent.lastElementChild);
+        }
+        for( file of list) {
+            var renamed = rename_release(parentId, file.file_name);
+            if(renamed) {
+                file.file_name = renamed;
+            }
+            await create_link(file, parent);
+        }
+        // If there's only one that's the text node
+        if(parent.childNodes.length == 1) {
+            parent.hidden = true;
+        }
+    }
+
+    function create_option(productName, productValue, parent) {
+        var opt = document.createElement('option');
+        opt.textContent = productName;
+        opt.value = productValue;
+        parent.appendChild(opt);
+    }
+
+    async function create_product(product_name) {
+        var p1 = document.getElementById("cubit-p-1");
+        var parent = p1.parentNode;
+        var product = files.downloads[product_name];
+        var title = document.createElement('h1');
+        title.textContent = product_name.replace("-", " ") + " downloads"
+        title.id = product_name;
+        var links = document.getElementById("product-links");
+        var product_link = document.createElement('a');
+        product_link.href = "#" + product_name;
+        product_link.textContent = product_name.replace("-", " ");
+        links.appendChild(product_link);
+        var hr = document.createElement("hr");
+        links.appendChild(hr);
+        parent.appendChild(title);
+        if(product_name == "Coreform-Cubit") {
+            p1.hidden = false;
+            var p2 = document.getElementById("cubit-p-2");
+            p2.hidden = false;
+            parent.appendChild(p1);
+            parent.appendChild(p2);
+        }
+        var template = document.querySelector("#template");
+        
+        var clone = template.content.cloneNode(true);
+        var p_array = clone.querySelectorAll("p");
+        p_array[0].id = "release-windows-" + product_name;
+        p_array[1].id = "release-macos-" + product_name;
+        p_array[2].id = "release-linux-" + product_name;
+        p_array[3].id = "latest-windows-" + product_name;
+        p_array[4].id = "latest-macos-" + product_name;
+        p_array[5].id = "latest-linux-" + product_name;
+        parent.appendChild(clone);
+
+        await create_platform(product.releases.windows, "release-windows-" + product_name);
+        await create_platform(product.releases.mac_os, "release-macos-" + product_name);
+        await create_platform(product.releases.linux, "release-linux-" + product_name);
+        await create_platform(product.master.windows, "latest-windows-" + product_name);
+        await create_platform(product.master.mac_os, "latest-macos-" + product_name);
+        await create_platform(product.master.linux, "latest-linux-" + product_name);
+    }
+
+    function displayError()
+    {
+        var error_p = document.getElementById("error-p");
+        error_p.hidden = false;
+    }
+
+    document.addEventListener("DOMContentLoaded", function () {
+    (async () => {
+            files = await get_all_files();
+            if(files === null) {
+                displayError();
+            }
+            else {
+                let keys = Object.keys(files.downloads)
+                let downloads_order = new Array(keys.length)
+                let unknown_count = 0;
+                for(const product_name of keys) {
+                    if(product_name === "Coreform-Cubit") {
+                        downloads_order[0] = product_name
+                    } else if(product_name === "RLM-Server") {
+                        downloads_order[1] = product_name
+                    } else if(product_name === "Coreform-IGA") {
+                        downloads_order[2] = product_name
+                    } else if(product_name === "Coreform-Flex") {
+                        downloads_order[3] = product_name
+                    } else {
+                        downloads_order[4 + unknown_count] = product_name
+                        unknown_count++
+                    }
+                }
+                for(const product_name of downloads_order) {
+                    // Don't show the Archive folder
+                    if(product_name != "Archive") {
+                        await create_product(product_name);
+                    }
+                }
+                window.dispatchEvent(new Event('resize'));
+            }
+        })();
+    });
+</script>

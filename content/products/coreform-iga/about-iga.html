@@ -1,0 +1,80 @@
++++
+title = "Isogeometric Analysis"
+description = "Isogeometric Analysis or spline-based simulation uses spline "
+keywords = "spline-based simulation, fea, finite element analysis, iga, isogeometric analysis"
+include_contact = true
++++
+<div class="parallax-window" data-parallax="scroll" data-position="top" data-bleed="10" data-speed="0.2" data-image-src="/images/bantouch3.jpg" data-natural-width="1200" >
+    <div class="parallax-overlay"><img src="/images/svg/logo-white.svg" style="opacity:1" width="75" alt="Coreform"/></div>
+</div>
+<section>
+    <div class="section wow fadeIn" data-wow-duration="0.4s">
+        <div style="max-width:1000px; margin: 0 auto;">
+            <h1 class="section-heading">Isogeometric analysis</h1>
+        </div>
+    </div>
+</section>
+<section>
+    <div class="section wow fadeIn" data-wow-duration="0.4s">
+        <div style="max-width:1000px; margin: 0 auto;">
+            <h4 class="section-subhead">What is isogeometric analysis?</h4>
+            <p>Isogeometric analysis (IGA) is finite element analysis unshackled from the inefficient geometry approximation used for the last half-century, and harnessed instead to a watertight, rigorous, and flexible CAD-exact geometry that unlocks new levels of accuracy, speed, efficiency, and robustness.</p>
+            <p>The result is engineering simulation as it was meant to be &mdash; blazingly fast, unprecedentedly accurate, simplified and streamlined by its operation on lean, exact geometry. Isogeometric analyis, sometimes called spline-based simulation, is the finite element method lifted to a higher level. It is more accurate per degree of freedom than FEA, more computationally efficient at every level of accuracy, and more robust.</p>
+            <p>It is also simulation analysis unburdened: the often difficult and time-consuming work of preparing analyzeable meshes is drastically simplified in spline-based simulation, where elements can smoothly curve to exactly fit model contours. It is also possible in a spline mesh to vary element properties as needed over the model geometry, mixing element types, sizes, and density along with levels of smoothness and polynomial degree. This flexibility makes it possible to adaptively tailor a mesh for better fit or higher resolution only where needed, minimizing computational weight without trade-off.</p>
+        </div>
+    </div>
+</section>
+<!--<section class="section-shade">
+    <div class="section wow fadeIn" data-wow-duration="0.4s">
+        <div style="max-width:1000px; margin: 0 auto;">
+            <h4 class="section-subhead">A big problem with traditional FEA: The mesh.</h4>
+            <p>Simulation depends on the mesh, so a high-quality mesh representation of the geometry 
+                is essential for an accurate simulation. In traditional FEA, 
+                the faceted representation of a usually smooth model is inherently inaccurate. Results 
+                based on the mesh reflect that inaccuracy, which creates a huge challenge. A common technique to better represent the model is to create a finer-faceted mesh that better captures shape and features. However, this approach comes at a high computational cost due to the higher element count.</p>
+            <p>The more complex the model, the harder it is to get a good mesh representation. For complex simulations, the 
+                process of building simulation models from CAD can account for 60% to 90% of the design-through-analysis pipeline. 
+                Some companies budget millions of dollars each year just for geometry clean-up and mesh generation.</p>
+        </div>
+    </div>
+</section>
+
+
+<div class="parallax-window" data-parallax="scroll" data-position="top" data-bleed="10" data-speed="0.2" data-image-src="/images/bancarmesh.jpg" data-natural-width="1200" >
+    <div class="parallax-overlay"><img src="/images/svg/logo-white.svg" style="opacity:1" width="75" alt="Coreform"/></div>
+</div>
+
+
+<section>
+    <div class="section wow fadeIn" data-wow-duration="0.4s">
+        <div style="max-width:1000px; margin: 0 auto;">
+            /<h4 class="section-subhead">Building on isogeometric analysis.</h4>
+            <p>Coreform has leveraged more than a decade of research in the field of isogeometric analysis, including extensive 
+                work by the Coreform team, to develop tools for creating analysis-suitable smooth spline geometry and a "from scratch" 
+                implicit and explicit dynamic FEA solver that takes advantage of our proprietary U-spline geometry. Spline-based 
+                simulation provides extremely fast and highly accurate analysis for engineering problems currently unsolvable using traditional FEA.</p>
+        </div>
+    </div>
+</section>
+<section class="section-shade">
+    <div class="section wow fadeIn" data-wow-duration="0.4s">
+        <div style="max-width:1000px; margin: 0 auto;">
+            <h4 class="section-subhead">Analysis-suitable geometry.</h4>
+            <p>At the core of spline-based analysis is the creation of analysis-suitable geometry that exactly represents the original CAD geometry. Coreform creates analysis-suitable geometry using both industry-standard NURBS as well as Coreform's patent-pending U-splines, a rich spline surface that in simulation outperforms any other spline type and addresses the problems inherent in using faceted meshes for simulation. See U-splines.</p>
+            <p>Analysis-suitable spline geometry reduces analysis runtime through capturing the curvature of CAD models with fewer, curved elements compared to the larger element count and smaller mesh size required in traditional FEA to achieve the same level of CAD representation. Higher aspect ratios are also allowed with spline elements, which also dramatically reduces the number of elements required. The functional smoothness inherent in analysis-suitable spline bases provides many benefits over traditional FEA, including high accuracy and robustness of numerical solutions and low simulation cost.</p>
+        </div>
+    </div>
+</section>
+<section>
+    <div class="section wow fadeIn" data-wow-duration="0.4s">
+        <div style="max-width:1000px; margin: 0 auto;">
+            <h4 class="section-subhead">Benefits of spline-based simulation.</h4>
+            <h5 style="font-weight:500; margin-bottom:0px;">Better accuracy in less time.</h5>
+            <p class="indent">Because the analysis in spline-based simulation is run on the splines that represent the CAD rather than on a faceted mesh, the results you get more accurately predict real world behavior. Having an exact analysis-suitable geometry representation allows spline-based simulation to outperform faceted meshes for many types of problems (i.e., contact, interface problems, etc.). Smooth higher-order basis functions improve the accuracy of the entire simulation process.</p>
+            <h5 style="font-weight:500; margin-bottom:0px;">Increased numerical robustness.</h5>
+            <p class="indent">The smooth higher-order basis functions can withstand larger mesh deformations than traditional FEA. Spline-based simulation can better handle harder non-linear problems.</p>
+            <h5 style="font-weight:500; margin-bottom:0px;">Lower simulation cost.</h5>
+            <p class="indent">Meshes with large element counts can be computationally expensive, even when the analysis is run on an HPC. Spline-based simulation, based on U-splines, can accurately represent CAD geometry with significantly fewer elements, therefore requiring significantly fewer computations.</p>
+        </div>
+    </div>
+</section>-->

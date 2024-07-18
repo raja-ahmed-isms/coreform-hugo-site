@@ -1,0 +1,4 @@
+outs:
+- md5: 1941e81ea22277806c2ee05666d3ed48
+  size: 1037028
+  path: compare_std_coarse_trimesh.png

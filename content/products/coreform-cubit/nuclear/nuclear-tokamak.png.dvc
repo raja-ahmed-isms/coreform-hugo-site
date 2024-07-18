@@ -1,0 +1,5 @@
+outs:
+- md5: ea3fc85333efc079404f7057a5fac47f
+  size: 183298
+  isexec: true
+  path: nuclear-tokamak.png

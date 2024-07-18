@@ -1,0 +1,4 @@
+outs:
+- md5: 534f3937dd02a87503c558a462caaa09
+  size: 111376
+  path: cleanup-with-arrow.png

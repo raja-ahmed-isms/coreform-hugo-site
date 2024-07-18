@@ -1,0 +1,4 @@
+outs:
+- md5: 1feedc3e6ef9c8d22170b8c49fe716cf
+  size: 136577
+  path: parallel_refine_initial.png

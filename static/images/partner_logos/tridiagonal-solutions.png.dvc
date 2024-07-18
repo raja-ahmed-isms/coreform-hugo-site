@@ -1,0 +1,4 @@
+outs:
+- md5: fec500097e34d61480a88b8e72196cff
+  size: 3604
+  path: tridiagonal-solutions.png

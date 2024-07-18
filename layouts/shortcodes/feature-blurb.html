@@ -1,0 +1,9 @@
+<div class="featureset__blurb" {{ with .Get "width" }} style="width: {{ . }};"{{ end }}>
+{{ with .Get "image" }}
+<img src={{ . }}>
+{{ end }}
+<div>
+<p class="featureset__blurb__title" >{{ .Get "title" | markdownify }}</p>
+<p>{{ .Get "description" | markdownify }}</p>
+</div>
+</div>

@@ -1,0 +1,77 @@
+<?xml version="1.0"?>
+<Jam>
+  <Jar location="csimsoftwww.war">
+    <Folder name="WEB-INF">
+      <Folder name="classes">
+        <Folder name="csimsoft">
+          <Folder name="dbupdates">
+            <Files source="build/web/WEB-INF/classes/csimsoft/dbupdates" pattern=".class" />
+          </Folder>
+          <Files source="build/web/WEB-INF/classes/csimsoft" pattern=".class" />
+        </Folder>
+      </Folder>
+      <Folder name="lib">
+        <Files source="web/WEB-INF/lib" pattern=".jar" />
+      </Folder>
+      <File name="web.xml" source="web/WEB-INF/web.xml" />
+    </Folder>
+    <Folder name="account">
+      <Files source="web/account" pattern=".html .jsp .css .js" />
+    </Folder>
+    <Folder name="bolt">
+      <Files source="web/bolt" pattern=".jsp" />
+    </Folder>
+    <Folder name="css">
+      <Files source="web/css" pattern=".css" />
+    </Folder>
+    <Folder name="doc">
+      <Files source="web/doc" pattern=".pdf" />
+    </Folder>
+    <Folder name="fonts">
+      <Files source="web/fonts" pattern=".eot .svg .ttf .woff" />
+    </Folder>
+    <Folder name="images">
+      <Folder name="release">
+        <Files source="web/images/release" pattern=".jpg .png .gif" />
+      </Folder>
+      <Folder name="tango">
+        <Files source="web/images/tango" pattern=".jpg .png .gif .css" />
+      </Folder>
+      <Files source="web/images" pattern=".jpg .png .gif" />
+    </Folder>
+    <Folder name="js">
+      <Files source="web/js" pattern=".js" />
+    </Folder>
+    <Folder name="newsroom">
+      <Folder name="2011">
+        <Files source="web/newsroom/2011" pattern=".jsp .html" />
+      </Folder>
+      <Folder name="2012">
+        <Files source="web/newsroom/2012" pattern=".jsp .html" />
+      </Folder>
+      <Folder name="2013">
+        <Files source="web/newsroom/2013" pattern=".jsp .html" />
+      </Folder>
+      <Folder name="2014">
+        <Files source="web/newsroom/2014" pattern=".jsp .html" />
+      </Folder>
+      <Folder name="2015">
+        <Files source="web/newsroom/2015" pattern=".jsp .html" />
+      </Folder>
+      <Folder name="2016">
+        <Files source="web/newsroom/2016" pattern=".jsp .html" />
+      </Folder>
+      <Folder name="2017">
+        <Files source="web/newsroom/2017" pattern=".jsp .html" />
+      </Folder>
+      <Folder name="2018">
+        <Files source="web/newsroom/2018" pattern=".jsp .html" />
+      </Folder>
+      <Files source="web/newsroom" pattern=".jsp .html" />
+    </Folder>
+    <Folder name="python">
+      <Files source="web/python" pattern=".html .css .png .gif .md5 .dot" />
+    </Folder>
+    <Files source="web" pattern=".html .ico .jsp .swf .txt .xml" />
+  </Jar>
+</Jam>

@@ -1,0 +1,80 @@
+#Exercise 1 cad6.sat
+reset
+import acis "cad6.sat" separate_bodies 
+volume 1  Scheme Tetmesh proximity layers off geometry approximation angle 15 
+volume 1  tetmesh growth_factor 1 
+Trimesher surface gradation 1.3
+Trimesher volume gradation 1.3
+mesh volume 1 
+
+#Exercise 1 driver.sat
+reset
+import acis "driver.sat" separate_bodies 
+volume 1  Scheme Tetmesh proximity layers off geometry approximation angle 15 
+volume 1  tetmesh growth_factor 1 
+Trimesher surface gradation 1.3
+Trimesher volume gradation 1.3
+mesh volume 1 
+
+#Exercise 2
+reset
+Brick x 10 y 10 z 20
+Create cylinder height 25 rad 3
+Subtract vol 2 from vol 1
+curve 12  interval 25
+curve 12  scheme bias factor 1.15 
+propagate curve bias Volume 1 
+mesh Volume 1
+
+#Exercise 3 - hex mesh
+reset
+Brick x 10 y 10 z 20
+Create cylinder height 25 rad 3
+Subtract vol 2 from vol 1
+curve 12  interval 25
+curve 12  scheme bias factor 1.15 
+propagate curve bias Volume 1 
+mesh Volume 1
+refine surface 11  numsplit 1 bias 1.0 depth 5 smooth
+
+# tet mesh
+reset volume 1
+volume 1 scheme tetmesh
+mesh vol 1 
+refine surface 11  numsplit 1 bias 1.0 depth 5 smooth
+refine surface 11  numsplit 1 bias 1.0 depth 5 smooth
+
+#Exercise 4
+open "graft.cub"
+quality volume 1  shape global draw mesh
+quality volume 1  shape global high .4 low 0 draw mesh
+quality volume 1  shape global high .4 low 0 draw histogram draw add
+quality volume 1  shape global high .4 low 0 draw mesh
+
+#Exercise 5
+reset
+import acis "driver.sat" separate_bodies 
+draw surf 55
+surface 55  size 1
+surface 55 scheme pave
+mesh surface 55
+quality edge all length global
+zoom edge 584
+surface 55  smooth scheme edge length 
+smooth surface 55 
+quality edge all length global
+zoom edge 941
+
+#Exercise 6 
+reset
+import mesh geometry "crunch.e" block all use nodeset sideset feature_angle 0 linear merge 
+volume all sizing function none
+surface all sizing function none
+remesh tet quality Scaled Jacobian less than 0.1 inflate 1 preview  free
+volume all sizing function none
+surface all sizing function none
+expect error 4 less
+remesh tet quality Scaled Jacobian less than 0.1 inflate 1 free
+expect error stop
+
+

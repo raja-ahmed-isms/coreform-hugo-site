@@ -1,0 +1,4 @@
+outs:
+- md5: 821db685c64494d25134bab5e3e2fefb
+  size: 228465
+  path: parallel_refine_refined.png

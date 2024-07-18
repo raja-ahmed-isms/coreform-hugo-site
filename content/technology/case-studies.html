@@ -1,0 +1,77 @@
++++
+title = "Case studies"
+include_contact = true
++++
+<div class="parallax-window" data-parallax="scroll" data-position="top" data-bleed="10" data-speed="0.2" data-image-src="/images/par/parresearch.jpg" data-natural-width="1200" >
+    <div class="parallax-overlay"><img src="/images/svg/logo-white.svg" style="opacity:1" width="75" alt="Coreform"/></div>
+</div>
+<section>
+    <div class="section wow fadeIn" data-wow-duration="0.4s">
+        <div style="max-width:1000px; margin: 0 auto;">
+            <h1 class="section-heading">Case studies</h1>
+        </div>
+    </div>
+</section>
+<section>
+    <div class="section wow fadeIn" data-wow-duration="0.4s">
+        <div style="max-width:1000px; margin: 0 auto;">
+        <h4 class="section-subhead">Spline-based simulation makes flat flex cable simulation possible</h4>
+			<p style="float: right"><img src="/images/PCB.png" width="200px" style="margin-top:-18px;" /></p>
+            <p>Complex electrical assemblies often use thin, flat flex cables (FFC) to transmit power or electrical signals 
+                between printed circuit boards (PCB). When these PCBs are stacked, the FFCs often have smooth 180 degree bends. 
+                Understanding the mechanical and thermal response of these cables is highly important in applications where 
+                these cables perform vital functions.</p>
+        </div>
+    </div>
+</section>
+<section class="section-shade">
+    <div class="section wow fadeIn" data-wow-duration="0.4s">
+        <div style="max-width:1000px; margin: 0 auto;">
+        <h4 class="section-subhead">Challenges.</h4>
+            <p>A major concern when connecting stacked circuit boards with bent flex cables is that depending on how tightly the 
+                cable is bent, the bending can cause the cable to buckle when thermal loads are applied. An increase in temperature 
+                causes adhesive layers to become softer resulting in a physical phenomenon of wrinkling. This wrinkling can cause 
+                the cable material to fracture into layers (called delamination) and cause electrical failure.</p>
+            <p>Predicting the minimum radius that a cable can be bent at a specified temperature is critical. To predict the 
+                delamination of flex cable materials, one Coreform customer created several flex cable models. They used standard 
+                FEA tools to bend a small cable section and heat the bend using a thermal load. Simulating the wrinkling phenomenon 
+                on one cable model required an extremely large mesh size and millions of timesteps. Wrinkling eventually occurred 
+                after 36 hours of running on their 2,000 core HPC for a total computation cost of 72,000 hours. Because of the 
+                extremely high cost of the study, our customer was unable to complete the standard FEA refinement studies.</p>
+        </div>
+    </div>
+</section>
+<section>
+    <div class="section wow fadeIn" data-wow-duration="0.4s">
+        <div style="max-width:1000px; margin: 0 auto;">
+        <h4 class="section-subhead">Solution.</h4>
+            <p>Using Coreform's simulation tools, our customer created a 3D mesh from the cable models, then converted the mesh into Coreform's proprietary U-splines. The U-spline representation had approximately 1,000 times fewer elements than the traditional FEA mesh and more closely represented the original CAD geometry. The U-spline simulation ran on only five cores in 12 hours for total cost of 60 hours.</p>
+                
+                <p style="text-align:center;"><img src="/images/flexcableresults.png" alt="" style=" box-shadow: 10px 10px 10px #ccc;" /></p>
+        </div>
+    </div>
+</section>
+<section class="section-shade">
+    <div class="section wow fadeIn" data-wow-duration="0.4s">
+        <div style="max-width:1000px; margin: 0 auto;">
+        <h4 class="section-subhead">Benefits.</h4>
+            <ul class="inner">
+                <li>U-Spline technology now allows our customer to use simulation to design their manufacturing processes to avoid cable failure.</li>
+                <li>For the flex cable models used, the U-spline simulation required approximately 1,000 times fewer elements and was 1,000 times 
+                    faster, allowing our customer to make accurate predictions at a scale previously impossible using traditional FEA.</li>
+                <li>Given a fixed flex cable design and known working temperature, our customer can now ensure that cables are not bent 
+                    tighter than the minimum allowable threshold found in analysis.</li>
+            </ul>
+            <p>These advantages over traditional FEA now enables our customer to apply this same workflow to hundreds of unique flex cable designs at a huge cost-savings.</p>
+        </div>
+    </div>
+</section>
+<section class="section">
+    <div class="section wow fadeIn" data-wow-duration="0.4s">
+        <div style="max-width:1000px; margin: 0 auto;">
+        <h4 class="section-subhead"></h4>
+        <p class="center" style="margin-top:-10px;"><img src="/images/flexgraph2.png" width="600px"/></p>
+            <p>Guide for the assembly of this flex cable design. Cables with a bend radius that exhibit buckling at a temperature lower than the maximum working temperature (in this case < 22mm) are prone to electrical failure.</p>
+        </div>
+    </div>
+</section>

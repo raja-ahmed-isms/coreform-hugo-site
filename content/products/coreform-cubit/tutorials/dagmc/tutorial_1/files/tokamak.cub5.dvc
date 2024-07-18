@@ -1,0 +1,5 @@
+outs:
+- md5: 85887a1f57d9c19ea0585fcd8802716f
+  size: 873034
+  isexec: true
+  path: tokamak.cub5

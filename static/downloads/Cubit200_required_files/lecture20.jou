@@ -1,0 +1,156 @@
+
+#Exercise 1
+reset
+open 'UniteMeshedVolumes.cub'
+vol all size 0.5
+expect error 2 less
+mesh vol all
+quality volume all scaled jacobian global draw mesh
+expect error stop
+unite volume all include_mesh 
+surface 5  smooth scheme mean ratio
+smooth surface 5 
+expect error 1 less
+quality volume 1 scaled jacobian global high .5 draw mesh
+expect error stop
+volume 1  smooth scheme mean ratio
+expect error 3 less
+smooth volume 1 
+quality volume 1 scaled jacobian global high .5 draw mesh
+expect error stop
+
+
+#Exercise 2
+reset
+create cylinder radius 1 z 3 
+curve 1 interval 32
+mesh vol 1 
+set dev on
+draw column face 648 
+draw edge all add
+
+
+#Exercies 3
+reset
+create cylinder radius 1 z 3 
+curve 1 interval 32
+mesh vol 1 
+#parallel
+column collapse node 1691 1719
+column collapse node 1727 1702 
+column split node 1694 133  
+column split node 1726 1701 
+column swap node 1729 1702 1704 1726
+column swap node  134 1692 135 1693 
+#perpendicular
+column swap Node 181 180 194 167  
+column collapse node 570 583
+column collapse node 539 552
+column split Node 564 579  
+column split node 486 501 
+
+
+
+#Exercise 4
+reset
+create cylinder radius 1 z 3 
+mesh vol 1 
+set dev on
+draw sheet edge 1200 mesh
+draw edge all add
+
+#Exercise 5
+reset
+brick x 1 
+mesh volume 1 
+pillow hex 991 891 892 992 881 981 982 through surface 1 
+pillow hex in node in hex 1000 through surface 2 6
+pillow hex in node in hex 10 through surface 2 3 4 
+
+#Exercise 6
+reset
+open 'example20_1.cub'
+quality volume all scaled jacobian draw mesh
+pillow hex all through surface all except surface 35 34
+smooth curve all
+smooth surface all
+smooth volume all
+quality volume all scaled jacobian draw mesh
+
+#### Draw the pillowed sheet
+draw sheet edge 5845 mesh
+draw edge all add
+
+#Exercise 7
+${num_errors_before = get_error_count()}
+reset
+open 'example20_2.cub'
+quality volume all scaled jacobian draw mesh high 0.2
+group 'topillow' add hex in volume 5 
+group 'topillow' add hex in face in surface 31
+expect error 1
+pillow hex in topillow through surface 32
+expect error stop
+smooth curve all
+smooth surface all
+volume all smooth scheme mean ratio
+smooth volume all
+quality volume all scaled jacobian draw mesh high 0.5
+quality volume all scaled jacobian draw mesh high 0.6
+set dev on
+draw sheet edge 8604  mesh
+${num_errors_after = get_error_count()}
+${if(1==num_errors_after-num_errors_before)}
+  ${set_error_count(num_errors_before)}
+${endif}  
+
+
+
+#Exercise 8
+reset
+open "ImproveQuality.cub"
+##### Determine which volume has the worst quality
+qual vol all scaled
+list hex 18816
+##### The worst quality element is 18816, which is in vol 6.  Unite vol 6 with
+##### some of its neighbors to give the smoother freedom.
+unite volume 6 1 4  include_mesh 
+
+##### Now smooth the surface meshes so we can see what is going on in that tangled mess
+smooth surface 6
+smooth surface 26
+
+##### Do some Mesh Surgery then smooth
+column collapse node 22314 22315 
+column collapse node 22316 22313
+smooth surface 6
+smooth surface 6
+smooth surface 6
+smooth surface 26
+smooth surface 26
+smooth surface 26
+vol 6 smooth scheme cond cpu 0.5
+smooth vol 6
+
+##### Now see where the worst quality is
+qual vol all scal
+list hex 2733
+draw vol 12
+
+##### Worst quality is now hex 2733, which is in volume 12.  The problem is the skew
+##### on a skinny boundary surface of vol 12.  If we unite vol 12 with vol 6, then that
+##### surface goes away giving the smoother freedom to smooth
+disp
+unite volume 6 12  include_mesh 
+vol 6 smooth schem mean
+smooth vol 6
+qual vol all scale draw mesh
+##### min scaled Jacobian is now 0.242, good enough, so we stop.
+
+
+
+
+
+
+
+

@@ -1,0 +1,36 @@
+{{ define "main" }}
+{{ partial "featured_image_header" . }}
+
+<div class="old-style-container content container pb-6">
+       <h1 class="has-text-left">{{ .Title }}</h1>
+        {{.Content}}
+</div>
+
+<div class="container is-widescreen">
+  {{ range .Paginator.Pages }}
+  <div class="news mgb-large" style="max-width:1000px;">
+    <div>
+      <div class="columns">
+	      {{ $img := (.Resources.ByType "image").GetMatch "*{featured}*"}}
+	      {{ with $img }}
+        <div class="column is-one-third-widescreen">
+	        <figure class="image px-6 is-16by9" >
+		        <img  src={{ .RelPermalink }}>
+	        </figure>
+        </div>
+	      {{ end }}
+        <div class="column">
+          <h3>{{ .Title }}</h3>
+          <p class="news-subhead">{{ .Description }}</p>
+          <p style="margin-top: 2em; font-size: 13px;">Published: {{ .Date.Format "2 January 2006" }}</p>
+        </div>
+      </div>
+      <p>{{ .Summary }}</p>
+      <p><a class="ghost-button-color" href="{{ .Permalink }}">Read more</a></p>
+    </div>    
+  </div>    
+  {{ end }}
+</div>
+{{ partial "pagination" . }}
+
+{{ end }}

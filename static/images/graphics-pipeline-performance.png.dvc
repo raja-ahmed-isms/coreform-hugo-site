@@ -1,0 +1,4 @@
+outs:
+- md5: 88494935c306c6b99bd73b8f8afa013e
+  size: 76381
+  path: graphics-pipeline-performance.png

@@ -1,0 +1,11 @@
+#Exercise 1
+reset
+open "MeshScaling.cub"
+scale mesh multiplier 2.0 minimum 0 swept_blocks
+list totals
+scale mesh multiplier .5 minimum 0 swept_blocks
+list totals
+
+#Exercise 2
+reset
+open "MeshScalingAssembly.cub"

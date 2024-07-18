@@ -1,0 +1,31 @@
+
+reset
+bri x 4 y 4 z 6
+vol 1 rotate about z 45
+rotate Volume 1  angle 45  about Z include_merged 
+webcut volume 1 with plane yplane offset 0 preview
+webcut volume 1 with plane yplane offset 0 noimprint nomerge 
+
+delete Volume 2
+
+sweep surface 7 perpendicular distance 3
+modify curve 9 10 11  blend radius .5
+create vertex on curve 33 fraction 0.5 from start
+
+bri x 8 y .25 z 6
+move Curve 44  midpoint location vertex 33
+
+create cylinder radius .5 z 10
+webcut volume 4 plane yplane
+del vol 4
+
+move Surface 35 location surface 22 
+sweep surface 33 perpendicular distance 0.75
+
+Volume 5 copy move x 2.5 
+Volume 5 move x -2.5 
+
+volume 3 size .125
+mesh vol all
+
+

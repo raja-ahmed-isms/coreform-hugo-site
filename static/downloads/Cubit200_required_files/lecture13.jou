@@ -1,0 +1,82 @@
+#Exercise 1
+reset
+import acis "qtr_piston2.sat" separate_bodies 
+create material name 'steel1040' elastic_modulus 30.0e6 poisson_ratio 0.3 shear_modulus .284 
+set duplicate block elements off
+block 9 volume all 
+block 9 material 'steel1040'
+
+#Exercise 2
+reset
+import acis "qtr_piston2.sat" separate_bodies 
+create material name 'steel1040' elastic_modulus 30.0e6 poisson_ratio 0.3 shear_modulus .284 
+set duplicate block elements off
+block 9 volume all 
+block 9 material 'steel1040'
+create displacement  on surface 2 25 30  dof 1 dof 5 dof 6 fix 0 
+create displacement  on surface 5 23 29 31  dof 3 dof 4 dof 5 fix 0 
+create displacement  on curve 78  dof 2 fix 0 
+create pressure  on surface 24  magnitude 1100 
+
+#Exercise 3
+reset
+bri x 4 y 4 z 6
+rotate Volume 1  angle 45  about Z include_merged 
+webcut volume 1 with plane yplane offset 0 preview
+webcut volume 1 with plane yplane offset 0 noimprint nomerge 
+delete Volume 2
+sweep surface 7 perpendicular distance 3
+modify curve 9 10 11  blend radius .5
+create vertex on curve 33 fraction 0.5 from start
+bri x 8 y .25 z 6
+move Curve 44  midpoint location vertex 33
+create cylinder radius .5 z 10
+webcut volume 4 plane yplane
+del vol 4
+move Surface 35 location surface 22 
+sweep surface 33 perpendicular distance 0.75
+regularize volume 1 5
+Volume 5 copy move x 2.5 
+Volume 5 move x -2.5 
+volume 3 size .125
+mesh vol all
+
+#Exercise 3 with BC
+reset
+bri x 4 y 4 z 6
+rotate Volume 1  angle 45  about Z include_merged 
+webcut volume 1 with plane yplane offset 0 preview
+webcut volume 1 with plane yplane offset 0 noimprint nomerge 
+delete Volume 2
+sweep surface 7 perpendicular distance 3
+modify curve 9 10 11  blend radius .5
+create vertex on curve 33 fraction 0.5 from start
+bri x 8 y .25 z 6
+move Curve 44  midpoint location vertex 33
+create cylinder radius .5 z 10
+webcut volume 4 plane yplane
+del vol 4
+move Surface 35 location surface 22 
+sweep surface 33 perpendicular distance 0.75
+Volume 5 copy move x 2.5 
+Volume 5 move x -2.5 
+regularize volume 1 5 6 
+create contact region name 'base' on surface 35 47
+create contact region name 'plate_bottom' on surface 22 
+create contact region name 'plate_top' on surface 24
+create contact region name 'punch' on surface 19
+create contact pair name "bottom" master contact region "base" slave contact region "plate_bottom" tied off general off exterior off
+create contact pair name "top" master contact region "punch" slave contact region "plate_top" tied off general off exterior off
+create displacement  on surface 45 33  dof all fix  
+create velocity  on surface 19  dof 2 fix .1 
+create material name 'AlumininumAlloy' elastic_modulus 10.4e6 poisson_ratio .33 density .102 
+create material name 'Steel_1040' elastic_modulus 30e6 poisson_ratio .3 density .284 
+set duplicate block elements off
+block 1 add volume 6 5 1  
+block 2 add volume 3  
+block 1 material 'Steel_1040'
+block 2 material 'AlumininumAlloy'
+volume 3 size .125
+mesh vol all
+
+

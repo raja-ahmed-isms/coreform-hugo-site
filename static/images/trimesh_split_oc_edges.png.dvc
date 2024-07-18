@@ -1,0 +1,4 @@
+outs:
+- md5: da52379feefe0e33e9f32f04191ddd2f
+  size: 6118
+  path: trimesh_split_oc_edges.png

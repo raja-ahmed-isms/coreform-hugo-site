@@ -1,0 +1,14 @@
+# /robots.txt file for http://www.coreform.com/
+# point of contact: info@coreform.com
+
+Sitemap: http://www.coreform.com/sitemap.xml
+
+User-agent: *
+Disallow: /python/
+Disallow: /
+Disallow: /camal5_2doc/
+Disallow: /fonts/
+Disallow: /images/
+Disallow: /META-INF/
+Disallow: /WEB-INF/
+

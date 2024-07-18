@@ -1,0 +1,32 @@
+<!-- Metadata -->
+{{ if (isset .Params "include_redirect") }}
+    <meta http-equiv="Refresh" content="0; url={{ .Params.new_page }}" />
+{{ else }}
+<!-- OG TAGS -->
+    <meta property="og:title" content="{{ .Params.Title }}" />
+    <meta property="og:type" content="{{ .Params.ogtype }}" />
+    <meta property="og:url" content="{{ .Permalink }}" />
+    <meta property="og:image" content="https://coreform.com/images/coreform-logo-transparent.png" />
+    <meta property="og:description" content="{{ .Params.description }}" />
+
+<!-- Twitter Card data -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" value="{{ .Permalink }}" />
+    <meta name="twitter:title" value="{{ .Params.Title}}" />
+    <meta name="twitter:description" value="{{ .Params.description }}" />
+    <meta name="twitter:image" value="https://coreform.com/images/coreform-logo-transparent.png" />
+    <meta name="twitter:site" value="https://coreform.com" />
+
+<!-- META DATA -->
+    <meta name="description" content="{{ .Params.description | default "Coreform LLC" }}" />
+    <meta name="keywords" content="{{ .Params.keywords }}" />
+
+    <meta name="robots" content="follow, index" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="canonical" href="https://coreform.com/" />
+
+{{ end }}
+
+

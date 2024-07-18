@@ -1,0 +1,18 @@
+<!--
+<div class="page-hero" style='background-image: url("{{ .Get "background" }}");'>
+<div class="page-hero__content">
+<img src="{{ .Get "overlayimg" }}">
+{{ .Inner }}
+</div>
+</div>
+-->
+
+
+<div class="page-hero" style='background-image: url("{{ .Get "background" }}");'>
+<div class="page-hero__content">
+{{ with .Get "overlayimg" }}
+<img src="{{ . }}">
+{{ end }}
+{{ .Inner }}
+</div>
+</div>

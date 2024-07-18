@@ -1,0 +1,83 @@
+# lecture 8 - possible solution for ITEM exercise
+#
+undo on
+reset
+import acis "item-example.sat" separate_bodies 
+From -8.979  37.47  13.6
+At  4.250  -4.250  -0.250
+Up  0.159  -0.265   0.951
+#View  0.288  -0.908  -0.302
+#
+delete mesh volume all propagate
+volume all scheme default 
+surface in volume all scheme default 
+#preview mesh volume all
+delete mesh volume all propagate
+volume all scheme default 
+surface in volume all scheme default 
+volume all size 0.442835
+#preview mesh volume all
+#
+set acisoption integer 'check_level' 70
+set overlap maximum gap 0.0005
+remove surface 10 extend
+remove surface 18 extend
+remove surface 16 extend
+remove surface 35 extend
+tweak remove_topology surface 14 small_curve_size 0.2 backoff 1
+#
+set acisoption integer 'check_level' 70
+set overlap maximum gap 0.0005
+merge tolerance 0.005
+set overlap maximum gap 0.005
+imprint tolerant volume all
+merge volume all
+#
+set overlap maximum gap 0.005
+Remove overlap volume 3 1 modify volume 1
+imprint tolerant volume all
+merge volume all
+#
+set overlap maximum gap 0.005
+undo group begin
+webcut volume  1  with sheet extended from Surface 4 tolerant_imprint merge include_neighbors
+undo group end
+undo group begin
+webcut volume  2  with sheet extended from Surface 21 tolerant_imprint merge include_neighbors
+undo group end
+undo
+undo group begin
+webcut volume  2  with sheet extended from Surface 17 tolerant_imprint merge include_neighbors
+undo group end
+#
+set acisoption integer 'check_level' 70
+set overlap maximum gap 0.005
+delete mesh volume all propagate
+volume all scheme default 
+surface in volume all scheme default 
+volume all size 0.3
+#preview mesh volume all
+reset volume 1 2 3 
+volume all scheme  auto 
+#
+volume 1  redistribute nodes off 
+volume 1  Scheme Sweep  source surface 7    target surface 5   sweep transform least squares  
+volume 1  autosmooth target on  fixed imprints off  smart smooth on  nlayers 5
+volume 2  redistribute nodes off 
+volume 2  Scheme Sweep  source surface 37 30 20 28    target surface 80   sweep transform least squares  
+volume 2  autosmooth target on  fixed imprints off  smart smooth on  nlayers 5
+volume 3  redistribute nodes off 
+volume 3  Scheme Sweep  source surface 47    target surface 7   sweep transform least squares  
+volume 3  autosmooth target on  fixed imprints off  smart smooth on  nlayers 5
+volume 5  redistribute nodes off 
+volume 5  Scheme Sweep  source surface 8    target surface 3   sweep transform least squares  
+volume 5  autosmooth target on  fixed imprints off  smart smooth on  nlayers 5
+volume 6  redistribute nodes off 
+volume 6  Scheme Sweep  source surface 82    target surface 84   sweep transform least squares  
+volume 6  autosmooth target on  fixed imprints off  smart smooth on  nlayers 5
+#
+mesh volume all
+#
+quality volume all Shape high 1 low 0.3 global draw mesh
+list errors
+undo off

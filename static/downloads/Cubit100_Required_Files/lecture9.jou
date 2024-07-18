@@ -1,0 +1,47 @@
+# lecture 9 - examples and exercises
+#
+set node constraint on
+reset
+#
+import acis "cad6.sat" separate_bodies 
+#
+draw surface 109
+vol all size 1
+set deb 9 on
+mesh surf 109
+set deb 9 off
+#
+reset
+import acis 'schemes.sat'
+surf all size 1
+surf all scheme auto
+mesh surf all
+#
+reset
+import acis 'schemes.sat'
+From -40.5 -80.2 147.4
+At 37.65   3.50   0.50
+Up  0.375   0.705   0.601
+#View  0.420   0.449  -0.789
+#
+volume all size 1
+volume 1 scheme map
+volume 2 scheme sweep
+volume 3 scheme sweep
+volume 4 scheme submap
+volume 5 scheme tetmesh
+volume 6 scheme submap
+volume 7 scheme sweep
+volume 8 scheme sweep
+volume 9 scheme sweep
+volume 10 scheme sweep
+volume 11 scheme sweep
+volume 12 scheme sweep
+volume 13 scheme sweep source 99 target 98
+mesh volume all
+#
+delete mesh
+volume all scheme auto
+mesh volume all
+#
+list errors

@@ -1,0 +1,20 @@
+{{ $preSpace := int (default "0" (.Get "preSpace")) }}
+{{ $postSpace := int (default "0" (.Get "postSpace")) }}
+<section style="padding-bottom: {{ $postSpace }}em">
+<div class="columns is-gapless">
+<div class="is-centered column">
+{{ with .Get "image" }}
+<div class="level" style="padding-bottom: {{ $preSpace }}em">
+<div class="level-item">
+<div style="position: absolute">
+<img src={{ . }}>
+</div>
+</div>
+</div>
+{{ end }}
+<div class="container is-max-desktop">
+{{ .Inner  }}
+</div>
+</div>
+</div>
+</section>

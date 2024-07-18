@@ -1,0 +1,4 @@
+outs:
+- md5: f9587d42895ae577eb3ea8e16d0464df
+  size: 128459
+  path: paraview-skull.png

@@ -1,0 +1,32 @@
+{{ define "main" }}
+
+<section>
+
+<div class="content container pb-6">
+    <h1 class="section-heading" style="margin-top: 4ex;">{{ .Title }} </h1>
+    <p style="padding-left: 2rem;">
+        {{ .Description }}
+        <span style="font-style: italic;" >(Download Coreform Cubit <a href="https://coreform.com/products/downloads/">here.</a>)</span>
+    </p>
+    
+    
+	<p class="is-size-5" style="padding-left: 2rem;">Released: {{ .Date.Format "2 January 2006" }}</p>
+	{{ $img := (.Resources.ByType "image").GetMatch "*{featured}*"}}
+	{{ with $img }}
+	<!-- <figure class="section px-6" > -->
+    <figure style="float:right; max-width:500px; padding-left:5rem;" width="500">
+		<img  src={{ .RelPermalink }}>
+	</figure>
+	{{ end }}
+    <!-- TOC here before content -->
+    <div class="release-toc" style="padding-top:4ex; padding-bottom:4ex; border-top: 0.5px solid #000000">
+    <h2>Table of Contents</h2>
+        {{ .TableOfContents }}
+    </div>
+    <!-- content -->
+    <div class="release-notes" style="padding-top:4ex; border-top: 0.5px solid #000000">
+	{{ .Content }}
+    </div>
+</div>
+</section>
+{{ end }}

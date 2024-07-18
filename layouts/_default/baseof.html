@@ -1,0 +1,30 @@
+<!doctype html>
+
+<html lang="{{ .Site.LanguageCode | default "en" }}">
+{{ partial "head" . }}
+
+    <body>
+    {{ partial "analytics_noscript" . }}
+
+        <div class="main-wrapper">
+
+            {{ if eq .Params.is_landing "true" }}
+            {{ partial "bannermenumin" . }}
+            {{ else }}
+            {{ partial "bannermenu" . }}
+            {{ end }}
+
+            <main>
+                {{ block "main" . }}
+                {{ end }}
+                {{ if (or .IsHome (in .SectionsEntries "news"))  }}
+                    {{ partial "news" . }}
+                {{ end }}
+            </main>
+
+            {{ partial "footer" . }}
+        </div>
+        {{ partial "scripts" . }}
+
+    </body>
+</html>

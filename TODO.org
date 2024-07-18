@@ -1,0 +1,30 @@
+#+TITLE: Todo Tasks
+* TODO Integrate bulma.io [6/6]
+This is needed to allow us the power to wrangle the existing css while providing sensible tooling to extend the website. This is also a way to allow us to shift from handcoded content pages to template and shortcode driven ones.
+- [X] fix table background color so bulma does not set it
+- [X] logo not showing up when desktop and wrong size when mobile
+- [X] logo for trelis, crunch, cubit in page is likewise too big
+- [X] spacing between some paragraphs is not enough
+- [X] fix bullets to be in content
+- [X] images and text not showing up side by side on trelis page
+  turns out this was due size of the window difference between them 
+* TODO Address other design debt [0/3]
+- [-] dry out common elements for page hero heads [1/2]
+  - [ ] extract parallax-window to template
+  - [X] either switch to page bundles or specify featured image in md metadata for all pages
+- [ ] Codify permalink layout so we don't manually place content into years
+- [ ] replace images in main three with better quality versions
+* TODO Remaining tasks for first redesign [7/11]
+- [X] News component that can pivot to auto updating
+- [X] IGA page
+- [X] Convert home page to markdown and split out carolsel
+- [ ] Figures inside the centering shortcode do not show up (similar to youtube issue)
+- [ ] Add indication that the drawer can be opened (same issue on faq)
+- [ ] split up scss so that pages can have color hinting in the headlines
+- [X] Contact us partial should be tweaked
+- [X] allow blurb with pram
+  Looked ugly, opted to just do blurbs
+- [ ] grey on bottom
+- [X] align component - ragged inner
+- [X] mis-sized images on iga
+* test link [[content/_index.md]]

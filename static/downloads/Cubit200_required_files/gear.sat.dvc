@@ -1,0 +1,5 @@
+outs:
+- md5: ab78c6952778f5516b844378c2966607
+  size: 75480
+  isexec: true
+  path: gear.sat

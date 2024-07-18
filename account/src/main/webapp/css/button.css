@@ -1,0 +1,45 @@
+.btncont {
+	/*position:absolute;
+	top:290px;
+        /*background: #fff;*/
+	/*width:100%;
+	left:0;*/
+        color: #fff;
+}
+        
+/*Button normal*/
+.btncont a,.btncont a:link,.btncont a:visited {
+	/*width:100px;
+	height:32px;
+	line-height:32px;*/
+	-webkit-border-radius:15px;
+	-moz-border-radius:15px;
+	border-radius:15px;
+        border: 2px solid #343434;
+	color:#343434;
+	background:#ffffff;
+	padding:2px 20px;
+	text-decoration:none;
+        font-size: 14px;
+	display:inline-block;
+	text-align:center;
+}
+
+/*Button hover*/
+.btncont a:hover,.btncont a:link:hover,.btncont a:visited:hover {
+	/*width:100px;
+	height:32px;
+	line-height:32px;*/
+	-webkit-border-radius:15px;
+	-moz-border-radius:15px;
+	border-radius:15px;
+        border: 2px solid #626977;
+	color:#ffffff;
+	background:#343434;
+	/*padding:5px 25px;*/
+
+	display:inline-block;
+	text-align:center;
+
+}
+

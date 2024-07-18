@@ -1,0 +1,15 @@
+{{/*----------------------------
+    Depends on {{< tab >}} for tab buttons
+
+    {{< tabcontent set1 tab1 >}}
+
+    markdown content
+
+    {{< /tabcontent >}}
+    {{< tabcontent set1 tab2 >}}
+
+    markdown content
+
+    {{< /tabcontent >}}
+-----------------------------*/}}
+<div class="tabcontent" data-tabset="{{ .Get 0 }}" data-tabcontent="{{ .Get 1 }}">{{ .Inner | markdownify }}</div>

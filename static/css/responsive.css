@@ -1,0 +1,36 @@
+@media (max-width: 760px) {
+    .hide-sm {
+        display: none;
+    }
+}
+@media (min-width: 999px) {
+    .hide-med {
+        display: none;
+    }
+}
+@media (max-width: 999px) {
+    .show-med {
+        display: none;
+    }
+}
+@media (max-width: 760px) {
+    .show-sm {
+        display: visible;
+    }
+}
+@media (min-width: 760px) {
+    .hide-lg {
+        display: none;
+    }
+    .rust {border-left: solid #ba4a00 60px; margin-top:10px;}
+}
+@media (min-width: 760px) {
+    .show-lg {
+        display: visible;
+    }
+}
+@media (max-width: 785px) {
+    .hide-menu {
+        display: none;
+    }
+}

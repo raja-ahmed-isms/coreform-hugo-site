@@ -1,0 +1,11 @@
+<div class="content-centering">
+    {{- $expire_date := time (.Get "date") -}}
+    {{- if lt (sub now.Unix $expire_date.Unix) 0 -}}
+        <p>Attend live to take advantage of live Q&A.</p>
+        <p><a class="ghost-button-color" href={{ .Get "link" }}>Register now!</a></p>
+        <p>A recording will be available after the event for all registered users.</p>
+    {{- else -}}
+        <p><a class="ghost-button--disabled">Registration closed</a></p>
+        <p>For recordings of past webinars on using Coreform Cubit <a href="/support/webinars/">click here</a></p>
+    {{- end -}}
+</div>

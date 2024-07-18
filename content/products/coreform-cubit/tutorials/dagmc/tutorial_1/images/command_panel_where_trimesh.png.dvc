@@ -1,0 +1,5 @@
+outs:
+- md5: 4f73294d3d5c2ef6bcd4770e7f299733
+  size: 32955
+  isexec: true
+  path: command_panel_where_trimesh.png

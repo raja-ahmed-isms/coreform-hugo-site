@@ -1,0 +1,46 @@
+# lecture 10 - examples and exercises
+#
+reset
+#
+#Exercise 1
+import acis "example01.sat" separate_bodies
+From  0.488  19.9 -16.3
+At -0.234   1.35  -0.502
+Up -0.138  -0.638  -0.757
+#View -0.030  -0.762   0.647
+
+webcut volume 5 with sheet extended from surface 70
+imprint all
+merge all
+volume all size 0.15
+volume all scheme auto
+mesh volume all
+#
+#Exercise 2
+reset
+import acis "example04.sat" separate_bodies 
+From  3.06 -25.6   4.86
+At  0.00   0.00  -2.50
+Up -0.011   0.275   0.961
+#View -0.114   0.955  -0.274
+graphics mode transparent
+
+section volume all with yplane offset 0 normal
+#create volume loft surface 20 19   preview 
+create volume loft surface 20 19  
+webcut volume 2  tool volume 3  
+delete Volume 3
+#
+#webcut volume 2  sweep surface 17  perpendicular inward through_all preview
+webcut volume 2  sweep surface 17  perpendicular inward through_all 
+imprint volume all 
+merge volume all 
+volume all scheme Auto
+volume all size auto factor 3
+mesh vol all
+#
+Volume all copy reflect y 
+merge all
+#
+list errors
+graphics mode smoothshade

@@ -1,0 +1,4 @@
+outs:
+- md5: 562ca5029404162be930d09553bffb45
+  size: 857008
+  path: nuclear-candu-graphite-moderator-reflector-total-neutron-flux.png

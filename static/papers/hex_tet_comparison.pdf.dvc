@@ -1,0 +1,4 @@
+outs:
+- md5: dc4062a5fd92988df9aec099e6368cdf
+  size: 202932
+  path: hex_tet_comparison.pdf

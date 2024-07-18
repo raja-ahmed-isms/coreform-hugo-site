@@ -1,0 +1,113 @@
+#Exercise 1
+reset
+import acis "blades.sat" separate_bodies 
+webcut volume 1  with cylinder radius 100 axis x 
+webcut volume all  with cylinder radius 125 axis x 
+vol all size 2
+vol all scheme auto
+mesh volume all
+
+#Graded Mesh Exercise
+reset
+brick x 1 y 1 z 4
+webcut volume all zplane 
+webcut volume all zplane offset 1
+webcut volume all zplane offset -1
+merge all
+curve 1 int 32
+curve 30 int 16
+surf 19 scheme pave
+volume 1 scheme sweep source 19 target surface 21
+mesh vol 1 
+curve 15 int 16
+surface 24 scheme pave
+mesh vol 3 
+curve 45 int 8 
+surface 30 scheme pave
+mesh vol 2
+curve 8 int 8
+surface 33 scheme pave
+mesh vol 4
+
+#Exercise 2
+reset
+import acis "blades0.sat"
+webcut volume 1  with cylinder radius 90.000000 axis x 
+webcut volume all with cylinder radius 140 axis x 
+imprint all
+merge all
+vol 1 size 5
+mesh vol 1
+Curve 146 size 1
+Surface 73 scheme pave
+mesh Surface 73
+mesh Volume 6
+Curve 19 size 1
+Surface 70 scheme pave
+vol 3 size 1
+mesh Surface 70
+mesh Volume 3
+volume 5  scheme copy source volume 6  source surface 72  target surface 63  source vertex 88  target vertex 79  source curve 158  target curve 144  
+mesh volume 5 
+volume 7  scheme copy source volume 6  source surface 72  target surface 83  source vertex 88  target vertex 95  source curve 158  target curve 176  
+mesh volume 7 
+volume 2  scheme copy source volume 3  source surface 70  target surface 59  source vertex 11  target vertex 17  source curve 153  target curve 136  
+mesh volume 2 
+volume 4  scheme copy source volume 3  source surface 70  target surface 79  source vertex 11  target vertex 1  source curve 153  target curve 168  
+mesh volume 4 
+
+#Exercise 3
+reset
+sphere radius 10
+bri x 50
+sub vol 1 from vol 2 keep
+del vol 2 
+compress all
+section volume all xplane 
+section volume all yplane 
+section volume all zplane 
+merge all
+vol all scheme polyhedron
+mesh vol all
+volume all copy reflect x
+volume all copy reflect y
+volume all copy reflect z
+merge all
+
+
+#Exercise 4
+reset
+import acis "MBracket.sat" separate_bodies 
+split surf 7 19 21 23 24 22 20 18 16 14 13 15 17 
+webcut volume all with plane yplane offset 7.919100 noimprint nomerge 
+webcut volume all with plane xplane offset 8.128400 noimprint nomerge 
+webcut volume all with plane zplane offset 2.000000 noimprint nomerge 
+merge all
+composite create Surface 34 51 39 40 41  keep angle 15
+composite create Surface 52 80  keep angle 15
+composite create Surface 57 6 55 26 53 66  keep angle 15
+composite create Surface 30 50  keep angle 15
+composite create Surface 59 100  keep angle 15
+composite create Surface 37 49 48 47  keep angle 15
+composite create Surface 61 95 25 63 64 69  keep angle 15
+composite create Surface 27 46  keep angle 15
+composite create Surface 62 86  keep angle 15
+composite create Surface 28 45 44 43  keep angle 15
+composite create Surface 60 90 58 35 56 113  keep angle 15
+composite create Surface 29 42  keep angle 15
+composite create Surface 54 117  keep angle 15
+vol all size 0.3
+volume 6  scheme Polyhedron
+mesh volume 6 
+vol 1 scheme sweep source 124 target 96
+vol 2 scheme sweep source 101 target 127
+vol 3 scheme sweep source 119 target 82
+vol 4 scheme sweep source 128 target 112 
+vol 5 scheme sweep source 98 target 123
+vol 7 scheme sweep source 110 target 131
+mesh vol all
+
+
+
+
+

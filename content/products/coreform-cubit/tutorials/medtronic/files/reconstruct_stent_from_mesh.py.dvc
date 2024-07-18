@@ -1,0 +1,4 @@
+outs:
+- md5: a5ce13547ce8dcc84895164c96bf3672
+  size: 5006
+  path: reconstruct_stent_from_mesh.py

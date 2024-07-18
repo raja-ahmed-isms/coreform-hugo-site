@@ -1,0 +1,10 @@
+<div class="aside p-6">
+{{ with .Get "image" }}
+<div class="aside__image">
+<img src={{ . }}>
+</div>
+{{ end }}
+<div class="aside__text">
+{{ .Inner }}
+</div>
+</div>

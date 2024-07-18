@@ -1,0 +1,65 @@
+
+.collapsible,
+.page_collapsible,
+.accordion {
+    margin: 0;
+    padding:10px;
+    /*height:15px;*/
+    border-top:#C0C0C0 1px solid; /*line separator on header*/
+    color: #0033CC; /*#000; header font unopen*/
+        /*background: #cccccc;*/
+    /*font-family: Arial, Helvetica, sans-serif;*/
+    /*text-decoration:none;*/
+    /*text-transform:uppercase;*/
+    /*font-size:1em;*/
+        cursor: pointer;
+        cursor: hand;
+}
+.accordion-open,
+.collapse-open {
+	/*background:#626977;/*#1e283c; /*header background open*/
+	color: #0033CC;/*#fff; /*header font open*/
+}
+.accordion-open span,
+.collapse-open span {
+	display:block;
+	float: left;
+	background:url(images/button_round_uparrow.png) center center no-repeat;
+        padding:10px;
+        margin-right: 10px;
+}
+.accordion-close span,
+.collapse-close span {
+	display:block;
+	float: left;
+	background:url(images/button_round_downarrow.png) center center no-repeat;
+	padding:10px;
+        margin-right: 10px;
+}
+div.container {
+	padding:0;
+	margin:0;
+        font: inherit;
+        font-weight: inherit;
+        font-size: inherit;
+}
+div.content {
+	background: #f0f0f0; /*paragraph background open*/
+	margin-left: 30px;
+        padding:10px;
+}
+/*div.content ul, div.content p {
+	padding:0;
+	margin:0;
+	padding:3px;
+}*/
+div.content ul li {
+	list-style-position:inside;
+	/*line-height:25px;*/
+}
+div.content ul li a {
+	color: #444444;
+}
+code {
+	overflow:auto;
+}

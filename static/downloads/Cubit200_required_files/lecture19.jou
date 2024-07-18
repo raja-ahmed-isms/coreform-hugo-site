@@ -1,0 +1,67 @@
+#Example 1
+open 'example19_1.cub'
+mesh vol 1
+draw surf 1 vertex type
+
+#step 2
+delete mesh
+reset vol 1
+volume 1 scheme sweep source surface 12 target surface 17
+mesh volume 1
+draw surf 1 vertex type
+
+#Example 2
+reset
+open 'example19_2.cub'
+volume 3  scheme Sweep  source surface 42 45 43 44  target surface 35
+surface 44  size .05
+surface 45  size .03
+surface 25  vertex 32  type Corner
+surface 25  vertex 34  type End
+surface 23  vertex 33  type End
+surface 23  vertex 31  type Corner
+mesh vol 3
+
+
+#Example 3
+reset
+open 'example19_3.cub'
+split curve 19 29  fraction 1/8 preview
+split curve 19 29  fraction 1/8 preview
+split curve 19 29  fraction {1/8} preview
+create vertex on curve 19 29  fraction {1/8} from start 
+create vertex on curve 19 29  fraction {1-1/8} from start 
+create vertex on curve 19 29  fraction {.5+1/8} from start 
+create vertex on curve 19 29  fraction {.25+1/8} from start 
+imprint volume 1 with vertex all
+del vert all
+split surface 12  through vertex 21 24 
+split surface 12  through vertex 22 27 
+split surface 14  through vertex 25 20 
+split surface 16  through vertex 26 23 
+surface 6  vertex 21 20 23 22  type End
+surface 5  vertex 24 25 26 27  type End
+volume 1  scheme Sweep  source surface 3 15    target surface 18  
+mesh volume 1 
+
+#Example 4
+reset
+open 'example19_4.cub'
+volume 159  scheme SubMap
+surface 2683  vertex 3546 3547  type Side
+surface 2683  vertex 3538 3541 3544  type Corner
+surface 2782  vertex 3625 3624  type Side
+surface 2702  vertex 8880  type End
+surface 2702  vertex 8881  type Corner
+surface 2705  vertex 8878  type End
+surface 2705  vertex 8879  type Corner
+surface 2704  vertex 8884  type End
+surface 2704  vertex 8877  type Corner
+surface 2777  vertex 3622  type End
+surface 2777  vertex 8883  type Corner
+surface 2777  vertex 3545  type End
+surface 2777  vertex 8883  type Corner
+surface 7738  vertex 8882  type Corner
+vol all size 0.02
+curve 5922 int 3
+mesh Volume all

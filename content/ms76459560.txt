@@ -1,0 +1,5 @@
+﻿{
+  "Description": "Domain ownership verification file for Microsoft 365 - place in the website root",
+  "Domain": "coreform.com",
+  "Id": "08b2b14e-5df6-4051-912a-dd9c5a845f2a"
+}

@@ -1,0 +1,4 @@
+outs:
+- md5: b79449cc90f3e4d8f1c97c739e64b7c3
+  size: 9144964
+  path: bezier_projection.pdf

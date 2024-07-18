@@ -1,0 +1,4 @@
+outs:
+- md5: 1507def836ac4756ff861ff7e1b8069a
+  size: 58381
+  path: tokamak_mesh_overview.png

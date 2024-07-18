@@ -1,0 +1,26 @@
+{{ define "main" }}
+
+    {{.Content}}
+    {{ range .Paginator.Pages }}
+        <div class="news" style="margin: 0 auto; max-width:1000px;">
+            <div>
+                <h3>{{ .Title }}</h3>
+                <p class="news-subhead">{{ .Description }}</p>
+                <p style="margin: 2em; font-size: 14px;">Published: {{ .Date.Format "2 January 2006" }}</p>
+                <p>{{.Content}}</p>
+		{{ $pdf := (.Resources.GetMatch .Params.research_doc) }}
+		<p><a class="ghost-button-color" href="{{with $pdf}}{{.Permalink | relURL}}{{else}}{{.Params.research_doc}}{{end}}">View Document</a></p>
+            </div>
+        </div>    
+    {{ end }}
+    {{ partial "pagination" . }}
+
+    {{ with .Params.include_trial }}
+		{{ partial "trial_trelis" . }}
+	{{ end }}
+
+    {{ with .Params.include_contact }}
+		{{ partial "start_conversation" . }}
+	{{ end }}
+
+{{ end }}

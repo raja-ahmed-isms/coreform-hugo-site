@@ -1,0 +1,9 @@
+# lecture 3 exercies
+import acis "ra.sat" separate_bodies 
+Volume 1 size 0.5
+Volume 1 scheme sweep
+mesh volume 1
+#
+reset volume 1
+Volume 1 scheme tetmesh
+mesh volume 1

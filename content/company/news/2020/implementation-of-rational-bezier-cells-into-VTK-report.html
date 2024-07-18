@@ -1,0 +1,29 @@
++++
+title = "Implementation of rational Bézier cells into VTK"
+description = "Introduction by TJ Corona, Senior R&D Engineer at Kitware"
+date = "2020-03-25"
+publishdate = "2020-03-25"
+layout = "news"
+research_doc = "/papers/implementation-of-rational-Bézier-cells-into-VTK-report.pdf"
++++
+
+<p>The development team at Coreform have extended VTK’s support for higher order cells to include another class
+    of cell types to VTK that are described using rational Bézier shape functions. As a result, VTK is now able
+    to accept shapes from input sources that internally use Bézier shapes without having to translate or approximate
+    the input cell information. VTK can also now model different shapes that it couldn't in the past.</p>
+
+<p>VTK 8.1.0 saw the introduction of Lagrange Finite Elements to VTK. These cells use Lagrange polynomials
+    as basis functions to describe the geometry of 2- and 3-dimensional cells. There are other sets of basis
+    functions that are often used to describe higher-order finite elements, and each have different mathematical
+    properties that make them useful for certain tasks. For example, Lagrange shape functions have the property
+    that the function they represent is guaranteed to go through each of its control points. </p>
+
+<p>Another set of basis functions, called Bernstein-Bézier functions (hereafter referred to simply as Bézier
+    functions), are frequently used due to their geometric scaling properties and the fact that the functions'
+    control points constitute a convex hull for their domain. When rational weights are assigned to the control
+    points of a Bézier cell, Bézier cells can conform to an even greater number of shapes. For these reasons,
+    Computer-Aided Design (CAD) software most commonly employ Bézier shape functions to model geometric elements.</p>
+
+<div class="center" style="margin-bottom:20px;"><a
+        href="/papers/implementation-of-rational-bezier-cells-into-VTK-report.pdf" class="ghost-button-color-red"
+        title="Implementation of rational Bézier cells into VTK">Download PDF</a></div>

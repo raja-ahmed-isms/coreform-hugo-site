@@ -1,0 +1,18 @@
+<div class="card">
+<a href="{{ .Get "url" }}">
+<div class="card-image">
+<figure class="image is-4by3">
+<img src="{{ .Get "image" }}">
+</figure>
+</div>
+<div class="card-content">
+<div class="content">
+<time>{{ .Get "date" }}</time>
+<p class="pt-4">
+{{ .Get "title" }}
+</p>
+<br>
+</div>
+</div>
+</a>
+</div>

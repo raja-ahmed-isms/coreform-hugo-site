@@ -1,0 +1,14 @@
+DirectoryPath: "public"
+IgnoreDirectoryMissingTrailingSlash: true
+IgnoreInternalEmptyHash: true
+IgnoreAltMissing: true
+IgnoreURLs:
+ - "linkedin.com"
+ - "localhost"
+IgnoreDirs:
+ - "support/testfile"
+ - "support/activation/cubit/deactivate2"
+ - "products/cubit-trelis"
+ - "company/partners/backup-old-partners-content"
+IgnoreExternalBrokenLinks: true
+

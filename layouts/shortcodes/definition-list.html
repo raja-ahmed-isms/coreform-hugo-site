@@ -1,0 +1,15 @@
+{{/* Note that Unmarshal will handle json, yaml and toml. The content gaurds must be included. */}}
+{{- $data := .Inner | transform.Unmarshal -}}
+<dl>
+{{- range $data -}}
+    <dt><p>
+        {{- with .icon -}}
+            <span class="mr-3 fa fa-{{ . }}"></span>
+        {{- end -}}
+        <strong>{{ .label }}</strong>
+    </p></dt>
+    <dd class="py-4"><p>
+        {{- .text | markdownify -}}
+    </p></dt>
+{{- end -}}
+</dl>

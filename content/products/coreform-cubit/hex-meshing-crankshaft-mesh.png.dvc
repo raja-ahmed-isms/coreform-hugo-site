@@ -1,0 +1,4 @@
+outs:
+- md5: e630fcded7bdb3a21cd9f4fb9df5cee3
+  size: 52990
+  path: hex-meshing-crankshaft-mesh.png

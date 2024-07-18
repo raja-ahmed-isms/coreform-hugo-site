@@ -1,0 +1,56 @@
++++
+title = "Data translator activation instructions"
+aliases = ["/support/activation/activatetranslator"]
++++
+<div class="parallax-window" data-parallax="scroll" data-position="top" data-bleed="10" data-speed="0.2" data-image-src="/images/par/parOffice2.jpg" data-natural-width="1200" >
+    <div class="parallax-overlay"><img src="/images/svg/logo-white.svg" style="opacity:1" width="75" alt="Coreform"/></div>
+</div>
+
+<section>
+    <div class="section wow fadeIn" data-wow-duration="0.4s">
+        <div style="max-width:1000px; margin: 0 auto;">
+            <h1 class="section-heading">Data translator activation</h1>
+        </div>
+    
+        <div style="max-width:1000px; margin: 0 auto;">
+			<p class="section-subhead">Node-locked activation.</p>
+
+        	<p>To activate a Cubit Data Translator node-locked license on a standalone computer</p>
+			<div class="inner">
+				<ol>
+                    <li>Install the Cubit Data Translator to the Cubit installation folder. For example, c:\Program Files\Coreform Cubit 2020.2\</li>
+                    <li>Launch Cubit and go to Product Activation under the Help menu.</li>
+                    <li>In the Product Activation window, select <i>Node-locked: Use a product key to get a license over the Internet</i>.</li>
+                    <li>Enter your translator product key and your computer's name. Your computer's name will help you identify this license in your Coreform account. Your product key is available in your account's <a href="http://coreform.com/account/licenses" target="_blank">My Licenses</a> area.<br/><br/> <img class="dropshadow" src="/images/activate_standalone.jpg"><br/><br/></li>
+                    <li>Click <i>Activate</i> to activate the license over the Internet. If your computer is not connected to the Internet, please see <a href="/support/activation/activateoffline">Offline Activation</a>.</li>
+                </ol>
+              </div>
+
+        </div>
+    </div>
+</section>
+
+<section class="section-shade">
+    <div class="section wow fadeIn" data-wow-duration="0.4s">
+        <div style="max-width:1000px; margin: 0 auto;">
+          <p class="section-subhead">Floating license activation.</p>
+          <div class="inner">
+                  <p>To activate a Cubit Data Translator floating license on a server
+                      <div class="inner">
+                        <ol>
+                            <li>Install the Cubit Data Translator to the Cubit installation folder. For example, c:\Program Files\Coreform Cubit 2020.2\</li>
+                            <li>Run <i>rlm_activate</i> in the RLM-Server folder and enter the Product Key in the RLM Activation window.
+                                <br/><br/><img class="dropshadow" src="/images/activate_server.jpg" >
+                                    <br/><br/><strong>or</strong>
+                                    <br/><br/>Open a command prompt or terminal window and navigate to the RLM-Server folder. Run as administrator: ".\rlm_activate --activate &lt;product_key&gt; &lt;hostname&gt;" where &lt;product_key&gt; is the product key for the license and &lt;hostname&gt; is the name of the server. The hostname is optional, but will identify the server in your list of licenses in your account's <a href="http://coreform.com/account/licenses" target="_blank"> My Licenses</a> area.<br/><br/>
+                                    <img class="dropshadow" src="/images/activate_cmd.jpg" width="575"><br/><br/></li>
+                            <li>You may need to restart the RLM server for it to recognize the new license file. In a browser, type "<a href="http://localhost:5054/" target="_blank">http://localhost:5054</a>" to access the Reprise License Server Administration page. Click <i>Reread/Restart Servers</i> from the left sidebar. See <a href="/support/activation/rlmserverinstall/"><i>RLM-Server Installation Instructions</i></a> for more information.</li>
+                        </ol>
+                      </div>
+          </div>
+          <p>If you get an error message during installation, please see <a href="/products/coreform-cubit/cubitfaqs">
+                  FAQs</a> for possible solutions. If you have any questions
+                  about activating your software, please <a href="/company/contact">contact Coreform support</a>.</p>            
+        </div>
+    </div>
+</section>

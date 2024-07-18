@@ -1,0 +1,24 @@
+
+<!-- Javascript -->
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script type="text/javascript" src="/js/slider-main.js"></script>
+    <script type="text/javascript" src="/js/pushy.min.js"></script>
+    <!--<script type="text/javascript" src="/js/pushy.js"></script>-->
+    <script type="text/javascript" src="/js/wow.js"></script>
+    <!-- <script type="text/javascript" src="/js/parallax.js"></script> -->
+	<script type="text/javascript" src="/js/bootstrap.min.js"></script>
+
+	<script type="text/javascript" src="/js/tabsexperiment.js"></script>
+    <!-- <script data-jsd-embedded data-key="346ae119-9a71-4017-96eb-036f20c7aebc" data-base-url="https://jsd-widget.atlassian.com" src="https://jsd-widget.atlassian.com/assets/embed.js"></script> -->
+
+<!-- WOW -->
+<script>
+    new WOW().init();
+</script>
+
+ <!-- I don't like this method. If we layer in much more js we should probably start using hugo pipes with esbuild -->
+{{ with .Params.include_collapse }}
+	{{ partial "collapse" . }}
+
+{{ end }}

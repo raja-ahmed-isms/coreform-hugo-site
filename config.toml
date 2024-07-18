@@ -1,0 +1,19 @@
+baseURL = "https://coreform.com/"
+languageCode = "en-us"
+timeZone = "America/Denver"
+title = "Coreform LLC"
+summaryLength = 20
+paginate = 15
+
+googleAnalytics = ""
+enableRobotsTXT = true
+
+[sitemap]
+  changefreq = "monthly"
+  priority = 0.5
+  filename = "sitemap.xml"
+
+[markup.goldmark.renderer]
+  unsafe = true # Allow HTML in md files
+# [markup]
+#   defaultMarkdownHandler = "blackfriday"

@@ -1,0 +1,49 @@
+#Example 1
+reset
+brick x 10
+mesh vol 1
+
+#step 2
+delete mesh
+disp
+cylinder radius 3 height 4
+vol 2 move 0 0 7
+unite vol 1 2
+reset vol 1
+mesh vol 1
+
+#Example 2
+reset
+open "example2_coarse_mesh.cub"
+delete mesh vol 3 prop
+curve 46 45 interval default 
+curve 46 45 size 0.3
+mesh vol 3
+
+#step 2
+draw surf is_merged
+draw curve all add
+unmerge vol 3
+delete mesh vol 3 prop
+draw vol 3
+draw vol 7
+delete mesh curve 24 37 23
+vol 3 size 0.5
+mesh vol 3
+merge all
+mesh vol 7
+disp
+
+#Example 3
+reset
+open "example3.cub"
+group "adj_vols" add vol in surf in vol 2
+draw adj_vols
+disp
+unmerge vol 2
+delete mesh vol 2 prop
+cylinder radius 2 height 10
+sub 11 from 2
+reset vol 2
+merge adj_vols
+mesh vol 2

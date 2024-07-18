@@ -1,0 +1,111 @@
++++
+title = "Deactivation instructions"
+aliases = ["/support/activation/deactivate"]
++++
+<div class="parallax-window" data-parallax="scroll" data-position="top" data-bleed="10" data-speed="0.2" data-image-src="/images/par/parOffice2.jpg" data-natural-width="1200" >
+    <div class="parallax-overlay"><img src="/images/svg/logo-white.svg" style="opacity:1" width="75" alt="Coreform"/></div>
+</div>
+
+<section>
+    <div class="section wow fadeIn" data-wow-duration="0.4s">
+        <div style="max-width:1000px; margin: 0 auto;">
+            <h1 class="section-heading">License deactivation</h1>
+        </div>
+    
+        <div style="max-width:1000px; margin: 0 auto;">
+          <h3 class="section-subhead">Transfer or deactivate a license</h3>
+          <p>Licenses can be transferred from one computer or server to another.</p>
+            <div class="inner">
+                <ul class="table-indent">
+                    <li><a href="#node">Transfer a node-locked license</a></li>
+                    <li><a href="#float">Transfer a floating licenses</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section-shade">
+    <div class="section wow fadeIn" data-wow-duration="0.4s">
+        <div style="max-width:1000px; margin: 0 auto;">
+            <a id="node"></a>
+            <h3 class="section-subhead">Transfer a node-locked license</h3>
+            <p>A node-locked license is installed on a single standalone computer. Even if the computer is connected to a network, 
+                the license is tied to the standalone machine. As long as the license is valid, the license can be deactivated and transferred to another standalone computer.</p>
+            <h4>License deactivation</h4>
+            <p>To transfer a node-locked license to a different computer, first deactivate the license on the original computer.</p>
+                <div class="inner">
+                    <ol>
+                        <li>Open the Product Activation window on the Help menu.<br/><br/><img class="dropshadow" src="/images/deactivate_standalone.jpg"/></li>
+                        <li>Enter the product key of the license and click the Deactivate button. <br/><br/><strong>NOTE: </strong>The product key can be found on the My Licenses page of your Coreform account.</li>
+                        <li>The deactivation warning will appear asking you to confirm the deactivation.<br/><br/><img class="dropshadow" src="/images/deactivate_standalone_warning.jpg"/></li>
+                        <li>When the license is deactivated, press OK to close the app.<br/><br/><img class="dropshadow" src="/images/deactivate_standalone_success.jpg"/></li>
+                        <li>Uninstall the software from the old computer. You may need to remove the installation folder to completely remove the software.</li>
+                        <li>Install the software on the new computer. During the installation process you will enter a product key. Use the original product key to activate the license on the new computer.</li>
+                    </ol>
+                </div>
+            <h4>Deactivation failed</h4>
+            <div class="inner">
+                <h5 style="margin-top:20px; margin-bottom:-10px;">Deactivation number exceeded</h5>
+                <p>By default, each license has one deactivation allowing you to make one transfer. If you receive a message that the deactivation failed because the number of 
+                    deactivations has been exceeded, please contact <a href="mailto:support@coreform.com?subject=Support Inquiry">support@coreform.com</a> to request additional 
+                    deactivations. There is no charge for additional deactivations.</p>
+                <p><img class="dropshadow" src="/images/deactivate_standalone_failed.jpg"/></p>
+                <h5 style="margin-top:15px; margin-bottom:-10px;">File not found</h5>
+                <p>A license file usually is named using the product key number with a .lic extension (for example, FZBC2CD-3128C4-20F964-DEC545-0300CE4.lic). If you activated the license 
+                    from your license page or if you changed the file name, you should change the filename to the productkey.lic format and try to deactivate again.</p>
+                <p><img class="dropshadow" src="/images/deactivate_standalone_failed_file.jpg"/></p>
+            </div>
+            <p><strong>NOTE:</strong> The license file can be found in the /Cubit XX.X/bin/licenses folder.</p>
+        </div>
+    </div>
+</section>
+
+<section>
+    <div class="section wow fadeIn" data-wow-duration="0.4s">
+        <div style="max-width:1000px; margin: 0 auto;">
+          <a id="float"></a>
+          <h3 class="section-subhead">Transfer a floating license</h3>
+            <p>A floating license is installed on a network server and shared by computers over the network. The license is tied to the server. As long as the license is valid, the license can be deactivated and transferred to another server.</p>
+            <h4>License deactivation on the server</h4>
+            <p>To transfer a floating license to a different server, first deactivate the license on the original server before activating the license on the new server.</p>
+            <div class="inner">
+                <h5 style="margin-top:25px; margin-bottom:-10px;">Windows</h5>
+                <ol>
+                    <li>Run the rlm_activate utility to open the Product Activation dialog. This can be done from the Start menu or by double-clicking "rlm_activate.exe" in the "C:\Program Files\RLM-Server" folder.</li>
+                    <li>On the RLM Activation dialog, enter the product key and press the Deactivate button. The Hostname should fill in automatically. <br/><br/><img class="dropshadow" src="/images/activate_server_active.jpg"/><br/><br/> If not successful, see Deactivation Failed below for help.</li>
+                    <li>Uninstall RLM-Server, then delete the RLM-Server folder to remove any remaining log files.</li>
+                    <li>Download the new RLM-Server from <a href="/support/downloads">Downloads</a> and install the RLM-Server software on the new server.</li>
+                    <li>Activate the floating license on the server using the original product key. For more information, see <a href="/support/activation/rlmserverinstall">RLM-Server installation instructions</a>.</li>
+                </ol>
+                <h5 style="margin-top:25px; margin-bottom:-10px;">Linux, Mac OS X, or Windows Command Prompt</h5>
+                <ol>
+                    <li>Run from a terminal as administrator: "rlm_activate --deactivate &lt;filename.lic&gt; &lt;product key&gt;"
+                        where &lt;filename.lic &gt; is the name of the license file and &lt;product key&gt;
+                        is product key for the license.<br/><br/><img class="dropshadow" src="/images/deactivate_network_win.jpg"/><br/><br/><img class="dropshadow" src="/images/deactivate_network_linux.jpg"/><br /><br /></li>
+                    <li>Uninstall RLM-Server, then delete the RLM-Server folder to remove any remaining log files</li>
+                    <li>Download the new RLM-Server from <a href="/support/downloads">Downloads</a> and install the RLM-Server software on the new server.</li>
+                    <li>Activate the floating license on the server using the original product key. For more information, see <a href="/support/activation/rlmserverinstall">RLM-Server installation instructions</a>.</li>
+                </ol>
+                <h4>Deactivation failed</h4>
+                <div class="inner">
+                    <h5 style="margin-top:20px; margin-bottom:-10px;">Deactivation number exceeded</h5>
+                    <p>By default, each license has one deactivation allowing you to make one transfer. If you receive a message that the deactivation failed because the number of deactivations has been exceeded, please contact <a href="mailto:support@coreform.com?subject=Support Inquiry">support@coreform.com</a> to request additional deactivations. There is no charge for additional deactivations.</p>
+                    <h5 style="margin-bottom: -10px;">File not found</h5>
+                    <p>A license file usually is named using the product key number with a .lic extension (for example, FZBC2CD-3128C4-20F964-DEC545-0300CE4.lic). If you activated the license 
+                        from your license page or if you changed the file name, you should use the actual filename followed by the product key and try to deactivate again.</p>
+                    <p>For example:</p>
+                    <p><img class="dropshadow" src="/images/deactivate_network_filename.jpg"/></p>
+                </div>  
+            </div>
+        </div>
+    </div>
+</section>
+<section>
+    <div class="section wow fadeIn" data-wow-duration="0.4s">
+        <div style="max-width:1000px; margin: 0 auto;">
+          <h3 class="section-subhead">Need help?</h3>
+          <p>If you have questions about transferring your license, please <a href="/company/contact">contact Coreform support.</a></p>
+        </div>
+    </div>
+</section>

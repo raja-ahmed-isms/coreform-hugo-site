@@ -1,0 +1,86 @@
+${if(HasFeature("SCULPT_PARALLEL"))}
+#example 1
+reset
+import stl 'eros_asteroid.stl'
+sculpt parallel volume all autosize 10
+draw block all
+
+#example 2
+del mesh
+sculpt parallel volume all no_combine 
+draw block all
+draw group 3 
+draw group 4
+draw group 5
+draw group 6
+
+#example 3
+#experiment with sizes
+reset
+import acis 'crank.sat'
+#size of 3
+sculpt parallel volume all size 3 
+delete mesh
+#size of 4.5
+sculpt parallel volume all size 4.5
+delete mesh
+#size of 1.5
+sculpt parallel volume all size 1.5 
+
+#use auto align feature
+delete mesh
+sculpt parallel volume all size 3 box align 
+
+#how large of a mesh in 1 minutes 
+#size of 0.75 Elapsed Time		68.705474 sec. (1.145091 min.)
+delete mesh
+sculpt parallel volume all size 0.75
+
+#create symmetric model
+delete mesh
+vol 1 rotate 45 about z 
+sculpt parallel volume all size 3
+
+#example 4
+reset
+import acis "bolt-plate.sat" 
+#mesh with size of 0.2
+expect error 1 less 
+sculpt parallel volume all size 0.2 curve_opt_thresh -1.0
+expect error stop
+expect error 1
+quality hex all scaled jacobian draw mesh
+expect error stop
+
+#mesh with 'auto pillowing' and 'local at curves' options, lowest quality is 0.271
+del mesh
+sculpt parallel volume all size 0.2 pillow 212
+quality hex all scaled jacobian draw mesh
+#mesh with 'auto pillowing' and 'all surfaces' option, lowest quality is 0.305
+del mesh
+sculpt parallel volume all size 0.2 pillow 1
+quality hex all scaled jacobian draw mesh
+
+#example 5 -- too big for test suite right now
+#{if(0)}
+reset
+import acis 'b3.sat'
+sculpt parallel volume all autosize 10
+delete mesh
+#autosize 0.737 better approximates geometry
+sculpt parallel volume all autosize 7
+reset
+#size of 0.8 does a decent job of capturing the feature
+import acis 'b3-2.sat'
+sculpt parallel volume all size 0.8
+reset
+import acis 'b3.sat'
+#cell size of 1.0 generates 57178 hexes
+sculpt parallel volume all size 2 adapt_type 1 adapt_levels 3
+#adapt option with 2 levels generates 
+#{endif}
+#{endif}
+
+
+
+

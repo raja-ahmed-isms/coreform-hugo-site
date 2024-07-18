@@ -1,0 +1,4 @@
+outs:
+- md5: a6e35b8f56354a038231495ab9cc004f
+  size: 20075
+  path: hget_logo.jpg

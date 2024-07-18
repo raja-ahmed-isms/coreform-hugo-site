@@ -1,0 +1,21 @@
++++
+title = "An isogeometric Reissner-Mindlin shell element based on Bézier dual basis functions: overcoming locking and improved coarse mesh accuracy"
+description = "Zhihui Zou, Michael A. Scott, Di Miao, Manfred Bischoff, and Bastian Oesterle"
+date = "2020-06-02"
+research_doc = "/papers/isogeometric_reissner-mindlin_element_20200602.pdf"
++++
+
+<p>We develop a mixed nonlinear isogeometric Reissner-Mindlin shell element for the analysis of thin-walled 
+    structures that leverages Bézier dual basis functions to address both shear and membrane locking and to 
+    improve the quality of computed stresses. The accuracy of computed solutions over coarse meshes, that 
+    have highly non-interpolatory control meshes, is achieved through the application of a continuous rotational 
+    approach. <!--The starting point of the formulation is the Hellinger-Reissner variational principle with 
+    independent displacement, membrane, and shear strains as the unknown fields. To overcome locking, the strain 
+    variables are  interpolated with lower-order spline bases while the variations of the strain variables are 
+    interpolated with the corresponding Bézier dual bases. Leveraging the biorthogonality property of the Bézier 
+    dual basis, the strain variables are condensed out of the system with only a slight increase in the bandwidth 
+    of the resulting linear system. The condensed approach preserves the accuracy of the non-condensed mixed 
+    approach but with fewer degrees of freedom. From a practical point of view, since the Bézier dual basis is 
+    completely specified through Bézier extraction, any spline space that admits Bézier extraction can utilize 
+    the proposed approach directly.--></p>
+

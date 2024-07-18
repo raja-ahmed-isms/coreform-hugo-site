@@ -1,0 +1,139 @@
++++
+title = "Activation update instructions"
+aliases = ["/support/activation/activateupdate"]
++++
+<div class="parallax-window" data-parallax="scroll" data-position="top" data-bleed="10" data-speed="0.2" data-image-src="/images/par/parOffice2.jpg" data-natural-width="1200" >
+    <div class="parallax-overlay"><img src="/images/svg/logo-white.svg" style="opacity:1" width="75" alt="Coreform"/></div>
+</div>
+
+<section>
+    <div class="section wow fadeIn" data-wow-duration="0.4s">
+        <div style="max-width:1000px; margin: 0 auto;">
+            <h1 class="section-heading">License update</h1>
+        </div>
+ 
+		<div style="max-width:1000px; margin: 0 auto;">
+			<h3 class="section-subhead">Update a license to a new version.</h3>
+			<p>Software updates include downloading the new software version and updating the local license file.</p>
+			<div class="inner">
+                <ul class="table-indent">
+                    <li><a href="#node">Update a node-locked license</a></li>
+                    <li><a href="#float">Update a floating license</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section>
+    <div class="section wow fadeIn" data-wow-duration="0.4s">
+        <div style="max-width:1000px; margin: 0 auto;">
+            <a id="node"></a>
+            <h3 class="section-subhead">Update a node-locked License.</h3>
+            <p>A node-locked license is installed on a single standalone computer, whether or not it is connected to a network.</p>
+            <p><strong>Note:</strong> The local license file needs to be updated when upgrading to a minor release. For example, 20.1 to 20.2. 
+                However, the license file does not need to be updated for maintenance releases, such as 16.0.1 or 16.0.2.</p>
+            <p>To upgrade a node-locked license to a new version,</p>
+                <div class="inner">
+                    <ol>
+                        <li>Download the software update installation package for your computer's operating system from the 
+                        My Downloads area of your Coreform account.</li>
+                        <li>Install the software on the same computer where the software was previously 
+                        installed and activated. The software will by default install to a folder 
+                        with the version number (for example, c:\Program Files\Coreform Cubit 2020.2). 
+                        Maintenance releases will install into the same folder as the release version. (Cubit 
+                        20.2 installs into c:\Program Files\Coreform Cubit 2020.2)</li>
+                        <li>Launch the application. <br/>
+                            <ul class="indent">
+                                <li><strong>If the license is not valid</strong>, the application will not launch and an activation window will open letting you know that no valid license was found. Enter a valid product key and press Activate. <br/><br/><img class="dropshadow" src="/images/activate_standalone.jpg"/></li>
+                                <li><strong>If the license is still valid</strong>, but needs to be updated, click Product Activation on the Help menu to open the Product Activation window. <br/><br/><img src="/images/activate_help.jpg"/></li>
+                            </ul>
+                        </li>
+                        <li>In the Product Activation window, enter the product key that is found on the license page under My Licenses and click 
+                            Activate. <br/><br/><img class="dropshadow" src="/images/activate_standalone_active.jpg"/></li>
+                    </ol>
+                    <p>If the license is not activated, an error message will appear in the lower left corner of the window. Possible errors are 
+                        incorrect permissions to save to the license folder or the application cannot connect to the activation server because 
+                        of no Internet connection or blocked by a firewall.</p>
+                    <p><strong>Note:</strong> A node-locked product key will activate the application for the local computer only. A node-locked 
+                        application cannot be activates using a floating product key.</p>
+                </div>
+        </div>
+    </div>
+
+</section>
+<section class="section-shade">
+    <div class="section wow fadeIn" data-wow-duration="0.4s">
+        <div style="max-width:1000px; margin: 0 auto;">
+          <a id="float"></a></br>
+          <h3 class="section-subhead">Update a floating License.</h3>
+            <p>If the expiration date or some other option of your license changes, the license on your license server must be updated to reflect 
+                the change. Updating a floating license involves re-activating the floating license in a similar way to the original activation. 
+                You might also need to update the license manager on the server and update the application on computers connected to the network, 
+                if newer versions are available. </p>
+            <h4>Updating the RLM-Server.</h4>
+                    <p>Although previous versions of RLM-Server should still manage newer application licenses, we recommend that you 
+                        update the RLM-Server to match the version of the application you are using. For example, a Cubit 20.2 license will run on RLM-Server 20.1, 
+                        but we recommend updating to RLM-Server 20.2.</p>
+                    <p>To update the RLM-Server:</p>
+                    <div class="inner">
+                    <ol>
+                        <li>Uninstall the older license manager. This can be done by running the uninstall utility located in the RLM-Server folder. 
+                            Several files will remain in the folder after uninstalling RLM-Server, including the license file.</li>
+                        <li><a href="/support/downloads/">Download the new RLM-Server</a>.</li>
+                        <li>Install the updated RLM-Server software on the server. For more information, see <a href="/support/activation/rlmserverinstall/">RLM-Server 
+                            installation instructions</a>.</li>
+                    </ol>
+                </div>
+            <h4>Updating the floating license on the license server.</h4>
+                    <p><strong>Note:</strong> The local license file in the RLM-Server folder of the license server must be updated whenever a change is made 
+                        to the license, such as a change to the expiration date or a version upgrade. However, the license file does not need to be updated 
+                        for maintenance releases, such as 20.2.1 or 20.2.2.</p>
+                    <p>To update the floating license on the license server,</p>
+                    <h5>Windows</h5>
+                    <div class="inner">
+                    <ol>
+                        <li>Run the rlm_activate utility to open the Product Activation dialog.</li>
+                        <li>On the Product Activation dialog, enter the product key and press Activate. The software license is now updated.<br/><br/><img class="dropshadow" src="/images/activate_server_active.jpg"/></li>
+                    </ol>
+                </div>
+
+                    <h5>Linux or Mac OS X</h5>
+                    <div class="inner">
+
+                    <ol>
+                        <li>From a terminal run as administrator: <br/><br/><code>.\rlm_activate --activate &lt;product_key&gt; &lt;hostname&gt;</code><br/><br/>
+                            where &lt;product_key&gt; is the product key for the license and &lt;hostname&gt;
+                            is the name of the server . The hostname is optional, but will identify the server in your list of licenses in your
+                            account.</li>
+                    </ol>
+                </div>
+            <h4>Updating the workstation software to the latest version.</h4>
+                    <p>If the application version has changed, you should install the new software version on each computer that will access the license over the network.</p>
+                    <p>To install the new version,</p>
+                    <div class="inner">
+
+                    <ol>
+                        <li>Download the appropriate application from your My Downloads in your Coreform account.</li>
+                        <li>Install the application update on each network computer where the application will be run.</li>
+                        <li>During the installation process, you will be prompted to setup the license. Select <strong>Floating: Connect to a license server</strong>. 
+                            Enter the IP address or hostname of the license server, where RLM-Server is installed and activated. Press Connect.
+                            <br/><br/><img class="dropshadow" src="/images/activate_connect_active.jpg"/></li>
+                    </ol>
+                    
+                </div>
+                <p><strong>Note:</strong> A floating product key should not be used to activate a node-locked license. A floating product key can only be used to 
+                    activate or update a floating license on the license server where RLM-Server is installed. Conversely, a standalone product key cannot be used 
+                    to activate a floating license.</p>
+        </div>
+    </div>
+</section>
+<section>
+    <div class="section wow fadeIn" data-wow-duration="0.4s">
+        <div style="max-width:1000px; margin: 0 auto;">
+          <h3 class="section-subhead">Need help?</h3>
+          <p>If you have questions about upgrading your license or software, please <a href="/company/contact">contact Coreform support</a>.</p>
+        </div>
+    </div>
+
+</section>

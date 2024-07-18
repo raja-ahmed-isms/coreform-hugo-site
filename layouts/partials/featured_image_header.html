@@ -1,0 +1,6 @@
+{{ with .Params.featured_image }}
+<div style="position:relative; min-height: 100px; height:15vh; overflow:hidden;">
+	<img src="{{ . }}" style="width:100%;">
+	<img src="/images/svg/logo-white.svg" style="opacity:1; position:absolute; bottom:1em; left:1em; " width="75" alt="Coreform"/>
+</div>
+{{ end }}

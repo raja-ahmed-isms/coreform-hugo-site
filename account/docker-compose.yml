@@ -1,0 +1,24 @@
+# This is only used for endpoint testing, not production setup
+version: "2.4"
+services:
+    csimsoftwww:
+        build: 
+            context: ./
+            dockerfile: ./Dockerfile
+            args:
+                MYSQLUSER: nuffin
+                MYSQLPASS: nuffin
+                MYSQLSERVER: csimsoftdb
+        ports:
+            - 1357:1357
+        depends_on:
+            - "csimsoftdb"
+    csimsoftdb:
+        image: mysql
+        volumes: 
+            - ./db-init:/docker-entrypoint-initdb.d
+        environment:
+            MYSQL_ROOT_PASSWORD: nuffin
+            MYSQL_DATABASE: csimsoftdb
+            MYSQL_USER: nuffin
+            MYSQL_PASSWORD: nuffin

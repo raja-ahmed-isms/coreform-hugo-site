@@ -1,0 +1,501 @@
+@charset "utf-8";
+
+$navbar-item-img-max-height: 3em;
+// TODO: this avoids conflicts with existing css but it's not ideal
+$table-background-color: rgba(0%, 0, 0, 0);
+$container-max-width: 1000px;
+
+@import "bulma";
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;500;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans+Condensed:wght@300;700&display=swap');
+
+/* Old styles that we ultimately want to do away with */
+@import "mut-style";
+@import "mut-pagestyle";
+@import "mut-menu-style";
+
+$color__background-light: #f8f8f8;
+$color__background-dark: #afafaf;
+$color__light-gray: #eaeaea;
+$color__text-main: #404040;
+
+.tabs {
+    display: flex;
+    border-bottom: 1px solid $color__light-gray;
+    max-width: 100%;
+    align: left;
+}
+
+.tabs button {
+    min-width: 175px;
+    background-color: $color__background-light;
+    border: 1px solid $color__light-gray;
+    border-top-right-radius: 1rem;
+    border-top-left-radius: 1rem;
+    outline: none;
+    cursor: pointer;
+    margin-bottom: -1px;
+    padding: 14px 16px;
+    transition: 0.3s;
+    float: left;
+}
+
+.tabs button:hover {
+    color: inherit;
+    background-color: $color__background-dark;
+}
+.tabs button.active {
+    color: inherit;
+    background-color: white;
+    border-bottom: white;
+}
+
+.tabcontent {
+    display: none;
+}
+.tabcontent.active {
+    display: block;
+
+}
+
+
+
+{{ if eq .Params.accent_color "blue" }}
+    $headline--base-color: #063d44;
+    @debug "It's blue";
+{{ else }}
+    $headline--base-color: #534071;
+    @debug "It's purple";
+{{ end }}
+
+$headline--light: adjust_hue(saturate($headline--base-color, 18), 67);
+
+$zebra--mid: #e4e2db; // used for background of sections
+$zebra--dark: #d7d5cf;
+$zebra--light: #ffffff; // usued for standard background
+
+/* Typefaces */
+$common-font: "Open Sans",sans-serif;
+$common-font--condensed: "Open Sans Condensed",sans-serif;
+
+
+/*
+  Compatablity changes for integrating with the existing CSS
+*/
+
+// Previously in the html template the logo was using an element prop for setting height 200. We want to stop using unitless values and element props
+.header__logo {
+    height: 42px;
+}
+
+.content__logo {
+    height: 200px;
+    width: 450px;
+    padding-bottom: 2em;
+}
+
+.content__lglogo {
+    height: 250px;
+    padding-bottom: 0em;
+}
+
+.pagetitling {
+
+}
+
+.floatright {
+    float: right;
+}
+
+.floatleft {
+    float: left;
+}
+
+.pquote {
+    float: left;
+    width: 400px;
+    background: url(images/openquote.gif) top left no-repeat;
+    color: #030;
+    font-size: 26px;
+    line-height: 0.9;
+    font-style: italic;
+    padding: 13px;
+}
+
+blockquote {
+    margin: 0; /* gets rid of the default blockquote margin */
+}
+
+// .pquote p:first-letter {
+//     font-size: 39px;
+//     font-weight: bold;
+// }
+
+// Replacing usage of section-shaded in preference of a css selector like this
+main {
+    section:nth-of-type(even) {
+        background-color: $zebra--mid;
+    }
+
+    section:nth-of-type(odd) {
+        background-color: $zebra--light;
+    }
+
+}
+
+// This avoids us having to touch every place we use list-indent  and mark the container as a content class
+.list-indent, .inner {
+    @extend .content
+}
+
+// This avoids following an in page anchor and having the header cover the headline
+html {
+  scroll-padding-top: 70px; /* height of sticky header */
+}
+
+/*
+  Content styling
+*/
+@mixin headline--thin {
+    font-family: $common-font;
+    font-weight: 100;
+    color: $headline--base-color;
+}
+
+@mixin headline--thick {
+    font-family: $common-font--condensed;
+    font-weight: 800;
+}
+
+
+section {
+    h1 {
+        @include headline--thin;
+        font-size: 5rem;
+        text-align: center;
+        padding: 4rem 0 2rem 0;
+    }
+
+    h2 {
+        @include headline--thick;
+        font-size: 3rem;
+        padding: 2rem 0 1rem 0;
+    }
+
+    h3 {
+        @include headline--thin;
+        font-size: 2.5rem;
+        padding: 2rem 0 1rem 0;
+    }
+
+    p {
+        padding: 0 0 1rem 0;
+    }
+
+}
+
+.aside {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+}
+
+.featureset {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+.featureset__item {
+    display: flex;
+    align-self: baseline;
+    flex-direction: column;
+    align-items: center;
+    max-width: 34ch;
+    padding-bottom: 2rem;
+
+    > img {
+        max-width:35%;
+    }
+}
+
+.featureset__itemwide {
+    display: flex;
+    align-self: baseline;
+    flex-direction: column;
+    align-items: left;
+    max-width: 23ch;
+    padding-bottom: 1rem;
+
+    > img {
+        max-width:100%;
+    }
+}
+
+.featureset__blurb {
+    display:flex;
+    flex-direction: row;
+    padding-bottom: 2rem;
+    max-width: 45ch;
+
+    > img {
+        max-width:20%;
+    }
+}
+
+.TrialBox-text * {
+    color: white;
+}
+
+.featureset__item__title, .featureset__blurb__title {
+    color: $headline--light;
+    font-weight: 800;
+    padding-top: 1rem;
+}
+
+.featureset__item > p {
+    text-align: center;
+}
+
+.content > ul {
+    padding-left: 2em;
+
+}
+
+.content-centering {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    > p {
+        text-align: center;
+    }
+
+    > figure {
+        @extend .content-centering;
+    }
+}
+
+#TableOfContents {
+    background-color: unset;
+    > ul{
+        list-style-type: none;
+
+        > li > a {
+            font-weight: 800;
+        }
+    }
+}
+
+.newslist {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding-bottom: 4em;
+
+    > .card {
+        margin: .5em;
+        min-width: 15ch;
+        width: 23ch;
+    }
+}
+
+
+.page-hero {
+    width: 100vw;
+    max-height: 40vh;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.page-hero__content {
+    padding: 4em;
+
+    > img {
+        height: 25vh;
+    }
+
+    > p {
+        color: white;
+        font-weight: 800;
+        font-size: 3rem;
+    }
+}
+
+.ghost-button--wide {
+    @extend .button;
+    color: #fff;
+    background-color: #c75a56;
+    border: unset;
+    font-weight: 600;
+    font-size: 14px !important;
+    letter-spacing:1px;
+    text-transform: uppercase;
+
+    &:hover, &:active {
+        background-color: #626977;
+        color: white;
+        transition: color 0.3s ease-in,
+                    background-color 0.3s ease-in,
+                    border-color 0.3s ease-in;
+    }
+}
+
+.ghost-button--disabled {
+    // trying to overide &:disabled in the parent doesn't play nice
+    @extend .ghost-button--wide;
+    background-color: #626977;
+}
+
+.mailinglist-subscribe__input {
+    border-radius:5px 0 0 5px !important;
+    box-shadow: 5px 5px 10px #bababa;
+    font-size: 14px !important;
+}
+
+.old-style-container {
+    h1 {
+        @extend .section-heading;
+        margin-top: 6rem;
+        margin-bottom: 4rem;
+    }
+
+    h2 {
+        @extend .section-subhead;
+    }
+
+    h3 {
+        @extend .section-subhead;
+    }
+
+    h4 {
+        @extend .section-subhead;
+    }
+
+}
+
+/* partner shortcode */
+.partner-block {
+    margin-left: 4em;
+    margin-top: 4em;
+    margin-bottom: 4em;
+    img {
+        max-width: 30%;
+        max-height: 4em;
+    }
+    .partner-contact {
+        @extend .level;
+        .address {
+            white-space: nowrap;
+            font-size: 16px;
+        }
+        .dl--contact-info {
+            display: flex;
+            flex-flow: row wrap;
+            dt {
+                flex: 0 0 15%;
+                white-space: nowrap;
+            }
+                dt:after {
+                    content: ": ";
+                }
+            dd {
+                flex: 1 0 70%;
+            }
+        }
+    }
+}
+
+.full-width {
+    position: relative;
+    width: 100vw;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+}
+
+.full-width--mid {
+    @extend .full-width;
+    background-color: $zebra--mid;
+}
+
+
+/* Override bulma's styles for pagination because it
+conflicts with hugo's _internal/pagination.html template */
+.pagination {
+    list-style-type: none;
+    display: flex;
+    justify-content: center;
+    font-size: 1.5em;
+
+    > li {
+        padding: 10px;
+    }
+
+    a {
+        text-decoration: none;
+        color: black;
+        padding: 3px;
+    }
+
+    .active a {
+        border-style: solid;
+        border-width: 1px;
+    }
+
+    a:hover {
+        text-decoration-line: underline;
+        color: black;
+        border-width: 1px;
+    }
+}
+
+.checkmarks__ul--green{
+    list-style-type: none;
+    margin: 0 6px 0 6px !important;
+    li:before {
+        content:'\2713';
+        color:green;
+        padding-left: 2px;
+        margin: 0 6px 0 6px;
+        height: 1em;
+        width: 1em;
+        font-size:1em;
+        line-height: 100%;
+        border-radius: 100%;
+        background: white;
+    }
+}
+
+.overlaping_trial_img {
+    position: relative;
+    filter: drop-shadow(6px 6px 8px #1f273b);
+    overflow: visible;
+
+    @include tablet {
+        width: 115%;
+        max-width: 240%;
+    }
+}
+
+.trialbox {
+    border-radius: 8px;
+    background: rgba(34, 40, 58, 0.75);
+    li {
+        color: white;
+        @include tablet{
+            font-size: 0.8em;
+        }
+    }
+}
+
+.is-gt-tablet-vspace-2 {
+    @include tablet {
+        height: 12em;
+    }
+}

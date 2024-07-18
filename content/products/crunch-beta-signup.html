@@ -1,0 +1,70 @@
++++
+title = "Coreform IGA Beta Signup"
+keywords = "iga, isogeometric analysis, spline-based simulation, fea, fea solver, implicit solver, fea implicit solver"
+include_contact = true
++++
+
+<script type="text/javascript" src="/js/formhelp.js"></script>
+<script type="text/javascript">
+    function validateAndSubmit() {
+        if (stripAndValidateInput(document.signupform.first)) {
+            alert("The first name field is empty.\n" +
+                "Please enter your first name.")
+            document.signupform.first.focus()
+            return false
+        }
+        if (stripAndValidateInput(document.signupform.last)) {
+            alert("The last name field is empty.\n" +
+                "Please enter your last name.")
+            document.signupform.last.focus()
+            return false
+        }
+        if (stripAndValidateInput(document.signupform.email)) {
+            alert("The email field is empty.\n" +
+                "Please enter your email.")
+            document.signupform.email.focus()
+            return false
+        }
+        document.signupform.submit();
+    }
+</script>
+<div class="parallax-window" data-parallax="scroll" data-position="top" data-bleed="10" data-speed="0.2"
+    data-image-src="/images/crunch-background.jpg" data-natural-width="1200">
+    <div class="parallax-overlay"><img src="/images/svg/logo-white.svg" style="opacity:1" width="75" alt="Coreform" />
+    </div>
+</div>
+<section>
+    <div class="section wow fadeIn" data-wow-duration="0.4s">
+        <div style="max-width:1000px; margin: 0 auto;" class="center">
+            <p style="margin-top:0.4em;"><img src="/images/svg/crunch_logo.svg" height="200" alt="Coreform IGA" />
+            </p>
+        </div>
+    </div>
+</section>
+<section class="section-shade">
+    <div class="section wow fadeIn" data-wow-duration="0.4s">
+        <div style="max-width:1000px; margin: 0 auto;">
+            <h1 class="section-subhead" style="text-align:center">Sign up to stay in the loop!</h1>
+            <div align="center">
+                <form action="/account/addbetauser" method="POST" id="signupform" name="signupform"
+                    accept-charset="UTF-8">
+                    <table class="inner" border="0" cellpadding="4" cellspacing="0">
+                        <tr>
+                            <td style="text-align:center"><input type="text" placeholder="First name" name="first"
+                                    size="30" /></td>
+                        </tr>
+                        <tr>
+                            <td style="text-align:center"><input type="text" placeholder="Last name" name="last"
+                                    size="30" /></td>
+                        </tr>
+                        <tr>
+                            <td style="text-align:center"><input type="text" placeholder="Email" name="email"
+                                    size="30" /></td>
+                        </tr>
+                    </table>
+                    <a class="ghost-button-color" href="javascript:{}" onclick="validateAndSubmit();">COUNT ME IN</a>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>

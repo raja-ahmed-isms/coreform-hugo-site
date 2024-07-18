@@ -1,0 +1,98 @@
++++
+title = "Network activation instructions"
+aliases = ["/support/activation/activatenetwork"]
++++
+<div class="parallax-window" data-parallax="scroll" data-position="top" data-bleed="10" data-speed="0.2" data-image-src="/images/par/parOffice2.jpg" data-natural-width="1200" >
+    <div class="parallax-overlay"><img src="/images/svg/logo-white.svg" style="opacity:1" width="75" alt="Coreform"/></div>
+</div>
+
+<section>
+    <div class="section wow fadeIn" data-wow-duration="0.4s">
+        <div style="max-width:1000px; margin: 0 auto;">
+            <h1 class="section-heading">Floating license activation</h1>
+            <p class="section-subhead">Activating a floating license.</p>
+            <p>Product license keys are used to activate Coreform software. Below
+              are instructions for activating floating licenses.
+              Activation of Coreform software can be done online or, if the computer
+              is not connected to the Internet, by downloading a unique license file.</p>
+                <p>To setup a floating license on a network, you will</p>
+                <div class="inner">
+                <ul class="table-indent">
+                    <li>install RLM-Server software on a license server and activate the license</li>
+                    <li>install Coreform Cubit on individual network computers and indicate the license server IP address</li>
+                </ul>
+            </div>
+            <h3>Already have RLM on your server?</h3>
+            <p>If you already are using RLM on your server, you can simply use the <a href="/support/downloads">csimsoft.set file</a> and your license file.</p>
+        </div>
+    </div>
+</section>
+
+<section class="section-shade">
+    <div class="section wow fadeIn" data-wow-duration="0.4s">
+        <div style="max-width:1000px; margin: 0 auto;">
+          <h3 class="section-subhead">Install and activate RLM-Server.</h3>
+            <p>To activate a floating license of Coreform Cubit on a network:</p>
+                <ol>
+                    <li><a href="/support/downloads">Download RLM-Server</a>
+                        and install it on the computer that will be the network
+                        license server.</li>
+                    <li>Open a command prompt or terminal window and navigate to
+                        the RLM-Server folder. </li>
+                    <li>Run rlm_activate to open the RLM Activation window <br/><br/>
+                        <img class="dropshadow" src="/images/activate_server.jpg" /><br/>
+                            <br/><strong>or</strong><br/><br/>From a terminal run as
+                            administrator:	".\rlm_activate --activate &lt;product_key&gt; &lt;hostname&gt;"
+                            where &lt;product_key&gt; is the product key for the license and &lt;hostname&gt;
+                            is the name of the server . The hostname is optional, but
+                            will identify the server in your list of licenses in your
+                            account's <a href="http://coreform.com/account/licenses">My Licenses</a> area.
+                            <br/><br/> <img class="dropshadow" src="/images/activate_cmd.jpg" width="575" />
+                            <br/><br/> If successful, you will see the following message:
+                            <br/><br/> <img class="dropshadow" src="/images/activate_server_active.jpg"/><br/><br/></li>
+                    <li>You may need to restart the server to recognize
+                        the new license file. In a web browser, type "
+                        <a href="http://localhost:5054/" target="_blank">http://localhost:5054</a>"
+                        in the address bar to access the Reprise License
+                        Server Administration page. Click <i>Reread/Restart
+                            Servers</i> from the left sidebar. Check that the
+                            Coreform ISV server is running by clicking <i>Status</i>.
+                            Coreform should appear in the ISV Server table.
+                            <br/><br/><img src="/images/activateISVServers.jpg"/>
+                            <br/><br/>See <a href="/support/activation/rlmserverinstall"><i>RLM-Server Installation Instructions</i></a> for more information.</li>
+                </ol>
+        </div>
+    </div>
+</section>
+<section>
+    <div class="section wow fadeIn" data-wow-duration="0.4s">
+        <div style="max-width:1000px; margin: 0 auto;">
+          <h3 class="section-subhead">Install Coreform Cubit.</h3>
+            <p>To setup Coreform Cubit on a network computer:</p>
+                <ol>
+                    <li><a href="http://coreform.com/account/downloads" target="_blank">
+                            Download Coreform Cubit</a> and install it on each network computer
+                            that will run Cubit.</li>
+                    <li>Launch Coreform Cubit.</li>
+                    <li>In the Product Activation window, select <i>Floating License:
+                            Connect to a license server</i>.</li>
+                    <li>Enter the hostname or IP address of the license server where
+                        RLM-Server is located. The default port number is 5053.
+                        See <a href="/support/activation/rlmserverinstall/"><i>RLM-Server
+                                Installation Instructions</i></a> for information
+                                about changing the port.<br/><br/> <img class="dropshadow" src="/images/activate_connect.jpg"/><br/><br/></li>
+                    <li>Click <i>Activate</i>
+                        <br/><br/> If successful, you will see the following message:
+                        <br/><br/> <img class="dropshadow" src="/images/activate_connect_active.jpg"/><br/><br/></li>
+                </ol>
+          <p><strong>Note:</strong> Network installation requires a floating license
+              of Coreform Cubit. A network product key is used to activate the RLM-Server software.
+              Do not use the network product key to activate Coreform Cubit on the client computer.</p>
+          <p>If you get an error message during installation, please see
+              <a href="/products/coreform-cubit/cubit-faqs" target="_blank">Coreform Cubit FAQs</a> for possible
+              solutions. If you have any questions about activating your software,
+              please <a href="/company/contact">contact Coreform support</a>.</p>
+        </div>
+    </div>
+
+</section>

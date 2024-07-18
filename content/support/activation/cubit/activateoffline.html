@@ -1,0 +1,51 @@
++++
+title = "Offline activation instructions"
+aliases = ["/support/activation/activateoffline"]
++++
+<div class="parallax-window" data-parallax="scroll" data-position="top" data-bleed="10" data-speed="0.2" data-image-src="/images/par/parOffice2.jpg" data-natural-width="1200">
+    <div class="parallax-overlay"><img src="/images/svg/logo-white.svg" style="opacity:1" width="75" alt="Coreform"/></div>
+</div>
+
+<section>
+    <div class="section wow fadeIn" data-wow-duration="0.4s">
+        <div style="max-width:1000px; margin: 0 auto;">
+            <h1 class="section-heading">Offline activation</h1>
+        </div>
+    
+		<div style="max-width:1000px; margin: 0 auto;">
+
+			<p class="section-subhead">Activating a license when not connected to the Internet.</p>
+
+			<p>Product license keys are used to activate Coreform software. Below are instructions for activating licenses when the computer you are activating is not connected to the Internet.</p>
+
+        	<p>If the computer running Coreform Cubit is not connected to the Internet, you will need to use the product key to activate and download the license file using another computer that can access the Internet.</p>
+
+			<p>To manually activate your software:</p>
+
+			<div class="inner">
+              	<ol>
+					<li>Install and launch Coreform Cubit.</li>
+                  	<li>Obtain the hostid of your computer using the rlmutil utility. Navigate to the installation folder in a terminal window. Type <strong><i>rlmutil rlmhostid ether</i></strong><br/><br/>
+                  	
+                  	<img class="dropshadow" src="/images/activate_hostid.jpg" width="550"><br/><br/></li>
+
+                  	<li>On a device with Internet access, select the license in your account's <a href="https://coreform.com/account/licenses" target="_blank">My License</a> area.</li>
+					<li>At the bottom of the page, click <i>Activate</i>.</li>
+					<li>Enter the hostname and hostid of the computer, then click <i>Add Activation</i>.<br/><br/> <img class="dropshadow" src="/images/activate_add.jpg"><br/><br/></li>
+                  	<li>Scroll to Activation at the bottom of the license page and click on the download icon next to the license.<br/><br/> <img class="dropshadow" src="/images/activate_download.jpg"><br/><br/></li>
+					<li>Save the node-locked license file to your Cubit X.X/bin/licenses folder. <br/><br/>Use your product key as the filename, for example AL218C0-6M50F4-E46371-5313ED-8E8B125.lic By default, the folder is located here:
+                      	<ul class="indent">
+                          	<li>Windows: C:\Program Files\Cubit 16.X\bin\licenses\</li>
+							<li>Linux: /opt/Cubit-16.X/bin/licenses/</li>
+                          	<li>Macintosh: /Applications/Cubit-16.X.apps/MacOS/licenses/</li>
+						</ul>
+					</li>
+              	</ol>
+          	</div>
+
+			<p><strong>Note:</strong> A node-locked product key will activate Coreform Cubit on a single computer. A floating product key will activate a floating license of Coreform Cubit on the RLM-Server license server.</p>
+          		
+			<p>If you get an error message during installation, please see <a href="/products/coreform-cubit/cubitfaqs">Coreform Cubit FAQs</a> for possible solutions. If you have any questions about activating your software, please <a href="/company/contact">contact Coreform support</a>.</p>
+        </div>
+	</div>
+</section>

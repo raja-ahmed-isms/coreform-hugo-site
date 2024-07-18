@@ -1,0 +1,34 @@
+<!--start collapsible script-->
+<script type="text/javascript" src="/js/jquery.collapsible.min.js"></script>
+<link rel="stylesheet" type="text/css" media="screen" href="/css/collapsible.css"/>
+<script type="text/javascript">
+$(document).ready(function() {
+
+	//collapsible management
+       	$('.page_collapsible').collapsible({
+
+	});
+
+	//assign open/close all to functions
+	function openAll() {
+		$('.page_collapsible').collapsible('open');
+	}
+	function closeAll() {
+		$('.page_collapsible').collapsible('close');
+	}
+
+	//listen for close/open all
+	$('#closeAll').click(function(event) {
+		event.preventDefault();
+		closeAll();
+
+	});
+	$('#openAll').click(function(event) {
+		event.preventDefault();
+		openAll();
+
+	});
+
+});
+</script>
+<!--end collapsible script-->

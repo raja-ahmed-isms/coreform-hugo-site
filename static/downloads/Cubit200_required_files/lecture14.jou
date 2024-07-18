@@ -1,0 +1,92 @@
+#Exercise 1
+reset
+import acis "contig_exercise1.sat" separate_bodies 
+vol 1 size 1
+vol 2 size 0.5
+mesh vol all
+draw surf 1 8 
+delete mesh
+imprint all
+merge all
+volume 1 size 1 
+vol 2 size 0.5
+mesh vol all
+draw vol 1 
+draw vol 2 
+mesh vis off
+label surface on
+draw vol 1 
+draw vol 2 
+mesh vis on
+
+#Exercise 2
+reset
+import acis "contig_exercise2.sat" separate_bodies 
+vol 1 size 1
+vol 2 size 0.5
+mesh vol all
+draw surf 1 8 
+delete mesh
+imprint all
+merge all
+volume 1 size 1 
+vol 2 size 0.5
+mesh vol all
+measure between vertex 1 surface 8 
+
+#Exercise 3
+reset
+import acis "contig_exercise3.sat" separate_bodies 
+imprint all
+merge all
+mesh vol all
+zoom vert 14
+
+#Exercise 4
+reset
+import acis "contig_exercise4.sat" separate_bodies 
+imprint all
+merge all
+mesh vol all
+zoom vert 15
+
+#Excercise 5
+reset
+import acis "contig_assembly.sat" separate_bodies
+
+#Exercise 6
+reset
+import acis "contig_exercise6.sat" separate_bodies 
+
+#Exercise 7/8
+reset
+import acis "contig_assembly.sat" separate_bodies
+
+#Exercise 9
+reset
+import acis "contig_cyl_assem.sat" separate_bodies
+mesh vol all
+topology check model edge volume all angle 40.0 draw brief result group 
+
+#step 6
+delete mesh
+disp
+imprint all
+merge all
+mesh vol all
+topology check coincident quad volume all tolerance 1.0e-6 draw brief result group 
+
+#Exercise 10
+reset
+import acis "contig_cyl_assem.sat" separate_bodies
+mesh vol all
+topology check model edge volume all angle 40.0 draw brief result group 
+
+#step 6
+delete mesh
+disp
+imprint all
+merge all
+mesh vol all
+topology check model edge volume all angle 40.0 draw brief result group 
+

@@ -1,0 +1,7 @@
+<div class="featureset__item">
+{{ with .Get "image" }}
+<img src={{ . }}>
+{{ end }}
+<p class="featureset__item__title">{{ .Get "title" | markdownify }}</p>
+<p>{{ .Get "description" | markdownify }}</p>
+</div>

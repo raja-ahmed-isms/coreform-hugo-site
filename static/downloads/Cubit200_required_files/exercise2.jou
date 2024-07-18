@@ -1,0 +1,26 @@
+reset
+import acis "yoke_male.sat" attributes_on  separate_bodies 
+# remove some extraneous curves on the small rounds
+regularize vol all
+# remove the small rounds
+remove surface 31 36 37 26 25 19 18 15 14 13  extend 
+# decompose for hex meshing
+webcut volume 1  with sheet extended from surface 33  
+webcut volume 1  with sheet extended from surface 10  
+webcut volume 1  sweep surface 23  vector 0 1 0 through_all 
+webcut volume 1  sweep surface 40  vector 0 1 0 through_all 
+webcut volume 2 3  with plane xplane offset 12 noimprint nomerge 
+webcut volume 6 7  with plane xplane offset -12 noimprint nomerge 
+imprint all
+merge all
+# do some custom settings on volume 1 to get it to mesh
+volume 1  redistribute nodes off 
+volume 1  scheme Sweep  source surface 68 47 43 44 target surface 11 sweep_smooth Auto  sweep_transform least_squares  autosmooth_target off 
+mesh vol all
+smooth surf all
+smooth vol 1 
+
+
+
+
+

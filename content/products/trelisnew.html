@@ -1,0 +1,905 @@
++++
+title = "New features in Trelis"
+include_collapse = true
+include_trial = true
+draft = true
++++
+<div class="parallax-window" data-parallax="scroll" data-position="top" data-bleed="10" data-speed="0.2"
+        data-image-src="/images/par/parTrelis20.png" data-natural-width="1200" />
+<div class="parallax-overlay"><img src="/images/svg/logo-white.svg" style="opacity:1" width="75" alt="Coreform" /></div>
+</div>
+<section>
+
+        <section>
+                <div class="section wow fadeIn" data-wow-duration="0.4s">
+                        <div style="max-width:1000px; margin: 0 auto;" class="center">
+                                <p style="margin-top:0em; margin-bottom:2em;"><img src="/images/svg/trelis_logo.svg"
+                                                height="200" alt="Coreform Trelis" /></p>
+                                <h1 class="section-heading">New Coreform Trelis Features</h1>
+                        </div>
+                </div>
+        </section>
+
+        <div class="section wow fadeIn" data-wow-duration="0.4s">
+                <div style="max-width:1000px; margin: 0 auto;">
+                        <h3 class="section-subhead">Coreform Trelis 17.0 New Features</h3>
+
+                        <p>Coreform Trelis 17.0 is an exciting update with latest enhancements that make Coreform Trelis
+                                more powerful and even more
+                                user-friendly.</p>
+
+                        <!--Start index-->
+                        <table style="padding:0 15px; width:100%;">
+                                <tr>
+                                        <td style="padding-right:15px;">
+                                                <a href="#Meshing"><strong
+                                                                style="font-size:0.95em;">Meshing</strong></a><br />
+                                                <span
+                                                        style="display:inline-block; font-size:0.85em; line-height:1.4em; margin-left:1.5em;">
+                                                        <a href="/products/trelisnew#intersection">Finding intersection
+                                                                of 2D and 3D meshes</a><br />
+                                                        <a href="#autoscheme">Autoscheme and interval assignment more
+                                                                robust</a><br />
+                                                        <a href="#tri">Tri meshing overconstrained options</a><br />
+                                                        <a href="#tet">Tet meshing overconstrained options</a><br />
+                                                        <a href="#qtri">QTri a set of elements</a>
+                                                </span>
+                                        </td>
+                                        <td>
+                                                <a href="#Sculpt"><strong style="font-size:0.95em;">Sculpt
+                                                                Meshing</strong></a><br />
+                                                <span
+                                                        style="display:inline-block; font-size:0.85em; line-height:1.4em; margin-left:1.5em;">
+                                                        <a href="#sculptmesh">Sculpt meshing method</a><br />
+                                                        <a href="#nonman">Refinement and non-manifolds</a><br />
+                                                        <a href="#period">Periodicity check</a><br />
+                                                        <a href="#parallel">Parallel unstructured input mesh</a><br />
+                                                        <a href="#pamgen">Pamgen input</a>
+                                                </span>
+                                        </td>
+                                </tr>
+                                <tr>
+                                        <td>
+                                                <a href="#Geometry"><strong
+                                                                style="font-size:0.95em;">Geometry</strong></a><br />
+                                                <span
+                                                        style="display:inline-block; font-size:0.85em; line-height:1.4em; margin-left:1.5em;">
+                                                        <a href="#step">Names on bodies after STEP import</a><br />
+                                                        <a href="#prop">Improvement with element block propagation
+                                                                through webcuts</a>
+                                                </span>
+                                        </td>
+                                        <td>
+                                                <a href="#Graphics_Utilities_Etc"><strong
+                                                                style="font-size:0.95em;">Graphics, Utilities,
+                                                                etc.</strong></a><br />
+                                                <span
+                                                        style="display:inline-block; font-size:0.85em; line-height:1.4em; margin-left:1.5em;">
+                                                        <a href="#python">Python 2 and Python 3 support</a>
+                                                </span>
+                                        </td>
+                                </tr>
+                                <tr>
+                                        <td>
+                                                <a href="#release"><strong style="font-size:0.95em;">Release
+                                                                Notes</strong></a><br />
+                                                <span
+                                                        style="display:inline-block; font-size:0.85em; line-height:1.4em; margin-left:1.5em;">
+                                                        <a href="#release">Release notes for Coreform Trelis
+                                                                releases</a>
+                                                </span>
+                                        </td>
+                                </tr>
+                        </table>
+                        <!--End index-->
+                </div>
+        </div>
+</section>
+
+<section class="section-shade">
+        <div class="section wow fadeIn" data-wow-duration="0.4s">
+                <div style="max-width:1000px; margin: 0 auto;">
+
+                        <a id="Meshing"></a>
+                        <h2 class="section-subhead">Meshing</h2>
+
+                        <a name="intersection"></a>
+                        <h3>Finding intersection of 2D and 3D meshes</h3>
+
+                        <div class="inner">
+                                <p>Finding mesh intersections has been improved to also support finding 3D
+                                        intersections.
+                                        Additionally, blocks may be specified when finding mesh intersections. Higher
+                                        order
+                                        elements also have their higher order nodes included in the intersection checks.
+                                        The
+                                        below image is an example of 3D intersection while also rendering the amount of
+                                        intersection
+                                        between elements and printing summary information.</p>
+
+                                <p class="command">Find Mesh Intersection {Block|Body|Surface|Volume} <id_list> [with
+                                                {Block|Body|Surface|Volume} <id_list>] [low <value=0.0001>] [high
+                                                                <value>] [exhaustive] [worst <num_worst>] [draw] [log]
+                                </p>
+
+                                <div class="center"><img class="dropshadow" src="/images/mesh_int4.png"></div>
+                        </div>
+
+                        <a name="autoscheme"></a>
+                        <h3>Autoscheme and interval assignment more robust</h3>
+
+                        <div class="inner">
+                                <p>Algorithms for ensuring hexahedral meshes fit into volumes from a topological point
+                                        of
+                                        view have been improved. This includes improvements to autoscheme, corner
+                                        picking, and
+                                        interval assignment have been made more reliable and congruent with user
+                                        expectations.
+                                        This includes respecting user assigned intervals on curves, and user assigned
+                                        schemes on volumes.</p>
+                        </div>
+
+                        <a name="tri"></a>
+                        <h3>Tri meshing overconstrained options</h3>
+                        <div class="inner">
+                                <p>A new option for handling overconstrained edges during tri meshing is available.
+                                        During
+                                        triangle meshing of surfaces, overconstrained edges can created where edge nodes
+                                        are
+                                        associated with the surface's bounding curves. This option may be useful if also
+                                        setting
+                                        proximity to attain a number of elements through a thickness and overconstrained
+                                        edges exist.
+                                        By splitting these overconstrained edges, one can attain a number of elements
+                                        through a
+                                        thickness. To split these edges, the following option may be used.</p>
+
+                                <p class="command">[set] Trimesher Split Overconstrained Edges {on|OFF}</p>
+
+                                <p>The figure below illustrates how splitting overconstrained edges would be to attain
+                                        more elements through a thickness.</p>
+
+                                <div class="center"><img class="dropshadow" src="/images/trimesh_split_oc_edges.png">
+                                </div>
+                        </div>
+
+                        <a name="tet"></a>
+                        <h3>Tet meshing overconstrained options</h3>
+
+                        <div class="inner">
+                                <p>A new option for handling overconstrained edges and tetrahedra during tet meshing is
+                                        available. During tet
+                                        meshing of volumes, overconstrained edges and tetrahedra can created where nodes
+                                        are associated with the
+                                        volume's bounding surfaces. To split these edges or tetrahedra, the following
+                                        option may be used.</p>
+                                <p class="command">[set] Tetmesher Optimize [ Overconstrained Edges {on|OFF} ] [
+                                        Overconstrained Tetrahedra {on|OFF} ]</p>
+
+                        </div>
+
+                        <a name="qtri"></a><br />
+                        <h3>QTri a set of elements</h3>
+                        <div class="inner">
+                                <p>In addition to splitting all quadrialaterals of a surface with the QTri command, a
+                                        subset of quadrilaterals
+                                        can now be split. A subset of quadrilateral may be split using the Faces option
+                                        of the QTri command.</p>
+                                <p class="command">QTri { Surface <ids> | Face <ids> ]</p>
+                                <p>The following image illustrates the result when doing a QTri operation on faces.</p>
+                                <div class="center"><img class="dropshadow" src="/images/qtrifaces.png"></div>
+                        </div>
+                </div>
+        </div>
+</section>
+<!--<div class="parallax-window" data-parallax="scroll" data-position="top" data-bleed="10" data-speed="0.2" data-image-src="/images/par/parTrelis13.jpg" data-natural-width="1200" >
+        <div class="parallax-overlay"><img src="/images/svg/logo-white.svg" style="opacity:1" width="75" alt="Coreform"/></div>
+</div>-->
+<section>
+        <div class="section wow fadeIn" data-wow-duration="0.4s">
+                <div style="max-width:1000px; margin: 0 auto;">
+                        <a id="Sculpt"></a></br>
+                        <h2 class="section-subhead">Sculpt</h2>
+                        <a name="sculptmesh"></a><br />
+                        <h3>Sculpt meshing method</h3>
+                        <div class="inner">
+                                <p>Sculpt is a separate parallel application designed to generate all-hex meshes on
+                                        complex geometries with little or no user
+                                        interaction. Sculpt was previously available as a standalone app called Bolt,
+                                        but is now available as another meshing method in Trelis.
+                                        Trelis provides a front end command line and GUI for the Sculpt application. The
+                                        command will build the
+                                        appropriate input files based on the current geometry and can also automatically
+                                        invoke Sculpt to generate the mesh
+                                        and bring the mesh back to Trelis. The following command can be used to invoke
+                                        the Sculpt application.</p>
+                                <p class="command">sculpt parallel &lt;options&gt;</p>
+                                <p>In addition, options for Sculpt can be set up in the new Sculpt command panel: Mesh
+                                        &gt; Volume &gt; Parallel Sculpt.
+                                        Complete documentation on the Sculpt Parallel options are included in the Trelis
+                                        User's Manual.</p>
+                                <div class="center"><img class="dropshadow" src="/images/sculpt_tech2.jpg"
+                                                width="500px"></div>
+                        </div>
+                        <a name="nonman"></a><br />
+                        <h3>Sculpt refinement and non-manifolds</h3>
+                        <div class="inner">
+                                <p>A new option for handling non-manifold conditions created during refinement is
+                                        available. The <strong>adapt_non_manifold</strong> option can
+                                        be used in situations where refinement results in a non-manifold condition at a
+                                        node. If enabled, cells surrounding the non-manifold
+                                        condition will be included in refinement. This typically results in a closer
+                                        match to the geometry for thin and small features, and
+                                        will normally result in more elements at material interfaces. Note that
+                                        non-manifold conditions will be resolved without this option,
+                                        however, the result may not match geometry as accurately.</p>
+                        </div>
+                        <a name="period"></a><br />
+                        <h3>Periodicity check</h3>
+                        <div class="inner">
+                                <p>A new option for checking periodicity on the Sculpt mesh is available. When using the
+                                        <strong>periodic</strong> option with a Cartesian base grid,
+                                        the input geometry must be periodic with respect to the grid bounding box in
+                                        order to meet the minimum requirements of a valid
+                                        periodic mesh. The <strong>check_periodic</strong> option can be used to check
+                                        whether the requirement is met. The <strong>check_periodic_tol</strong> option
+                                        is
+                                        also available to set the tolerance for checking periodicity.</p>
+                        </div>
+                        <a name="parallel"></a><br />
+                        <h3>Parallel unstructured input mesh</h3>
+                        <div class="inner">
+                                <p>Sculpt now accepts unstructured meshes in parallel. To provide parallel mesh as
+                                        input, the mesh needs to be decomposed prior to running Sculpt. The SEACAS
+                                        decomp tool can be used to split an exodus mesh into multiple files. Once
+                                        decomposed, the root filename is used with the <strong>input_mesh</strong>
+                                        argument.</p>
+                                <div class="center"><img class="dropshadow" src="/images/parallel_input.png"></div>
+                                <p>Mesh decomposed into four parallel exodus meshes processed by Sculpt in parallel.</p>
+                        </div>
+                        <a name="pamgen"></a><br />
+                        <h3>Pamgen input</h3>
+                        <div class="inner">
+                                <p>A new option of using <strong>Pamgen</strong> to create a base mesh for Sculpt is
+                                        available. Pamgen is an open source meshing tool for generating hexahedral
+                                        meshes from
+                                        geometric primitives. The <strong>input_mesh_pamgen</strong> Sculpt option may
+                                        be set to a filename containing Pamgen input. Pamgen also supports generating
+                                        parallel
+                                        meshes. An example Pamgen input with an associated image showing the mesh is
+                                        below.</p>
+                                <ul class="list-unstyled-small">
+                                        <li style="font-size: small">mesh
+                                                <ul class="list-unstyled-small">
+                                                        <li>radial trisection
+                                                                <ul class="list-unstyled-small">
+                                                                        <li>trisection blocks, 2</li>
+                                                                        <li>zmin -0.00075</li>
+                                                                        <li>numz 1
+                                                                                <ul class="list-unstyled-small">
+                                                                                        <li>zblock 1 1. interval 8</li>
+                                                                                </ul>
+                                                                        </li>
+                                                                        <li>numr 3
+                                                                                <ul class="list-unstyled-small">
+                                                                                        <li>rblock 1 2.0 interval 8</li>
+                                                                                        <li>rblock 2 3.0 interval 8</li>
+                                                                                        <li>rblock 3 4.0 interval 8</li>
+                                                                                </ul>
+                                                                        </li>
+                                                                        <li>numa 1
+                                                                                <ul class="list-unstyled-small">
+                                                                                        <li>ablock 1 90. interval 24
+                                                                                        </li>
+                                                                                </ul>
+                                                                        </li>
+                                                                </ul>
+                                                        </li>
+                                                        <li>end</li>
+                                                        <li>set assign
+                                                                <ul class="list-unstyled-small">
+                                                                        <li>nodeset, ilo, 100</li>
+                                                                        <li>block sideset, ihi, 45, 2</li>
+                                                                </ul>
+                                                        </li>
+                                                        <li>end</li>
+                                                </ul>
+                                        </li>
+                                        <li>end</li>
+                                </ul>
+                                <div class="center"><img class="dropshadow" src="/images/pamgen.jpg" width="300px">
+                                </div>
+                                <p style="font-size: small">Base mesh generated by Pamgen using the above input
+                                        parameters. Colors represent 4 different processors when used in parallel mode.
+                                </p>
+                        </div>
+                </div>
+        </div>
+</section>
+<!--<div class="parallax-window" data-parallax="scroll" data-position="top" data-bleed="10" data-speed="0.2" data-image-src="/images/par/parTrelis13.jpg" data-natural-width="1200" >
+    <div class="parallax-overlay"><img src="/images/svg/logo-white.svg" style="opacity:1" width="75" alt="Coreform"/></div>
+</div>-->
+<section class="section-shade">
+        <div class="section wow fadeIn" data-wow-duration="0.4s">
+                <div style="max-width:1000px; margin: 0 auto;">
+                        <a id="Geometry"></a></br>
+                        <h2 class="section-subhead">Geometry</h2>
+                        <a name="step"></a><br />
+                        <h3>Names on bodies after STEP import</h3>
+                        <p> files are not read in. To read those names, the following command is used.</p>
+                        <p>Command: <strong>[set] Read Step Body Names [on|OFF]</strong></p>
+                        <a name="prop"></a><br />
+                        <h3>Improvements with element block propagation through webcuts</h3>
+                        <p>Blocks specification persist through webcut operations. For instance, a volume associated
+                                with a block can be
+                                split into two volumes with the webcut command, and the result will be a block
+                                containing both volumes. In
+                                this release, an improvement was made such that webcuts with conical or cylindrical
+                                surfaces will also follow this behavior.</p>
+                </div>
+        </div>
+</section>
+<!--<div class="parallax-window" data-parallax="scroll" data-position="top" data-bleed="10" data-speed="0.2" data-image-src="/images/par/parTrelis17.jpg" data-natural-width="1200" >
+    <div class="parallax-overlay"><img src="/images/svg/logo-white.svg" style="opacity:1" width="75" alt="Coreform"/></div>
+</div>-->
+<section>
+        <div class="section wow fadeIn" data-wow-duration="0.4s">
+                <div style="max-width:1000px; margin: 0 auto;">
+                        <a id="Graphics_Utilities_Etc"></a></br>
+                        <h2 class="section-subhead">Graphics, Utilities, etc.</h2>
+                        <a name="python"></a></br>
+                        <h3>Python 2 and Python 3 support</h3>
+                        <p>Cubit now supports either Python 2 or Python 3. The user may select the version of Python to
+                                use. Having support
+                                for both versions will assist transitioning from Python 2 to Python 3. Note, Python 2.7
+                                will not be maintained
+                                by Python developers past January 1, 2020.</p>
+                </div>
+        </div>
+</section>
+<!--<div class="parallax-window" data-parallax="scroll" data-position="top" data-bleed="10" data-speed="0.2" data-image-src="/images/par/parTrelis11.jpg" data-natural-width="1200" >
+    <div class="parallax-overlay"><img src="/images/svg/logo-white.svg" style="opacity:1" width="75" alt="Coreform"/></div>
+</div>-->
+<section class="section-shade">
+        <div class="section wow fadeIn" data-wow-duration="0.4s">
+                <div style="max-width:1000px; margin: 0 auto;">
+                        <a name="release"></a><br />
+                        <h2 class="section-subhead">Release Notes</h2>
+                        <p>Click on the Coreform Trelis version to expand the list.</p>
+                        <!--Start Release-->
+                        <h5 class="page_collapsible">Coreform Trelis 17.0<span></span></h5>
+                        <div class="container">
+                                <div class="content">
+                                        <table>
+                                                <colgroup>
+                                                        <col width="20%" />
+                                                        <col width="80%" />
+                                                </colgroup>
+                                                <tr class="title-cell2">
+                                                        <td>Issue</td>
+                                                        <td>Description</td>
+                                                </tr>
+                                                <!--Start Issues-->
+                                                <tr>
+                                                        <td class="list-row-under">[SM-63]</td>
+                                                        <td class="list-row-under">Block names not read correctly from
+                                                                STEP import</td>
+                                                </tr>
+                                                <tr>
+                                                        <td class="list-row-under">[SM-170]</td>
+                                                        <td class="list-row-under">Drawing node color incorrect</td>
+                                                </tr>
+                                                <tr>
+                                                        <td class="list-row-under">[SM-254]</td>
+                                                        <td class="list-row-under">Curve in vertex with length is broken
+                                                        </td>
+                                                </tr>
+                                                <tr>
+                                                        <td class="list-row-under">[SM-261]</td>
+                                                        <td class="list-row-under">Refine Volume fails with imprinted
+                                                                vertex</td>
+                                                </tr>
+                                                <tr>
+                                                        <td class="list-row-under">[SM-294]</td>
+                                                        <td class="list-row-under">Import Export Problem with Trelis
+                                                        </td>
+                                                </tr>
+                                                <tr>
+                                                        <td class="list-row-under">[SM-373]</td>
+                                                        <td class="list-row-under">Reversed surface will not mesh</td>
+                                                </tr>
+                                                <tr>
+                                                        <td class="list-row-under">[SM-408]</td>
+                                                        <td class="list-row-under">BC creation on mesh entities</td>
+                                                </tr>
+                                                <tr>
+                                                        <td class="list-row-under">[SM-709]</td>
+                                                        <td class="list-row-under">Mesh Scaling for Tets</td>
+                                                </tr>
+                                                <tr>
+                                                        <td class="list-row-under">[SM-847]</td>
+                                                        <td class="list-row-under">Trimesh of composited surface
+                                                                produces bad mesh</td>
+                                                </tr>
+                                                <tr>
+                                                        <td class="list-row-under">[SM-889]</td>
+                                                        <td class="list-row-under">QT5 gui issue - QOpenGLContext
+                                                                messages over VNC</td>
+                                                </tr>
+                                                <tr>
+                                                        <td class="list-row-under">[SM-910]</td>
+                                                        <td class="list-row-under">Issuing incorrect quality metric
+                                                                defaults to shape</td>
+                                                </tr>
+                                                <tr>
+                                                        <td class="list-row-under">[SM-938]</td>
+                                                        <td class="list-row-under">Duplicate surface meshing output</td>
+                                                </tr>
+                                                <tr>
+                                                        <td class="list-row-under">[SM-945]</td>
+                                                        <td class="list-row-under">Poor curve biasing with volume and
+                                                                vertex sizing</td>
+                                                </tr>
+                                                <tr>
+                                                        <td class="list-row-under">[SM-1023]</td>
+                                                        <td class="list-row-under">Implement image generation in Trelis
+                                                                journal/Python batch modes</td>
+                                                </tr>
+                                                <tr>
+                                                        <td class="list-row-under">[SM-1339]</td>
+                                                        <td class="list-row-under">Cylindrical webcut after block
+                                                                operation not placing new volume in block</td>
+                                                </tr>
+                                                <tr>
+                                                        <td class="list-row-under">[SM-1560]</td>
+                                                        <td class="list-row-under">Python 3 in Trelis</td>
+                                                </tr>
+                                                <tr>
+                                                        <td class="list-row-under">[SM-1574]</td>
+                                                        <td class="list-row-under">MBG Export GUI panel is wrong</td>
+                                                </tr>
+                                                <tr>
+                                                        <td class="list-row-under">[SM-1679]</td>
+                                                        <td class="list-row-under">Add Abaqus import path</td>
+                                                </tr>
+                                                <tr>
+                                                        <td class="list-row-under">[SM-2017]</td>
+                                                        <td class="list-row-under">Slowdown of Boolean unite operations
+                                                        </td>
+                                                </tr>
+                                                <tr>
+                                                        <td class="list-row-under">[SM-2130]</td>
+                                                        <td class="list-row-under">Triangle quality metric</td>
+                                                </tr>
+                                                <tr>
+                                                        <td class="list-row-under">[SM-2238]</td>
+                                                        <td class="list-row-under">Nodes not written to mesh files</td>
+                                                </tr>
+                                                <tr>
+                                                        <td class="list-row-under">[SM-2317]</td>
+                                                        <td class="list-row-under">Misplaced nodes after meshing with
+                                                                surface interval only</td>
+                                                </tr>
+                                                <tr>
+                                                        <td class="list-row-under">[SM-2335]</td>
+                                                        <td class="list-row-under">BC creation on mesh entities</td>
+                                                </tr>
+                                                <tr>
+                                                        <td class="list-row-under">[SM-2395]</td>
+                                                        <td class="list-row-under">Support Python 3 and Python 2</td>
+                                                </tr>
+                                                <tr>
+                                                        <td class="list-row-under">[SM-2416]</td>
+                                                        <td class="list-row-under">Unite volume with Tetprimative
+                                                                produce error messages but mesh looks fine</td>
+                                                </tr>
+                                                <tr>
+                                                        <td class="list-row-under">[SM-2488]</td>
+                                                        <td class="list-row-under">Surfaces unmerged when writing to a
+                                                                cub file</td>
+                                                </tr>
+                                                <tr>
+                                                        <td class="list-row-under">[SM-2725]</td>
+                                                        <td class="list-row-under">Meshing threads bug</td>
+                                                </tr>
+                                                <tr>
+                                                        <td class="list-row-under">[SM-2769]</td>
+                                                        <td class="list-row-under">Skin individual only works for free
+                                                                mesh</td>
+                                                </tr>
+                                                <tr>
+                                                        <td class="list-row-under">[SM-2822]</td>
+                                                        <td class="list-row-under">Improved control over clipping plane
+                                                        </td>
+                                                </tr>
+                                                <tr>
+                                                        <td class="list-row-under">[SM-2916]</td>
+                                                        <td class="list-row-under">Can't draw tets attached to sheet
+                                                                body</td>
+                                                </tr>
+                                                <tr>
+                                                        <td class="list-row-under">[SM-3027]</td>
+                                                        <td class="list-row-under">Sphere and torus not displaying in
+                                                                wireframe and hidden mode in Windows and mac</td>
+                                                </tr>
+                                                <tr>
+                                                        <td class="list-row-under">[SM-3052]</td>
+                                                        <td class="list-row-under">Improve View Point names</td>
+                                                </tr>
+                                                <tr>
+                                                        <td class="list-row-under">[SM-3085]</td>
+                                                        <td class="list-row-under">Move-node won't work if not
+                                                                constrained</td>
+                                                </tr>
+                                                <tr>
+                                                        <td class="list-row-under">[SM-3348]</td>
+                                                        <td class="list-row-under">Warning - nodes not exported</td>
+                                                </tr>
+                                                <tr>
+                                                        <td class="list-row-under">[SM-3440]</td>
+                                                        <td class="list-row-under">Import Trelis block behavior</td>
+                                                </tr>
+                                                <tr>
+                                                        <td class="list-row-under">[SM-3486]</td>
+                                                        <td class="list-row-under">Cub file opens incorrectly</td>
+                                                </tr>
+                                                <tr>
+                                                        <td class="list-row-under">[SM-3575]</td>
+                                                        <td class="list-row-under">Remove KCM from Builds</td>
+                                                </tr>
+                                                <tr>
+                                                        <td class="list-row-under">[SM-3577]</td>
+                                                        <td class="list-row-under">Change order of Select method in
+                                                                Geometry > Volume > Transform > Move</td>
+                                                </tr>
+                                                <tr>
+                                                        <td class="list-row-under">[SM-3606]</td>
+                                                        <td class="list-row-under">Trelis Compare Tool</td>
+                                                </tr>
+                                                <tr>
+                                                        <td class="list-row-under">[SM-3616]</td>
+                                                        <td class="list-row-under">Align by axis but keep axial
+                                                                coordinate the same</td>
+                                                </tr>
+                                                <tr>
+                                                        <td class="list-row-under">[SM-3617]</td>
+                                                        <td class="list-row-under">Quality file on a lite mesh will
+                                                                crash</td>
+                                                </tr>
+                                                <tr>
+                                                        <td class="list-row-under">[SM-3618]</td>
+                                                        <td class="list-row-under">CRASH - quotation marks</td>
+                                                </tr>
+                                                <tr>
+                                                        <td class="list-row-under">[SM-3644]</td>
+                                                        <td class="list-row-under">Parameters for the circle scheme
+                                                                available in the Properties Page</td>
+                                                </tr>
+                                                <tr>
+                                                        <td class="list-row-under">[SM-3649]</td>
+                                                        <td class="list-row-under">What does Warning (1005200) mean?
+                                                        </td>
+                                                </tr>
+                                                <tr>
+                                                        <td class="list-row-under">[SM-3652]</td>
+                                                        <td class="list-row-under">Tools > Options ... > Label Defaults
+                                                                > not working</td>
+                                                </tr>
+                                                <tr>
+                                                        <td class="list-row-under">[SM-3708]</td>
+                                                        <td class="list-row-under">Map scheme changes to pave causing
+                                                                volume not to mesh</td>
+                                                </tr>
+                                                <tr>
+                                                        <td class="list-row-under">[SM-3712]</td>
+                                                        <td class="list-row-under">Skip target interval matching bug
+                                                        </td>
+                                                </tr>
+                                                <tr>
+                                                        <td class="list-row-under">[SM-3713]</td>
+                                                        <td class="list-row-under">CRASH - setting curve intervals in
+                                                                the property page</td>
+                                                </tr>
+                                                <tr>
+                                                        <td class="list-row-under">[SM-3714]</td>
+                                                        <td class="list-row-under">Clip plane cannot be moved to the
+                                                                origin</td>
+                                                </tr>
+                                                <tr>
+                                                        <td class="list-row-under">[SM-3716]</td>
+                                                        <td class="list-row-under">CRASH - deleting vol in group crashes
+                                                                if group selected in tree</td>
+                                                </tr>
+                                                <tr>
+                                                        <td class="list-row-under">[SM-3721]</td>
+                                                        <td class="list-row-under">Mouse bindings reset every time I
+                                                                open Trelis</td>
+                                                </tr>
+                                                <tr>
+                                                        <td class="list-row-under">[SM-3722]</td>
+                                                        <td class="list-row-under">Lost Block Attributes and Attribute
+                                                                Names When Saving .cub File</td>
+                                                </tr>
+                                                <tr>
+                                                        <td class="list-row-under">[SM-3723]</td>
+                                                        <td class="list-row-under">Group Gui bug report</td>
+                                                </tr>
+                                                <tr>
+                                                        <td class="list-row-under">[SM-3749]</td>
+                                                        <td class="list-row-under">Python 3 support</td>
+                                                </tr>
+                                                <tr>
+                                                        <td class="list-row-under">[SM-3750]</td>
+                                                        <td class="list-row-under">Python 3 request</td>
+                                                </tr>
+                                                <tr>
+                                                        <td class="list-row-under">[SM-3754]</td>
+                                                        <td class="list-row-under">Draw block all thickness offset in
+                                                                15.4 not working as it did in 15.3</td>
+                                                </tr>
+                                                <tr>
+                                                        <td class="list-row-under">[SM-3784]</td>
+                                                        <td class="list-row-under">QTri to work on faces</td>
+                                                </tr>
+                                                <tr>
+                                                        <td class="list-row-under">[SM-3786]</td>
+                                                        <td class="list-row-under">Deleting block options are removed
+                                                        </td>
+                                                </tr>
+                                                <tr>
+                                                        <td class="list-row-under">[SM-3787]</td>
+                                                        <td class="list-row-under">Geometry > Volume > Modify > Heal
+                                                                shows Body only</td>
+                                                </tr>
+                                                <tr>
+                                                        <td class="list-row-under">[SM-3788]</td>
+                                                        <td class="list-row-under">Geometry Power Tool shows Body only
+                                                        </td>
+                                                </tr>
+                                                <tr>
+                                                        <td class="list-row-under">[SM-3861]</td>
+                                                        <td class="list-row-under">Middle mouse in command panel</td>
+                                                </tr>
+                                                <tr>
+                                                        <td class="list-row-under">[SM-3863]</td>
+                                                        <td class="list-row-under">Sizing on sphere not respected</td>
+                                                </tr>
+                                                <tr>
+                                                        <td class="list-row-under">[SM-3896]</td>
+                                                        <td class="list-row-under">Strange tet mesh on test problem</td>
+                                                </tr>
+                                                <tr>
+                                                        <td class="list-row-under">[SM-3897]</td>
+                                                        <td class="list-row-under">Help Using Sculpt</td>
+                                                </tr>
+                                                <tr>
+                                                        <td class="list-row-under">[SM-3898]</td>
+                                                        <td class="list-row-under">Sculpt giving negative scaled
+                                                                Jacobian</td>
+                                                </tr>
+                                                <tr>
+                                                        <td class="list-row-under">[SM-3904]</td>
+                                                        <td class="list-row-under">Crash with vertex labels</td>
+                                                </tr>
+                                                <tr>
+                                                        <td class="list-row-under">[SM-3933]</td>
+                                                        <td class="list-row-under">Curve > move option is missing from
+                                                                GUI</td>
+                                                </tr>
+                                                <tr>
+                                                        <td class="list-row-under">[SM-4020]</td>
+                                                        <td class="list-row-under">Surface and volume select issues</td>
+                                                </tr>
+                                                <tr>
+                                                        <td class="list-row-under">[SM-4026]</td>
+                                                        <td class="list-row-under">Block option missing from import mesh
+                                                                geometry advanced option</td>
+                                                </tr>
+                                                <tr>
+                                                        <td class="list-row-under">[SM-4032]</td>
+                                                        <td class="list-row-under">Trelis won't delete files</td>
+                                                </tr>
+                                                <tr>
+                                                        <td class="list-row-under">[SM-4033]</td>
+                                                        <td class="list-row-under">Provide the name of the color on
+                                                                Property Page > General > Color</td>
+                                                </tr>
+                                                <tr>
+                                                        <td class="list-row-under">[SM-4047]</td>
+                                                        <td class="list-row-under">Axis Preview syntax error in axis
+                                                                align</td>
+                                                </tr>
+                                                <tr>
+                                                        <td class="list-row-under">[SM-4048]</td>
+                                                        <td class="list-row-under">CRASH - 'feature size' on curves will
+                                                                crash Trelis</td>
+                                                </tr>
+                                                <tr>
+                                                        <td class="list-row-under">[SM-4049]</td>
+                                                        <td class="list-row-under">Surface Mesh schemes do not match
+                                                                between Properties Page and Command Panel (some missing)
+                                                        </td>
+                                                </tr>
+                                                <tr>
+                                                        <td class="list-row-under">[SM-4050]</td>
+                                                        <td class="list-row-under">Feature Size required in Command
+                                                                Panel > Mesh > Curve > Mesh</td>
+                                                </tr>
+                                                <tr>
+                                                        <td class="list-row-under">[SM-4052]</td>
+                                                        <td class="list-row-under">CRASH: Trelis Segfault during surface
+                                                                meshing</td>
+                                                </tr>
+                                                <tr>
+                                                        <td class="list-row-under">[SM-4057]</td>
+                                                        <td class="list-row-under">get_global_element_id example wrong
+                                                                in manual</td>
+                                                </tr>
+                                                <tr>
+                                                        <td class="list-row-under">[SM-4059]</td>
+                                                        <td class="list-row-under">Removal of timestamp in qa_records
+                                                        </td>
+                                                </tr>
+                                                <tr>
+                                                        <td class="list-row-under">[SM-4070]</td>
+                                                        <td class="list-row-under">Groups inadvertently created in 'copy
+                                                                mesh' command</td>
+                                                </tr>
+                                                <tr>
+                                                        <td class="list-row-under">[SM-4072]</td>
+                                                        <td class="list-row-under">Trelis startup files on Mac</td>
+                                                </tr>
+                                                <tr>
+                                                        <td class="list-row-under">[SM-4075]</td>
+                                                        <td class="list-row-under">ERROR: The Interval Matching solver
+                                                                failed to find a valid solution, but thought it
+                                                                succeeded.</td>
+                                                </tr>
+                                                <tr>
+                                                        <td class="list-row-under">[SM-4077]</td>
+                                                        <td class="list-row-under">Trelis server selection monitor not
+                                                                responding correctly to 'no selection'</td>
+                                                </tr>
+                                                <tr>
+                                                        <td class="list-row-under">[SM-4081]</td>
+                                                        <td class="list-row-under">Hide Spider Blocks in Trelis</td>
+                                                </tr>
+                                                <tr>
+                                                        <td class="list-row-under">[SM-4100]</td>
+                                                        <td class="list-row-under">Export exodus adds a .sat file
+                                                                extension</td>
+                                                </tr>
+                                                <tr>
+                                                        <td class="list-row-under">[SM-4109]</td>
+                                                        <td class="list-row-under">Property Page Metadata missing</td>
+                                                </tr>
+                                                <tr>
+                                                        <td class="list-row-under">[SM-1160]</td>
+                                                        <td class="list-row-under">Add fresh sculpt screen shots - like
+                                                                bolt</td>
+                                                </tr>
+                                                <tr>
+                                                        <td class="list-row-under">[SM-1161]</td>
+                                                        <td class="list-row-under">Add tutorial for new command panel
+                                                                features</td>
+                                                </tr>
+                                                <tr>
+                                                        <td class="list-row-under">[SM-1144]</td>
+                                                        <td class="list-row-under">Prepare Trelis for release</td>
+                                                </tr>
+                                                <tr>
+                                                        <td class="list-row-under">[SM-1081]</td>
+                                                        <td class="list-row-under">Curve and surface not biased when
+                                                                setting size on vertex (tri/tet meshing)</td>
+                                                </tr>
+                                                <tr>
+                                                        <td class="list-row-under">[SM-1084]</td>
+                                                        <td class="list-row-under">Stitch panel uses wrong entity type
+                                                                in the command</td>
+                                                </tr>
+                                                <tr>
+                                                        <td class="list-row-under">[SM-1132]</td>
+                                                        <td class="list-row-under">&#39;logfile&#39; option on heal
+                                                                dialog does nothing</td>
+                                                </tr>
+                                                <tr>
+                                                        <td class="list-row-under">[SM-1133]</td>
+                                                        <td class="list-row-under">Healer command logfile option
+                                                                doesn&#39;t write to .log file.</td>
+                                                </tr>
+                                                <tr>
+                                                        <td class="list-row-under">[SM-1136]</td>
+                                                        <td class="list-row-under">Location Distance From and Midpoint
+                                                                dont issue a command from Location on Curve dialog</td>
+                                                </tr>
+                                                <tr>
+                                                        <td class="list-row-under">[SM-1142]</td>
+                                                        <td class="list-row-under">Label on | off doesn&#39;t work for
+                                                                volumes</td>
+                                                </tr>
+                                                <tr>
+                                                        <td class="list-row-under">[SM-1143]</td>
+                                                        <td class="list-row-under">Mesh Label Defaults aren&#39;t saved
+                                                                in the Options panel</td>
+                                                </tr>
+                                                <tr>
+                                                        <td class="list-row-under">[SM-23]</td>
+                                                        <td class="list-row-under">OpenFOAM Support</td>
+                                                </tr>
+                                                <tr>
+                                                        <td class="list-row-under">[SM-1067]</td>
+                                                        <td class="list-row-under">Add functions to CubitInterface to
+                                                                get material name/id from a block</td>
+                                                </tr>
+                                                <tr>
+                                                        <td class="list-row-under">[SM-1093]</td>
+                                                        <td class="list-row-under">Align axes of surfaces</td>
+                                                </tr>
+                                                <tr>
+                                                        <td class="list-row-under">[SM-762]</td>
+                                                        <td class="list-row-under">Upgrade ACIS to r26 and Translators
+                                                        </td>
+                                                </tr>
+                                                <tr>
+                                                        <td class="list-row-under">[SM-962]</td>
+                                                        <td class="list-row-under">Upgrade to Python 3</td>
+                                                </tr>
+                                                <tr>
+                                                        <td class="list-row-under">[SM-1108]</td>
+                                                        <td class="list-row-under">Sweep--Extrude default has
+                                                                Redistribute Nodes turned on</td>
+                                                </tr>
+                                                <tr>
+                                                        <td class="list-row-under">[SM-1116]</td>
+                                                        <td class="list-row-under">Change the Tree BC from
+                                                                &#39;Periodics&#39; to &#39;Periodic&#39;</td>
+                                                </tr>
+                                                <tr>
+                                                        <td class="list-row-under">[SM-1117]</td>
+                                                        <td class="list-row-under">Missing &quot;block&quot; option in
+                                                                ANSYS export command created by GUI</td>
+                                                </tr>
+                                                <tr>
+                                                        <td class="list-row-under">[SM-1145]</td>
+                                                        <td class="list-row-under">Merge Sandia branch</td>
+                                                </tr>
+                                                <tr>
+                                                        <td class="list-row-under">[SM-1152]</td>
+                                                        <td class="list-row-under">Integrate Sculpt components</td>
+                                                </tr>
+                                                <tr>
+                                                        <td class="list-row-under">[SM-1153]</td>
+                                                        <td class="list-row-under">Enable sculpt only for Pro version
+                                                        </td>
+                                                </tr>
+                                                <tr>
+                                                        <td class="list-row-under">[SM-1154]</td>
+                                                        <td class="list-row-under">Implement MPI assistant in the
+                                                                tools/options</td>
+                                                </tr>
+                                                <tr>
+                                                        <td class="list-row-under">[SM-1155]</td>
+                                                        <td class="list-row-under">Add warning dialog if too many
+                                                                elements will be generated</td>
+                                                </tr>
+                                                <tr>
+                                                        <td class="list-row-under">[SM-1156]</td>
+                                                        <td class="list-row-under">Protect sculpt.exe with rlm</td>
+                                                </tr>
+                                                <tr>
+                                                        <td class="list-row-under">[SM-1157]</td>
+                                                        <td class="list-row-under">Protect sculpt parsing command with
+                                                                licensing</td>
+                                                </tr>
+                                                <tr>
+                                                        <td class="list-row-under">[SM-1158]</td>
+                                                        <td class="list-row-under">Add sculpt docs into help
+                                                </tr>
+                                                <!--End Issues-->
+                                        </table>
+                                </div>
+                        </div>
+                        <!--End Release-->
+                </div>
+        </div>
+</section>

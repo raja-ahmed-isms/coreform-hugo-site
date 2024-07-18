@@ -1,0 +1,50 @@
+
+div.navleft
+{
+font-size:small;
+float:left;
+width:200px;
+/*margin:0px;
+padding:0px*/
+border-right: 1px solid #D1D1C2; 
+}
+
+ul.navlist
+{
+margin:10px 0px;
+padding:0px;
+list-style-type:none;
+}
+
+li.navlistmenu
+{
+padding-left:10px;
+font-size:small;
+font-weight:bolder;
+color:red;
+color:#1d1d1d;
+background-image:url('images/navbar.jpg');
+background-repeat:repeat-x;
+border:1px solid #1d1d1d;
+}
+
+li.navlistitem
+{
+padding-left:10px;
+font-size:small;
+font-weight:bolder;
+color:#1d1d1d;
+}
+
+li.navlistitem2
+{
+padding-left:25px;
+font-size:small;
+font-weight:bolder;
+color:#1d1d1d;
+}
+
+a.navlink:link {color:#1e283c; text-decoration: none}
+a.navlink:visited {color:#1e283c; text-decoration: none}
+a.navlink:hover {color:#626977; text-decoration: underline}
+a.navlink:active {color:#626977; text-decoration: underline}

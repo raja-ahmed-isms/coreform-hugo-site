@@ -1,0 +1,36 @@
+<section>
+    <h1>Featured news and events</h1>
+    <div class="newslist">
+    {{ range first 4 (where .Site.Pages ".Params.featured" "=" true) }}
+        <div class="card">
+            <a href="{{ .RelPermalink }}">
+                    {{ $img := (.Resources.ByType "image").GetMatch "*{featured}*" }}
+                    {{ if $img }}
+                        {{ with $img }}
+                            <div class="card-image">
+                                <figure class="image is-16by9">
+                                        <img src={{ (.Fit "640x360").RelPermalink }}>
+                                </figure>
+                            </div>
+                        {{ end }}
+                    {{ else }}
+                            <div class="card-image ">
+                                <figure class="image">
+                                   <img src="/images/svg/news-default-thumb.svg">
+                              </figure>
+                           </div>
+                    {{ end }}
+                <div class="card-content">
+                    <div class="content">
+                        <time>{{ .Date.Format "2 January 2006" }}</time>
+                        <p class="pt-4">
+                            {{ .Title }}
+                        </p>
+                        <br>
+                    </div>
+                </div>
+            </a>
+        </div>
+    {{ end }}
+    </div>
+</section>

@@ -1,0 +1,39 @@
+reset
+
+########## Inserted Commands ##############
+########## new volume for creating a hole ##############
+create Cylinder height 100 radius 1 
+########################################################
+
+import acis "yoke_male.sat" attributes_on  separate_bodies 
+
+########## Inserted Commands ##############
+########## position the volume for creating the hole #########################
+vol 1 rotate 90 about x
+vol 1 move 0 50 0
+sub 1 from 2
+##############################################################################
+
+
+########### do the rest of the commands from the orginal file ################
+# remove some extraneous curves on the small rounds
+regularize volume all
+# remove the small rounds
+remove surface ( at -11.7775 25.8554 10.8195 ordinal 1 at -9.29066 14.605 10.3943 ordinal 1 at 0 1.59615 10.8797 ordinal 1 at 9.29066 14.605 10.3943 ordinal 1 at 11.7775 25.8554 10.8195 ordinal 1 at 11.7775 25.8554 -10.8195 ordinal 1 at 9.29066 14.605 -10.3943 ordinal 1 at 0 1.59615 -10.8797 ordinal 1 at -9.29066 14.605 -10.3943 ordinal 1 at -11.7775 25.8554 -10.8195 ordinal 1 ordered ) extend
+# decompose for hex meshing
+webcut volume ( at -0.0114257 33.1611 0 ordinal 1 ordered ) with sheet extended from surface ( at -6.25189e-011 14.5726 10.16 ordinal 1 ordered )
+webcut volume ( at -0.0114257 33.1611 -4.945 ordinal 1 ordered ) with sheet extended from surface ( at 6.25207e-011 14.5726 -10.16 ordinal 1 ordered )
+webcut volume ( at -0.0114257 47.7337 0 ordinal 1 ordered ) sweep surface ( at 18.4948 29.1938 -3.55271e-015 ordinal 1 ordered ) vector 0 1 0 through_all
+webcut volume ( at -1.06597 47.7337 0 ordinal 1 ordered ) sweep surface ( at -18.5062 29.1945 -3.55271e-015 ordinal 1 ordered ) vector 0 1 0 through_all
+webcut volume ( at -6.41745e-006 23.3125 15.1048 ordinal 1 at 6.41745e-006 23.3125 -15.1048 ordinal 1 ordered ) with plane xplane offset 12 noimprint nomerge
+webcut volume ( at -2.05725 23.3125 15.1048 ordinal 1 at -2.05724 23.3125 -15.1048 ordinal 1 ordered ) with plane xplane offset -12 noimprint nomerge
+imprint all
+merge all
+# do some custom settings on volume 1 to get it to mesh
+volume ( at 2.12179e-008 48.2337 -8.88178e-016 ordinal 1 ordered ) redistribute nodes off
+volume ( at 2.12179e-008 48.2337 -8.88178e-016 ordinal 1 ordered ) scheme sweep source surface ( at 2.12179e-008 47.625 0 ordinal 1 at 5.55625 53.975 8.88178e-016 ordinal 1 at -1.60925 68.1421 -9.85381e-017 ordinal 1 at 0 66.675 0 ordinal 1 ordered ) target surface ( at -1.77636e-015 29.1452 0 ordinal 1 ordered ) sweep_smooth auto sweep_transform least_squares autosmooth_target off
+mesh volume all
+smooth surface all
+smooth volume ( at 2.12179e-008 48.2337 -8.88178e-016 ordinal 1 ordered )
+
+

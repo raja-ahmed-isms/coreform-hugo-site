@@ -1,0 +1,4 @@
+outs:
+- md5: ff3c1e704d89b2b9ce962b51fff77ebe
+  size: 361972
+  path: compositing-before-after.png

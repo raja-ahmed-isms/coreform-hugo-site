@@ -1,0 +1,12 @@
+<head>
+	<title>{{ .Params.Title | default "Coreform LLC"}}</title>
+	{{ partial "meta" . }}
+	{{ partial "head_includes" . }}
+	{{ partial "analytics" . }}
+	{{ with .Params.include_function_orderProduct }}
+		{{ partial "orderForm" . }}
+	{{ end }}
+	{{ with .Params.include_mathjax }}
+		{{ partial "mathjax" . }}
+	{{ end }}
+</head>

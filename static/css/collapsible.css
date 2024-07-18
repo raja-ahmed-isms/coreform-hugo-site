@@ -1,0 +1,63 @@
+
+.collapsible,
+.page_collapsible,
+.accordion {
+    margin: 0 15px;
+    padding: 10px 10px 10px 0px;
+    /*height: 15px;*/
+    border-top: #C0C0C0 1px solid; /*line separator on header*/
+    color: #d44457; /*#000; header font unopen*/
+        /*background: #cccccc;*/
+    /*font-family: Arial, Helvetica, sans-serif;*/
+    /*text-decoration:none;*/
+    /*text-transform:uppercase;*/
+    /*font-size:1em;*/
+    cursor: pointer;
+    cursor: hand;
+}
+.accordion-open,
+.collapse-open {
+	/*background:#626977;/*#1e283c; /*header background open*/
+	color: #940417;/*#fff; /*header font open*/
+}
+.accordion-open span,
+.collapse-open span {
+	display: block;
+	float: left;
+	background:url(images/button_round_uparrow.png) center center no-repeat;
+    padding: 10px 10px 10px 0px;
+    margin-right: 10px;
+}
+.accordion-close span,
+.collapse-close span {
+	display: block;
+	float: left;
+	background: url(images/button_round_downarrow.png) center center no-repeat;
+	padding: 10px 10px 10px 0px;
+    margin-right: 10px;
+}
+.collapsing-container {
+	padding: 0;
+	margin: 0;
+    font: inherit;
+    font-weight: inherit;
+    font-size: inherit;
+    width: 100%;
+}
+.collapsing-content {
+	background: #f0f0f0; /*paragraph background open*/
+	margin: 0 0 15px 34px;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.collapsing-content ul li {
+	list-style-position: inside;
+	/*line-height: 25px;*/
+}
+.collapsing-content ul li a {
+	color: #444;
+}
+code {
+	overflow: auto;
+}

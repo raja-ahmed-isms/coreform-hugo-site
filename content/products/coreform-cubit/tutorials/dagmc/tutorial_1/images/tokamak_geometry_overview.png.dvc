@@ -1,0 +1,4 @@
+outs:
+- md5: 6248bdeba8c4819048422168d5200ede
+  size: 52495
+  path: tokamak_geometry_overview.png
